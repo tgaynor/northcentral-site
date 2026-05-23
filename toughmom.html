@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tough Crowd — parenting advice for the youngest child who somehow became the parent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..600&family=Reddit+Sans:wght@300..600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4ede2;
+    --bg-deep:#ece1d1;
+    --ink:#33291f;
+    --ink-soft:#6a5c4d;
+    --rust:#b85638;
+    --rust-deep:#933e25;
+    --mustard:#c79a3e;
+    --olive:#6f7a52;
+    --cream:#fffaf1;
+    --line:#ddcfb9;
+    --shadow:rgba(80,55,35,.14);
+    --display:"Fraunces",Georgia,serif;
+    --body:"Reddit Sans",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:350;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  .accent{color:var(--rust-deep);font-style:italic}
+  .strike{text-decoration:line-through;text-decoration-color:var(--rust);text-decoration-thickness:2px;opacity:.6}
+
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:rgba(244,237,226,.85);border-bottom:1px solid var(--line)}
+  .navinner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:var(--display);font-size:1.3rem;letter-spacing:-.02em;display:flex;align-items:center;gap:9px;font-weight:500}
+  .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 4px rgba(184,86,56,.18)}
+  .navlinks{display:flex;gap:28px;align-items:center;font-size:.93rem}
+  .navlinks a{color:var(--ink-soft);transition:color .2s}
+  .navlinks a:hover{color:var(--rust-deep)}
+  .btn{display:inline-block;background:var(--rust);color:var(--cream);padding:12px 24px;border-radius:6px;font-weight:500;font-size:.92rem;border:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s;box-shadow:0 5px 16px rgba(184,86,56,.3)}
+  .btn:hover{background:var(--rust-deep);transform:translateY(-2px);box-shadow:0 9px 22px rgba(147,62,37,.36)}
+  .btn.ghost{background:transparent;color:var(--rust-deep);box-shadow:none;border:1.5px solid var(--rust)}
+  .btn.ghost:hover{background:var(--rust);color:var(--cream)}
+  @media(max-width:760px){.navlinks{display:none}}
+
+  header{padding:78px 0 70px;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:22px}
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--olive)}
+  header h1{font-size:clamp(2.5rem,5.6vw,4.3rem);margin-bottom:24px;max-width:14ch}
+  header p.lead{font-size:1.18rem;color:var(--ink-soft);max-width:34em;margin-bottom:18px}
+  header p.sub{font-size:1rem;color:var(--ink-soft);max-width:34em;margin-bottom:34px;font-style:italic}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .reassure{font-size:.85rem;color:var(--ink-soft);margin-top:20px}
+
+  .strip{background:var(--ink);color:var(--bg)}
+  .stripinner{display:flex;justify-content:space-around;gap:20px;padding:18px 0;flex-wrap:wrap;text-align:center;font-size:.9rem}
+  .stripinner span{opacity:.9}
+  .stripinner b{color:var(--mustard);font-family:var(--display);font-style:italic}
+
+  section{padding:84px 0;position:relative}
+  .sec-head{max-width:38em;margin-bottom:50px}
+  .sec-head .eyebrow{margin-bottom:16px}
+  .sec-head h2{font-size:clamp(2rem,4vw,2.9rem);margin-bottom:16px}
+  .sec-head p{color:var(--ink-soft);font-size:1.08rem}
+  .sec-head.center{margin-inline:auto;text-align:center}
+  .sec-head.center .eyebrow{justify-content:center}
+
+  .pain{background:var(--cream)}
+  .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .pain-card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:30px 26px;transition:transform .3s,box-shadow .3s}
+  .pain-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px var(--shadow)}
+  .pain-card .em{font-size:1.7rem;margin-bottom:14px;display:block}
+  .pain-card h3{font-size:1.22rem;margin-bottom:9px}
+  .pain-card p{color:var(--ink-soft);font-size:.97rem}
+  @media(max-width:760px){.pain-grid{grid-template-columns:1fr}}
+
+  .advice-block{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .advice{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:32px 30px;position:relative;transition:transform .3s,box-shadow .3s}
+  .advice:hover{transform:translateY(-4px);box-shadow:0 18px 42px var(--shadow)}
+  .advice .num{font-family:var(--display);font-size:1rem;color:var(--rust);font-style:italic;margin-bottom:10px;letter-spacing:.04em}
+  .advice h3{font-size:1.45rem;margin-bottom:14px;line-height:1.15}
+  .advice p{color:var(--ink-soft);font-size:1rem;margin-bottom:14px}
+  .advice p:last-child{margin-bottom:0}
+  .advice .zinger{font-family:var(--display);font-style:italic;color:var(--ink);font-size:1.02rem;border-left:3px solid var(--mustard);padding-left:14px}
+  @media(max-width:760px){.advice-block{grid-template-columns:1fr}}
+
+  .baby{background:var(--olive);color:var(--cream)}
+  .baby .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .baby h2{font-size:clamp(1.9rem,3.8vw,2.7rem);margin-bottom:20px}
+  .baby p{opacity:.94;font-size:1.06rem;margin-bottom:16px}
+  .baby .eyebrow{color:#d8e0c2}.baby .eyebrow::before{background:#d8e0c2}
+  .baby ul{list-style:none;margin-top:10px}
+  .baby li{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.16);font-size:.99rem;display:flex;gap:12px}
+  .baby li b{font-family:var(--display);font-style:italic;color:#f0d99a;flex:none}
+  @media(max-width:760px){.baby .wrap{grid-template-columns:1fr;gap:24px}}
+
+  .quote{background:var(--rust);color:var(--cream);border-radius:18px;padding:60px 54px;position:relative;overflow:hidden}
+  .quote::before{content:"\201C";position:absolute;top:-34px;left:28px;font-family:var(--display);font-size:13rem;opacity:.16;color:var(--cream)}
+  .quote blockquote{font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.3;max-width:26em;position:relative;font-style:italic}
+  .quote .who{margin-top:24px;font-size:.94rem;opacity:.92}
+  .quote .who b{font-weight:600}
+
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  .plan{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:34px 28px;display:flex;flex-direction:column;transition:transform .3s}
+  .plan:hover{transform:translateY(-5px)}
+  .plan.feat{background:var(--ink);color:var(--bg);border-color:var(--ink);transform:scale(1.03)}
+  .plan.feat:hover{transform:scale(1.03) translateY(-5px)}
+  .plan .pname{font-family:var(--display);font-size:1.35rem;margin-bottom:6px}
+  .plan .ribbon{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:14px;height:14px}
+  .plan.feat .ribbon{color:var(--mustard)}
+  .plan .amt{font-family:var(--display);font-size:2.6rem;line-height:1;margin-bottom:4px}
+  .plan .amt span{font-family:var(--body);font-size:.92rem;color:var(--ink-soft)}
+  .plan.feat .amt span{color:#cbb9a4}
+  .plan .desc{font-size:.92rem;color:var(--ink-soft);margin:14px 0 4px;flex:1}
+  .plan.feat .desc{color:#cbb9a4}
+  .plan .btn{width:100%;text-align:center;margin-top:22px}
+  .plan.feat .btn{background:var(--rust)}
+  @media(max-width:860px){.price-grid{grid-template-columns:1fr}.plan.feat{transform:none}}
+
+  .faq{max-width:760px;margin:0 auto}
+  details{background:var(--cream);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;padding:0 24px;transition:box-shadow .3s}
+  details[open]{box-shadow:0 12px 30px var(--shadow)}
+  summary{list-style:none;cursor:pointer;padding:22px 0;font-family:var(--display);font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary .pl{flex:none;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--rust);display:grid;place-items:center;color:var(--rust-deep);transition:transform .3s;font-size:1rem}
+  details[open] summary .pl{transform:rotate(45deg)}
+  details p{padding:0 0 24px;color:var(--ink-soft);font-size:.98rem}
+
+  .finalcta{background:var(--mustard);color:#3a2c0e;text-align:center;border-radius:20px;padding:72px 40px;position:relative;overflow:hidden}
+  .finalcta::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.12);top:-120px;right:-80px}
+  .finalcta h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:18px;position:relative}
+  .finalcta p{max-width:32em;margin:0 auto 30px;font-size:1.08rem;position:relative}
+  .finalcta .btn{background:var(--ink);color:var(--cream);position:relative}
+  .finalcta .btn:hover{background:#241c14}
+
+  footer{padding:54px 0 40px;border-top:1px solid var(--line);margin-top:88px}
+  .footinner{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;color:var(--ink-soft);font-size:.9rem}
+  .footinner a{color:var(--ink-soft)}.footinner a:hover{color:var(--rust-deep)}
+  .footcol h4{font-family:var(--display);color:var(--ink);font-size:1rem;margin-bottom:12px}
+  .footcol a{display:block;margin-bottom:7px}
+  .copy{margin-top:34px;font-size:.82rem;color:var(--ink-soft);opacity:.82;max-width:46em}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap navinner">
+    <div class="logo"><span class="dot"></span>Tough Crowd</div>
+    <div class="navlinks">
+      <a href="#truth">The truth</a>
+      <a href="#advice">The advice</a>
+      <a href="#baby">For the baby</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#join" class="btn">Get the talking-to</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow reveal in">No videos. No fluff. No little affirmation cards.</span>
+    <h1 class="reveal in">Your toddler is <span class="strike">a tiny demon</span> <span class="accent">completely normal.</span> You, however, need to sit down.</h1>
+    <p class="lead reveal in">Tough Crowd is a website that gives you parenting advice the way a no-nonsense aunt would: lovingly, bluntly, and while side-eyeing your snack choices. It's reading. On a screen. Because you do not have time to watch a 47-minute "masterclass" and we both know it.</p>
+    <p class="sub reveal in">Specially formatted for moms who were the baby of the family and are now, tragically, the adult in the room. We know. We're as surprised as you are.</p>
+    <div class="hero-cta reveal in">
+      <a href="#advice" class="btn">Just tell me what to do</a>
+      <a href="#truth" class="btn ghost">I'm not ready, be gentle</a>
+    </div>
+    <p class="reassure reveal in">Spoiler: we are not going to be gentle. But we mean well, which is somehow worse.</p>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap stripinner">
+    <span class="reveal">Videos watched here: <b>zero</b></span>
+    <span class="reveal">Times we'll say "trust the process": <b>also zero</b></span>
+    <span class="reveal">Toddlers diagnosed as evil: <b>none, sorry</b></span>
+    <span class="reveal">Excuses accepted: <b>one, maybe</b></span>
+  </div>
+</div>
+
+<section class="pain" id="truth">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Let's get our story straight</span>
+      <h2>Three things you believe that are, respectfully, incorrect.</h2>
+      <p>Sit down. Put the cold coffee down too. This won't take long, because reading is faster than crying, which is what you were about to do anyway.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <span class="em">😈</span>
+        <h3>"My son is feral and possibly possessed."</h3>
+        <p>He is two. Two-year-olds are tiny, sticky tornadoes with no object permanence and a strong opinion about the wrong-colored cup. This is not a personality flaw. This is the assignment. The good news: it's fixable. The bad news: by you.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="em">🧩</span>
+        <h3>"He can't play by himself."</h3>
+        <p>Correct. Nobody taught him. Independent play is a skill, like parallel parking or pretending you're fine. He's not broken — he's just never been left alone long enough to get bored enough to discover his own blocks. We'll fix that.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="em">🧍</span>
+        <h3>"My husband will help once he 'finds himself.'"</h3>
+        <p>Sure. And we'll all retire to a vineyard. While he's off "between ventures, exploring his next chapter" — gorgeous, very brave — you are running a household and a tiny dictatorship solo. We can't fix him. We can absolutely fix how much you're carrying for him.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="advice">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The actual advice</span>
+      <h2>Fine. Here's what to do. You're welcome.</h2>
+      <p>Read one. Try it. Come back when it works and act surprised. This is the whole product. There is no upsell to a video. There is no video. Stop looking for the video.</p>
+    </div>
+    <div class="advice-block">
+
+      <div class="advice reveal">
+        <div class="num">— Lesson one —</div>
+        <h3>Be boring on purpose.</h3>
+        <p>You think your job is to entertain him. It is not. Your job is to be reliably, magnificently dull for short, scheduled stretches. Put him somewhere safe with three (3) toys — not forty, three — sit nearby, and become furniture. Don't narrate. Don't fix. Don't hover like a helicopter that runs on guilt.</p>
+        <p class="zinger">A bored toddler eventually invents a game. A constantly entertained one invents a hostage situation.</p>
+      </div>
+
+      <div class="advice reveal">
+        <div class="num">— Lesson two —</div>
+        <h3>Stop negotiating with a person who eats crayons.</h3>
+        <p>You are offering choices, reasons, and a closing argument worthy of a courtroom drama. He is two. He does not want logic; he wants control over something, anything, ideally the moon. Give two acceptable options ("blue cup or green cup") and then go quiet. The silence will feel illegal. Sit in it.</p>
+        <p class="zinger">You will never out-debate someone who thinks the vacuum is a monster. Stop trying. It's beneath your degree.</p>
+      </div>
+
+      <div class="advice reveal">
+        <div class="num">— Lesson three —</div>
+        <h3>The meltdown is the weather, not a referendum on you.</h3>
+        <p>When the tantrum hits, your one job is to be the calm-but-immovable adult. Name the feeling once ("You're really mad we left the park"), then stop talking. Don't fix it, don't bribe it, don't join it. Big feelings need a witness, not a fixer and definitely not a co-star.</p>
+        <p class="zinger">He is allowed to fall apart. You are allowed to be deeply, peacefully unbothered while he does.</p>
+      </div>
+
+      <div class="advice reveal">
+        <div class="num">— Lesson four —</div>
+        <h3>Hand your husband a calendar, not a hint.</h3>
+        <p>You've been dropping "subtle signals" for months. Subtle signals are for people who are paying attention, and he is currently paying attention to a podcast about disruption. Stop hinting. Assign. "I need you to do bedtime Tuesday and Thursday" is a sentence. "It would be nice if you helped sometimes" is a wish, and wishes don't change diapers.</p>
+        <p class="zinger">Finding himself is a hobby. The toddler is a job. He can do both, but only if you stop covering his shift.</p>
+      </div>
+
+      <div class="advice reveal">
+        <div class="num">— Lesson five —</div>
+        <h3>Your daughter being "perfect" is not a personality you can clone.</h3>
+        <p>One easy kid and one feral one is not a referendum on your parenting — it's a coin flip with extra steps. Stop measuring the tornado against the angel. They are different humans who happen to share a bathroom. Parent the kid in front of you, not the one who makes you look good at the grocery store.</p>
+        <p class="zinger">She's easy because she's her. He's hard because he's him. You didn't earn either one. Sorry.</p>
+      </div>
+
+      <div class="advice reveal">
+        <div class="num">— Lesson six —</div>
+        <h3>Put your own oxygen mask on, you absolute martyr.</h3>
+        <p>You are running on dry shampoo, spite, and the heel of a granola bar. You cannot pour from a cup that's been empty since the second trimester. Build in fifteen non-negotiable minutes that belong only to you, and defend them like they're the last seat on the lifeboat. Because they are.</p>
+        <p class="zinger">"I'll rest when things calm down" is a beautiful sentence and a complete fantasy. Rest now. Things never calm down.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="baby" id="baby">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">A loving word to the youngest child</span>
+      <h2>You were the baby. Now you're the boss. Devastating, truly.</h2>
+      <p>We know your secret. You grew up as the youngest — the one who got carried, covered for, and handed the last bite. Someone always swooped in. Decisions got made over your head, and honestly? That ruled.</p>
+      <p>Then you had your own tiny human and discovered the swooper is gone. There is no swooper. <em>You</em> are the swooper now. Take a moment. We'll wait.</p>
+    </div>
+    <div class="reveal">
+      <ul>
+        <li><b>So:</b> Nobody is coming to take this toddler off your hands at 5pm. That was a Mom-and-Dad-shaped luxury, and the position has been eliminated.</li>
+        <li><b>So:</b> "But I don't know how" worked great when you were nine. It is now simply a sentence you say before figuring it out anyway.</li>
+        <li><b>So:</b> You're allowed to be the fun, easygoing one AND the one in charge. Older siblings will tell you that's impossible. Older siblings are wrong about a lot.</li>
+        <li><b>So:</b> Being the baby gave you a superpower — you're adaptable, charming, and you bounce back. Use it. Just aim it at a two-year-old instead of your group chat.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="quote reveal">
+      <blockquote>I read the part about being boring on purpose, sat on the floor like a houseplant, and my son played alone for twenty minutes. I have never felt so powerful and so insulted at the same time.</blockquote>
+      <div class="who"><b>— Renée M.</b>, youngest of four, current eldest in her own house, deeply betrayed by this fact</div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Pricing, because rent exists</span>
+      <h2>Pay for honesty. It's cheaper than therapy and faster than your mother's advice.</h2>
+    </div>
+    <div class="price-grid">
+      <div class="plan reveal">
+        <div class="ribbon">&nbsp;</div>
+        <div class="pname">The Reality Check</div>
+        <div class="amt">$0</div>
+        <p class="desc">The three hard truths and the first two lessons, free. Just enough to make you uncomfortable in a productive way. Like a free sample, but the sample is your parenting.</p>
+        <a href="#join" class="btn ghost">Get checked</a>
+      </div>
+      <div class="plan feat reveal">
+        <div class="ribbon">Most popular</div>
+        <div class="pname">The Whole Talking-To</div>
+        <div class="amt">$19<span>/month</span></div>
+        <p class="desc">Every lesson, every blunt little zinger, plus new advice each month for the next thing he does that you swear no other child has ever done (he has, they all have). Cancel anytime, no guilt — we save the guilt for the lessons.</p>
+        <a href="#join" class="btn">Sit me down</a>
+      </div>
+      <div class="plan reveal">
+        <div class="ribbon">&nbsp;</div>
+        <div class="pname">The Year of Tough Love</div>
+        <div class="amt">$149<span>/year</span></div>
+        <p class="desc">A full year of being lovingly told to get it together. Two months cheaper than monthly, which is the kind of math the baby of the family loves: someone else did it for you.</p>
+        <a href="#join" class="btn ghost">Commit, for once</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Questions you're asking through your teeth</span>
+      <h2>Frequently muttered.</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Where are the videos? <span class="pl">+</span></summary>
+        <p>There are no videos. We've covered this. You don't have time to watch a candle-lit woman whisper about "gentle pivoting" for forty minutes, and frankly neither do we. You read, you do, you leave. It's a website. Revolutionary.</p>
+      </details>
+      <details>
+        <summary>Isn't "tough love" just being mean? <span class="pl">+</span></summary>
+        <p>No. Mean is when there's no love. We have love. We just keep it behind a screen door so it doesn't get out and hug you when you're trying to be productive. Everything here roots for you, loudly, while telling you to fix your sleep schedule.</p>
+      </details>
+      <details>
+        <summary>Is my toddler actually okay? <span class="pl">+</span></summary>
+        <p>Almost certainly. A demanding two-year-old who can't play solo and melts down over cup colors is the most normal thing in the building — including you. If something genuinely worries you, see an actual pediatrician. We're funny on a website, not licensed.</p>
+      </details>
+      <details>
+        <summary>Will this fix my husband? <span class="pl">+</span></summary>
+        <p>We are a parenting website, not a wizard. We can't make a man who's "finding himself" find the dishwasher. But we can help you stop carrying his half so you have a hand free. Baby steps. His, eventually, hopefully.</p>
+      </details>
+      <details>
+        <summary>Why does it keep mentioning that I'm the youngest? <span class="pl">+</span></summary>
+        <p>Because you told us, and we never let anything go. Also because it's the whole point: you were raised to be taken care of, and now you're the caretaker. That's a real adjustment and we're going to keep gently rubbing your nose in it until you thrive.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="finalcta reveal" id="join">
+      <h2>Okay. Deep breath. Let's sort you out.</h2>
+      <p>No videos to schedule, no masterclass to "binge later" (you won't). Just open the website, read the thing, do the thing, and become the unbothered houseplant your toddler desperately needs. Your nap-time coffee is getting cold. Again.</p>
+      <a href="#" class="btn" onclick="return false">Start the free reality check</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footinner">
+      <div class="footcol" style="max-width:20em">
+        <div class="logo" style="margin-bottom:12px"><span class="dot"></span>Tough Crowd</div>
+        <p style="font-size:.88rem">Parenting advice for the youngest child who somehow ended up in charge of a smaller, louder child. Read, don't watch. Cry optional.</p>
+      </div>
+      <div class="footcol">
+        <h4>The site</h4>
+        <a href="#truth">The hard truths</a>
+        <a href="#advice">The advice</a>
+        <a href="#baby">For the baby</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="footcol">
+        <h4>Allegedly</h4>
+        <a href="#">About the aunt energy</a>
+        <a href="#">Who writes this</a>
+        <a href="#">Yell at us (Contact)</a>
+      </div>
+      <div class="footcol">
+        <h4>Stay in trouble</h4>
+        <a href="#">Weekly nagging email</a>
+        <a href="#">Instagram</a>
+        <a href="#">The reluctant newsletter</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 Tough Crowd. We love you, which is exactly why we talk to you like this. This site offers opinionated parenting advice and dry jokes, not medical, psychological, or marital therapy. For your toddler's health, your mental health, or your marriage, please see a real professional — ideally one who can't be closed in a browser tab.</div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
