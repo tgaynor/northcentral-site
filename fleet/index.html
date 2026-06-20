@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fleet Rationalization — RZR Fleet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;600;700;800&family=Spline+Sans+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#EFE7D5;--panel:#F6F1E6;--ink:#1A1712;--bleed:#C5331C;--muted:#6f6653}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#cfc7b6;color:var(--ink);font-family:"Archivo",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1200px;margin:22px auto;background:var(--paper);box-shadow:0 18px 50px rgba(0,0,0,.28);overflow:hidden}
+  .stripe{height:13px;background:repeating-linear-gradient(135deg,var(--ink) 0 20px,var(--bleed) 20px 40px)}
+  header{padding:24px 32px 20px;border-bottom:3px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+  .eyebrow{font-family:"Spline Sans Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--bleed)}
+  h1{font-family:"Anton",sans-serif;font-weight:400;font-size:clamp(32px,5vw,52px);text-transform:uppercase;line-height:.95;margin-top:8px}
+  .lede{font-size:14px;font-weight:500;margin-top:9px;max-width:68ch;color:#3c382f}
+  .lede b{font-weight:800}
+  .yearbox{text-align:right}
+  .yearbox .k{font-family:"Spline Sans Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  select#year{font-family:"Anton",sans-serif;font-size:34px;padding:4px 12px;border:3px solid var(--ink);background:var(--panel);color:var(--ink);cursor:pointer}
+  .sec{font-family:"Spline Sans Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .assume{padding:22px 32px;border-bottom:3px solid var(--ink);background:var(--panel)}
+  .arow{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 22px}
+  @media(max-width:900px){.arow{grid-template-columns:repeat(2,1fr)}}
+  .field label{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:12.5px;margin-bottom:6px}
+  .field label .v{font-family:"Spline Sans Mono",monospace;font-weight:700;font-size:14px}
+  input[type=range]{-webkit-appearance:none;width:100%;height:6px;background:#d8cfb8;outline:none;border:2px solid var(--ink)}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:24px;background:var(--ink);cursor:pointer;border:none}
+  input[type=range]::-moz-range-thumb{width:18px;height:24px;background:var(--ink);cursor:pointer;border:none;border-radius:0}
+  .tog{display:flex;border:2px solid var(--ink)}
+  .tog button{flex:1;font-family:"Archivo";font-weight:800;font-size:12.5px;padding:8px 2px;background:transparent;border:none;border-right:2px solid var(--ink);cursor:pointer}
+  .tog button:last-child{border-right:none}
+  .tog button.active{background:var(--ink);color:var(--paper)}
+  .hint{font-size:10.5px;color:var(--muted);font-family:"Spline Sans Mono",monospace;margin-top:5px}
+  .tablewrap{padding:24px 32px;overflow-x:auto}
+  table.fleet{width:100%;border-collapse:collapse;min-width:720px}
+  table.fleet th{font-family:"Spline Sans Mono",monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:right;padding:0 12px 10px;border-bottom:3px solid var(--ink)}
+  table.fleet th.l{text-align:left}
+  table.fleet td{padding:9px 12px;border-bottom:1px solid #d8cfb8;text-align:right;font-family:"Spline Sans Mono",monospace;font-weight:600;font-size:14px;vertical-align:middle}
+  table.fleet td.l{text-align:left}
+  td input{font-family:"Spline Sans Mono",monospace;font-weight:600;background:var(--panel);border:2px solid var(--ink);color:var(--ink);padding:7px 8px}
+  td input.name{width:210px;font-family:"Archivo";font-weight:700;font-size:13.5px}
+  td input.num{width:88px;text-align:right;font-size:14px}
+  td input.qty{width:56px;text-align:center}
+  .floor{font-weight:800}
+  .floorbig{font-weight:800;font-size:16px}
+  .delcell{text-align:center;width:30px}
+  .del{border:none;background:none;cursor:pointer;color:var(--bleed);font-weight:800;font-size:18px;line-height:1;font-family:"Archivo"}
+  .addrow{margin-top:14px}
+  .addrow button{font-family:"Archivo";font-weight:800;font-size:13px;padding:9px 16px;border:2px solid var(--ink);background:transparent;cursor:pointer}
+  .addrow button:hover{background:var(--ink);color:var(--paper)}
+  .perveh{padding:24px 32px;border-top:3px solid var(--ink)}
+  .pvhead{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  select#pvModel{font-family:"Archivo";font-weight:700;font-size:14px;padding:8px 10px;border:2px solid var(--ink);background:var(--panel);color:var(--ink);cursor:pointer}
+  .pvgrid{display:grid;grid-template-columns:1.4fr 1fr;border:3px solid var(--ink)}
+  @media(max-width:820px){.pvgrid{grid-template-columns:1fr}}
+  table.stack{width:100%;border-collapse:collapse}
+  table.stack td{padding:11px 16px;border-bottom:1px solid #d8cfb8;font-family:"Spline Sans Mono",monospace;font-weight:600;font-size:14px}
+  table.stack td.lbl{text-align:left;color:#3c382f}
+  table.stack td.tot,table.stack td.mo{text-align:right}
+  table.stack td.mo{font-weight:700;width:112px}
+  table.stack tr.floor td{background:var(--ink);color:var(--paper);font-weight:800;border-top:2px solid var(--ink)}
+  table.stack th{font-family:"Spline Sans Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px 16px;text-align:right;border-bottom:3px solid var(--ink)}
+  table.stack th.l{text-align:left}
+  .pvright{border-left:3px solid var(--ink);padding:22px;display:flex;flex-direction:column;gap:16px;background:var(--panel)}
+  @media(max-width:820px){.pvright{border-left:none;border-top:3px solid var(--ink)}}
+  .pvbig{font-family:"Anton";font-size:52px;line-height:.88}
+  .pvk{font-family:"Spline Sans Mono",monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .pvsmall{font-family:"Spline Sans Mono";font-weight:700;font-size:18px}
+  .pvnote{font-family:"Spline Sans Mono",monospace;font-size:11px;line-height:1.5;color:var(--muted);border-top:2px solid #d8cfb8;padding-top:12px}
+  .summary{padding:24px 32px 28px;border-top:3px solid var(--ink);background:var(--panel)}
+  .headline{border:3px solid var(--ink);background:var(--ink);color:var(--paper);padding:18px 24px;margin-bottom:18px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+  .headline .big{font-family:"Anton";font-size:clamp(40px,7vw,64px);line-height:.9}
+  .headline .lab{font-family:"Spline Sans Mono",monospace;font-weight:600;font-size:13.5px;line-height:1.5;max-width:46ch}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink)}
+  @media(max-width:760px){.tiles{grid-template-columns:repeat(2,1fr)}}
+  .tile{padding:14px 16px 16px;border-right:2px solid var(--ink);border-top:2px solid var(--ink)}
+  .tile:nth-child(-n+3){border-top:none}.tiles .tile:nth-child(3n){border-right:none}
+  .tile .k{font-family:"Spline Sans Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .tile .n{font-family:"Anton",sans-serif;font-size:28px;line-height:1;margin-top:6px}
+  .tile .n small{font-size:.45em}
+  .opex{padding:24px 32px;border-top:3px solid var(--ink)}
+  .opexline{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #d8cfb8}
+  .opexline label{font-family:"Archivo";font-weight:700;font-size:14px}
+  .opexline .inp{font-family:"Spline Sans Mono",monospace;font-weight:700;font-size:14px;color:var(--muted)}
+  .opexline input{width:140px;text-align:right;font-family:"Spline Sans Mono",monospace;font-weight:700;font-size:14px;background:var(--panel);border:2px solid var(--ink);padding:8px 9px;color:var(--ink)}
+  .opextot{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:2px solid var(--ink);font-family:"Spline Sans Mono",monospace;font-weight:800;font-size:15px}
+  .opextot .sm{font-weight:600;font-size:12px;color:var(--muted);margin-left:8px}
+  .allin{margin-top:16px;background:var(--ink);color:var(--paper);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+  .allin .w{font-family:"Spline Sans Mono",monospace;font-weight:700;font-size:13px;letter-spacing:.04em}
+  .allin .w span{display:block;font-weight:600;opacity:.8;font-size:11px;margin-top:4px}
+  .allin .n{font-family:"Anton";font-size:clamp(34px,6vw,46px);line-height:.9}
+  .allin .n small{font-size:.42em}
+  footer{padding:16px 32px 6px;font-family:"Spline Sans Mono",monospace;font-size:11px;line-height:1.55;color:var(--muted)}
+  footer b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stripe"></div>
+  <header>
+    <div>
+      <div class="eyebrow">Fleet cost floor · rent needed to cover costs</div>
+      <h1>Fleet Rationalization</h1>
+      <p class="lede">Set quantities and the price per model, tune the cost assumptions once, and read the <b>floor rent</b> — what each vehicle, and the whole fleet, must rent for just to cover its costs. <b>Anything above the floor is return</b> — that's a separate question, not calculated here.</p>
+    </div>
+    <div class="yearbox"><div class="k">Model year</div><select id="year"></select></div>
+  </header>
+
+  <div class="assume">
+    <div class="sec">Cost assumptions — set once, applied to every unit</div>
+    <div class="arow">
+      <div class="field"><label>Hold period</label>
+        <div class="tog" id="hold"><button data-y="1">1 yr</button><button data-y="2" class="active">2 yr</button><button data-y="3">3 yr</button></div>
+        <div class="hint" id="depNote">Depreciation auto-set to 18%</div></div>
+      <div class="field"><label>Value lost at sale <span class="v" id="depV">18%</span></label>
+        <input type="range" id="dep" min="0" max="50" step="1" value="18"><div class="hint">Depreciation, cumulative off price</div></div>
+      <div class="field"><label>Maintenance / yr <span class="v" id="maintV">5%</span></label>
+        <input type="range" id="maint" min="0" max="20" step="0.5" value="5"><div class="hint">% of purchase price, per year</div></div>
+      <div class="field"><label>Intercompany fee / mo <span class="v" id="icfeeV">$500</span></label>
+        <input type="range" id="icfee" min="0" max="1500" step="25" value="500"><div class="hint">Rental LLC &rarr; dealer LLC</div></div>
+      <div class="field"><label>Intercompany fee months/yr <span class="v" id="icmoV">11</span></label>
+        <input type="range" id="icmo" min="0" max="12" step="1" value="11"></div>
+      <div class="field"><label>Fee applies</label>
+        <div class="tog" id="icapply"><button data-a="all" class="active">Every yr</button><button data-a="one">Yr 1 only</button></div></div>
+      <div class="field"><label>Resale tax <span class="v" id="taxV">6.6%</span></label>
+        <input type="range" id="tax" min="0" max="12" step="0.1" value="6.6"><div class="hint">0 if the buyer pays</div></div>
+      <div class="field"><label>License / doc to sell <span class="v" id="licV">$500</span></label>
+        <input type="range" id="lic" min="0" max="1500" step="25" value="500"></div>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+    <div class="sec">The fleet — set quantity and price per model</div>
+    <table class="fleet"><thead><tr>
+      <th class="l">Model</th><th>Qty</th><th>Wholesale $ ea</th>
+      <th>Floor $/mo ea</th><th>Floor $/mo ×qty</th><th></th>
+    </tr></thead><tbody id="tbody"></tbody></table>
+    <div class="addrow"><button id="add">+ Add model</button></div>
+  </div>
+
+  <div class="perveh">
+    <div class="pvhead"><div class="sec" style="margin:0">Per-vehicle breakdown — how one unit's floor is built</div>
+      <select id="pvModel"></select></div>
+    <div class="pvgrid">
+      <table class="stack"><thead><tr><th class="l">What the rent must cover (one unit)</th><th>Over the hold</th><th>Per month</th></tr></thead>
+        <tbody id="stackBody"></tbody></table>
+      <div class="pvright">
+        <div><div class="pvk">Floor rent — this unit</div><div class="pvbig" id="pvFloor">$0<span style="font-size:.38em">/mo</span></div></div>
+        <div class="pvnote" id="pvNote"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="sec">Fleet floor</div>
+    <div class="headline"><div class="big" id="hBig">$0<span style="font-size:.4em">/mo</span></div>
+      <div class="lab" id="hLab"></div></div>
+    <div class="tiles">
+      <div class="tile"><div class="k">Units</div><div class="n" id="tUnits">0</div></div>
+      <div class="tile"><div class="k">Capital deployed</div><div class="n" id="tCap">$0</div></div>
+      <div class="tile"><div class="k">Fleet floor / mo</div><div class="n" id="tFloor">$0<small>/mo</small></div></div>
+    </div>
+  </div>
+
+  <div class="opex">
+    <div class="sec">Operating expenses — fleet-wide, per year</div>
+    <div class="opexline"><label>Salaries</label><div class="inp">$ <input type="number" id="oxSal" min="0" step="1000" value="0"> / yr</div></div>
+    <div class="opexline"><label>Marketing</label><div class="inp">$ <input type="number" id="oxMkt" min="0" step="500" value="0"> / yr</div></div>
+    <div class="opexline"><label>Supplies / materials / fuel</label><div class="inp">$ <input type="number" id="oxSup" min="0" step="500" value="0"> / yr</div></div>
+    <div class="opextot"><span>Total opex</span><span><span id="oxTotYr">$0</span> / yr<span class="sm" id="oxTotMo">$0/mo</span></span></div>
+    <div class="allin">
+      <div class="w">Minimum so Arizona Adventures Rentals LLC doesn't lose money<span id="oxAllInNote"></span></div>
+      <div class="n"><span id="oxAllIn">$0</span><small>/mo</small></div>
+    </div>
+  </div>
+
+  <footer>
+    <p><b>The floor, per unit, over the hold:</b> depreciation (value lost) + tax &amp; title to sell + intercompany fee + maintenance, spread over the months held. That's the rent needed just to <b>cover costs</b> — break even, no profit. <b>Heads-up:</b> the intercompany fee is money one LLC you own pays another you own — a real cost to the rental LLC, but it nets out at the combined-owner level, so don't read it as a true loss when you look at the whole business. Estimates only.</p>
+  </footer>
+  <div class="stripe" style="margin-top:14px"></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>'$'+Math.round(n).toLocaleString();
+const depDefaults={1:6,2:18,3:28};
+let years=2, icApply='all', pvIndex=0;
+
+let fleet=[
+  {name:'RZR XP1K4 · 64" · 4-seat', qty:4, price:19654},
+  {name:'RZR XP1K · 72"',           qty:4, price:18500},
+  {name:'RZR XP1K · 64" · 2-seat',  qty:8, price:17514},
+];
+
+const ysel=$('year');
+for(let y=2026;y<=2035;y++){const o=document.createElement('option');o.value=y;o.textContent=y;ysel.appendChild(o);}
+ysel.value=2026;
+
+$('hold').querySelectorAll('button').forEach(b=>{b.onclick=()=>{
+  $('hold').querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  years=+b.dataset.y;$('dep').value=depDefaults[years];$('depNote').textContent='Depreciation auto-set to '+depDefaults[years]+'%';recalc();};});
+$('icapply').querySelectorAll('button').forEach(b=>{b.onclick=()=>{
+  $('icapply').querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  icApply=b.dataset.a;recalc();};});
+['dep','maint','icfee','icmo','tax','lic','oxSal','oxMkt','oxSup'].forEach(id=>$(id).addEventListener('input',recalc));
+$('pvModel').addEventListener('change',e=>{pvIndex=+e.target.value;recalc();});
+
+function shared(){
+  return {dep:(+$('dep').value)/100,maint:(+$('maint').value)/100,
+    icfee:+$('icfee').value,icmo:+$('icmo').value,tax:(+$('tax').value)/100,lic:+$('lic').value,
+    months:years*12, icYears:(icApply==='all'?years:1)};
+}
+function unitCalc(m,s){
+  const P=m.price;
+  const resale=P*(1-s.dep);
+  const depreciation=P-resale;
+  const disposal=resale*s.tax+s.lic;
+  const intercompany=s.icfee*s.icmo*s.icYears;
+  const maintenance=s.maint*P*years;
+  const floorTotal=depreciation+disposal+intercompany+maintenance;
+  const floorMo=s.months?floorTotal/s.months:0;
+  return {P,depreciation,disposal,intercompany,maintenance,floorTotal,floorMo};
+}
+
+function renderTable(){
+  const tb=$('tbody');tb.innerHTML='';
+  fleet.forEach((m,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=
+      '<td class="l"><input class="name" data-i="'+i+'" data-f="name" value="'+m.name.replace(/"/g,'&quot;')+'"></td>'+
+      '<td><input class="num qty" type="number" min="0" step="1" data-i="'+i+'" data-f="qty" value="'+m.qty+'"></td>'+
+      '<td><input class="num" type="number" min="0" step="100" data-i="'+i+'" data-f="price" value="'+m.price+'"></td>'+
+      '<td class="floorbig" data-o="floor" data-i="'+i+'">—</td>'+
+      '<td class="floor" data-o="floorq" data-i="'+i+'">—</td>'+
+      '<td class="delcell"><button class="del" data-i="'+i+'" title="remove">×</button></td>';
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',e=>{
+    const i=+e.target.dataset.i,f=e.target.dataset.f;
+    fleet[i][f]=f==='name'?e.target.value:(+e.target.value||0);
+    if(f==='name')syncPvOptions();
+    recalc();
+  }));
+  tb.querySelectorAll('.del').forEach(btn=>btn.onclick=()=>{
+    fleet.splice(+btn.dataset.i,1);if(pvIndex>=fleet.length)pvIndex=Math.max(0,fleet.length-1);
+    renderTable();syncPvOptions();recalc();});
+}
+function syncPvOptions(){
+  const sel=$('pvModel');sel.innerHTML='';
+  fleet.forEach((m,i)=>{const o=document.createElement('option');o.value=i;o.textContent=m.name;sel.appendChild(o);});
+  if(pvIndex>=fleet.length)pvIndex=0;sel.value=pvIndex;
+}
+$('add').onclick=()=>{fleet.push({name:'New model',qty:1,price:18000});renderTable();syncPvOptions();recalc();};
+
+function recalc(){
+  const s=shared();
+  $('depV').textContent=Math.round(s.dep*100)+'%';
+  $('maintV').textContent=(+$('maint').value)+'%';
+  $('icfeeV').textContent=money(s.icfee);
+  $('icmoV').textContent=s.icmo;
+  $('taxV').textContent=(+$('tax').value).toFixed(1)+'%';
+  $('licV').textContent=money(s.lic);
+
+  let tUnits=0,tCap=0,tFloor=0;
+  fleet.forEach((m,i)=>{
+    const c=unitCalc(m,s);
+    const q=x=>document.querySelector('[data-o="'+x+'"][data-i="'+i+'"]');
+    if(q('floor')){q('floor').textContent=money(c.floorMo);q('floorq').textContent=money(c.floorMo*m.qty);}
+    tUnits+=m.qty;tCap+=m.price*m.qty;tFloor+=c.floorMo*m.qty;
+  });
+
+  $('tUnits').textContent=tUnits;$('tCap').textContent=money(tCap);
+  $('tFloor').innerHTML=money(tFloor)+'<small>/mo</small>';
+  $('hBig').innerHTML=money(tFloor)+'<span style="font-size:.4em">/mo</span>';
+  $('hLab').textContent='What all '+tUnits+' units must rent for each month, combined, just to cover their costs. Anything above this is return.';
+
+  // opex (fleet-wide, annual)
+  const opexYr=(+$('oxSal').value||0)+(+$('oxMkt').value||0)+(+$('oxSup').value||0);
+  const opexMo=opexYr/12;
+  $('oxTotYr').textContent=money(opexYr);
+  $('oxTotMo').textContent=money(opexMo)+'/mo';
+  $('oxAllIn').textContent=money(tFloor+opexMo);
+  $('oxAllInNote').textContent='= fleet floor '+money(tFloor)+'/mo + opex '+money(opexMo)+'/mo';
+
+  renderBreakdown(s);
+}
+
+function renderBreakdown(s){
+  if(!fleet.length){$('stackBody').innerHTML='';return;}
+  if(pvIndex>=fleet.length)pvIndex=0;
+  const m=fleet[pvIndex],c=unitCalc(m,s),mo=s.months;
+  const line=(l,t,cls)=>'<tr class="'+(cls||'')+'"><td class="lbl">'+l+'</td><td class="tot">'+money(t)+'</td><td class="mo">'+money(mo?t/mo:0)+'/mo</td></tr>';
+  const feeLbl='Intercompany fee ('+s.icmo+'mo × '+money(s.icfee)+(s.icYears>1?' × '+s.icYears+'yr':'')+')';
+  $('stackBody').innerHTML=
+    line('Depreciation — value lost',c.depreciation)+
+    line('Tax &amp; title to sell',c.disposal)+
+    line(feeLbl,c.intercompany)+
+    line('Maintenance ('+(+$('maint').value)+'% × price × '+years+'yr)',c.maintenance)+
+    line('= Floor rent (covers costs)',c.floorTotal,'floor');
+  $('pvFloor').innerHTML=money(c.floorMo)+'<span style="font-size:.38em">/mo</span>';
+
+  $('pvNote').textContent='This is breakeven for one '+m.name+' — the rent that covers depreciation, the fee, maintenance and the cost to sell it. Rent it for more than '+money(c.floorMo)+'/mo and the extra is return.';
+}
+
+renderTable();syncPvOptions();recalc();
+</script>
+</body>
+</html>
