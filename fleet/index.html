@@ -123,8 +123,6 @@
         <input type="range" id="icfee" min="0" max="1500" step="25" value="500"><div class="hint">Rental LLC &rarr; dealer LLC</div></div>
       <div class="field"><label>Intercompany fee months/yr <span class="v" id="icmoV">11</span></label>
         <input type="range" id="icmo" min="0" max="12" step="1" value="11"></div>
-      <div class="field"><label>Fee applies</label>
-        <div class="tog" id="icapply"><button data-a="all" class="active">Every yr</button><button data-a="one">Yr 1 only</button></div></div>
       <div class="field"><label>Resale tax <span class="v" id="taxV">6.6%</span></label>
         <input type="range" id="tax" min="0" max="12" step="0.1" value="6.6"><div class="hint">0 if the buyer pays</div></div>
       <div class="field"><label>License / doc to sell <span class="v" id="licV">$500</span></label>
@@ -187,7 +185,7 @@
 const $=id=>document.getElementById(id);
 const money=n=>'$'+Math.round(n).toLocaleString();
 const depDefaults={1:6,2:18,3:28};
-let years=2, icApply='all', pvIndex=0;
+let years=2, pvIndex=0;
 
 let fleet=[
   {name:'RZR XP1K4 · 64" · 4-seat', qty:4, price:19654},
@@ -202,16 +200,13 @@ ysel.value=2026;
 $('hold').querySelectorAll('button').forEach(b=>{b.onclick=()=>{
   $('hold').querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
   years=+b.dataset.y;$('dep').value=depDefaults[years];$('depNote').textContent='Depreciation auto-set to '+depDefaults[years]+'%';recalc();};});
-$('icapply').querySelectorAll('button').forEach(b=>{b.onclick=()=>{
-  $('icapply').querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
-  icApply=b.dataset.a;recalc();};});
 ['dep','maint','icfee','icmo','tax','lic','oxSal','oxMkt','oxSup'].forEach(id=>$(id).addEventListener('input',recalc));
 $('pvModel').addEventListener('change',e=>{pvIndex=+e.target.value;recalc();});
 
 function shared(){
   return {dep:(+$('dep').value)/100,maint:(+$('maint').value)/100,
     icfee:+$('icfee').value,icmo:+$('icmo').value,tax:(+$('tax').value)/100,lic:+$('lic').value,
-    months:years*12, icYears:(icApply==='all'?years:1)};
+    months:years*12, icYears:years};
 }
 function unitCalc(m,s){
   const P=m.price;
