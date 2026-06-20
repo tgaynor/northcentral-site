@@ -164,7 +164,7 @@
   </div>
 
   <div class="opex">
-    <div class="sec">Operating expenses — fleet-wide, per year</div>
+    <div class="sec">Operating expenses — company-wide, per year</div>
     <div class="opexline"><label>Salaries</label><div class="inp">$ <input type="number" id="oxSal" min="0" step="1000" value="0"> / yr</div></div>
     <div class="opexline"><label>Marketing</label><div class="inp">$ <input type="number" id="oxMkt" min="0" step="500" value="0"> / yr</div></div>
     <div class="opexline"><label>Supplies / materials / fuel</label><div class="inp">$ <input type="number" id="oxSup" min="0" step="500" value="0"> / yr</div></div>
@@ -270,7 +270,7 @@ function recalc(){
   $('tUnits').textContent=tUnits;$('tCap').textContent=money(tCap);
   $('tFloor').innerHTML=money(tFloor)+'<small>/mo</small>';
   $('hBig').innerHTML=money(tFloor)+'<span style="font-size:.4em">/mo</span>';
-  $('hLab').textContent='What all '+tUnits+' units must rent for each month, combined, just to cover their costs. Anything above this is return.';
+  $('hLab').textContent='What all '+tUnits+' units must rent for each month, combined, just to cover their costs.';
 
   // opex (fleet-wide, annual)
   const opexYr=(+$('oxSal').value||0)+(+$('oxMkt').value||0)+(+$('oxSup').value||0);
