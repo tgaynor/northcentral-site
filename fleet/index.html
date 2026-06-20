@@ -113,10 +113,10 @@
     <div class="sec">Cost assumptions — set once, applied to every unit</div>
     <div class="arow">
       <div class="field"><label>Hold period</label>
-        <div class="tog" id="hold"><button data-y="1">1 yr</button><button data-y="2" class="active">2 yr</button><button data-y="3">3 yr</button></div>
-        <div class="hint" id="depNote">Depreciation auto-set to 18%</div></div>
-      <div class="field"><label>Value lost at sale <span class="v" id="depV">18%</span></label>
-        <input type="range" id="dep" min="0" max="50" step="1" value="18"><div class="hint">Depreciation, cumulative off price</div></div>
+        <div class="tog" id="hold"><button data-y="1" class="active">1 yr</button><button data-y="2">2 yr</button><button data-y="3">3 yr</button></div>
+        <div class="hint" id="depNote">Depreciation auto-set to 6%</div></div>
+      <div class="field"><label>Value lost at sale <span class="v" id="depV">6%</span></label>
+        <input type="range" id="dep" min="0" max="50" step="1" value="6"><div class="hint">Depreciation, cumulative off price</div></div>
       <div class="field"><label>Maintenance / yr <span class="v" id="maintV">5%</span></label>
         <input type="range" id="maint" min="0" max="20" step="0.5" value="5"><div class="hint">% of purchase price, per year</div></div>
       <div class="field"><label>Intercompany fee / mo <span class="v" id="icfeeV">$500</span></label>
@@ -175,9 +175,6 @@
     </div>
   </div>
 
-  <footer>
-    <p><b>The floor, per unit, over the hold:</b> depreciation (value lost) + tax &amp; title to sell + intercompany fee + maintenance, spread over the months held. That's the rent needed just to <b>cover costs</b> — break even, no profit. <b>Heads-up:</b> the intercompany fee is money one LLC you own pays another you own — a real cost to the rental LLC, but it nets out at the combined-owner level, so don't read it as a true loss when you look at the whole business. Estimates only.</p>
-  </footer>
   <div class="stripe" style="margin-top:14px"></div>
 </div>
 
@@ -185,7 +182,7 @@
 const $=id=>document.getElementById(id);
 const money=n=>'$'+Math.round(n).toLocaleString();
 const depDefaults={1:6,2:18,3:28};
-let years=2, pvIndex=0;
+let years=1, pvIndex=0;
 
 let fleet=[
   {name:'RZR XP1K4 · 64" · 4-seat', qty:4, price:19654},
