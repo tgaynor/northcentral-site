@@ -341,9 +341,10 @@ body::before{
 
 /* ---------- Closing ---------- */
 .closing{position:relative;text-align:center;background:linear-gradient(180deg,var(--bg),#0a1119)}
-.closing .statement{font-size:clamp(30px,5vw,54px);font-weight:600;letter-spacing:-.03em;line-height:1.12;max-width:16ch;margin-inline:auto}
-.closing .statement span{display:block}
-.closing .statement .b{color:var(--blue)}
+.statement{font-size:clamp(30px,5vw,54px);font-weight:600;letter-spacing:-.03em;line-height:1.12;max-width:16ch;margin-inline:auto}
+.statement span{display:block}
+.statement .b{color:var(--blue)}
+.statement-band{text-align:center;border-block:1px solid var(--line);background:linear-gradient(180deg,var(--bg),var(--bg-1))}
 .closing .evaluate{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(20px,3vw,28px);color:#D9D6CE;margin:28px auto 0;max-width:30ch}
 .partners{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:44px}
 .partner{padding:22px 30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);min-width:220px;text-align:left}
@@ -432,13 +433,11 @@ body::before{
     <nav aria-label="Primary">
       <ul class="nav-links">
         <li><a href="#site">Site</a></li>
-        <li><a href="#development">Development</a></li>
-        <li><a href="#airfield">Airfield</a></li>
-        <li><a href="#infrastructure">Infrastructure</a></li>
+        <li><a href="#land">The Land</a></li>
         <li><a href="#workforce">Workforce</a></li>
       </ul>
     </nav>
-    <a class="nav-cta" href="#contact">Evaluate the site</a>
+    <a class="nav-cta" href="mailto:tristan@northcentralholdings.com?subject=Project%20Atlas%20%E2%80%94%20Payson%20Airport%20Campus">Contact</a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
@@ -451,11 +450,9 @@ body::before{
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
   <a href="#site">Site</a>
-  <a href="#development">Development</a>
-  <a href="#airfield">Airfield Access</a>
-  <a href="#infrastructure">Infrastructure</a>
+  <a href="#land">The Land</a>
   <a href="#workforce">Workforce</a>
-  <a class="btn btn-primary" href="#contact">Evaluate the site</a>
+  <a class="btn btn-primary" href="mailto:tristan@northcentralholdings.com?subject=Project%20Atlas%20%E2%80%94%20Payson%20Airport%20Campus">Contact</a>
 </div>
 
 <main id="main">
@@ -482,9 +479,9 @@ body::before{
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           Explore the site
         </a>
-        <a class="btn btn-ghost" href="#airfield">
+        <a class="btn btn-ghost" href="#land">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/></svg>
-          The airfield advantage
+          Why this land
         </a>
       </div>
     </div>
@@ -518,6 +515,13 @@ body::before{
   </div>
 </section>
 
+<!-- ============================ STATEMENT BAND ============================ -->
+<section class="section statement-band" aria-label="Position statement">
+  <div class="wrap">
+    <p class="statement reveal"><span>The land is real.</span><span>The airport is operating.</span><span class="b">The partnership is ready.</span></p>
+  </div>
+</section>
+
 <!-- ============================ THE SITE ============================ -->
 <section class="section" id="site">
   <div class="wrap">
@@ -541,7 +545,6 @@ body::before{
           <li><span class="f-key">Parcel</span><span>APN 302-39-096J<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="County assessor record — source to be added">i</span></span></li>
           <li><span class="f-key">Area</span><span>14.9 acres<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></span></li>
           <li><span class="f-key">Frontage</span><span>W Airport Road frontage to the south</span></li>
-          <li><span class="f-key">Airfield</span><span>Immediate adjacency to Payson Municipal Airport (KPAN)</span></li>
           <li><span class="f-key">West context</span><span>Existing industrial and airport-support uses</span></li>
           <li><span class="f-key">East / southeast</span><span>Residential neighborhood context</span></li>
         </ul>
@@ -550,6 +553,30 @@ body::before{
     </div>
   </div>
 </section>
+
+<!-- ============================ WORKFORCE ============================ -->
+<section class="section" id="workforce" style="background:linear-gradient(180deg,var(--bg),var(--bg-1))">
+  <div class="wrap">
+    <div class="wf-grid">
+      <div class="reveal">
+        <span class="eyebrow">Workforce &amp; quality of life</span>
+        <h2 style="font-size:clamp(28px,4vw,44px);margin-top:18px">A place people want to build — and stay.</h2>
+        <p style="color:var(--muted);margin-top:18px">Payson pairs a high-country setting with proximity to metropolitan Phoenix, giving an aerospace employer access to talent, training partners and a quality of life that helps retain it.</p>
+        <p style="color:var(--muted);margin-top:16px">The campus concept includes an on-site training academy to develop technicians and machinists locally, in partnership with regional education providers — reducing reliance on relocation to staff skilled roles.</p>
+      </div>
+      <div class="reveal" data-delay="1">
+        <div class="stat-row">
+          <div class="stat"><div class="s-val">~<span class="count" data-target="5000" data-sep="1">5,000</span> ft</div><div class="s-lab">Elevation — cooler high-country climate<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div></div>
+          <div class="stat"><div class="s-val">~<span class="count" data-target="90">90</span> min</div><div class="s-lab">Drive to metro Phoenix<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div></div>
+          <div class="stat"><div class="s-val">On-site</div><div class="s-lab">Training academy concept</div></div>
+          <div class="stat"><div class="s-val">Year-round</div><div class="s-lab">Outdoor recreation &amp; tourism draw</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
 
 <!-- ============================ TODAY / CONCEPT SLIDER ============================ -->
 <section class="section" aria-label="Current site and future campus comparison" style="padding-top:0">
@@ -583,176 +610,36 @@ body::before{
   </div>
 </section>
 
-<!-- ============================ DEVELOPMENT TOGGLE ============================ -->
-<section class="section dev" id="development">
+<!-- ============================ THE LAND ============================ -->
+<section class="section" id="land">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Development</span>
-      <h2>A phased build-out, sized to verified demand.</h2>
-      <p>A conceptual two-phase approach. Programs, areas and timing are illustrative and subject to design, market and regulatory verification.</p>
-    </div>
-    <div class="toggle reveal" role="tablist" aria-label="Development phase">
-      <button role="tab" id="tab-p1" aria-selected="true" aria-controls="panel-p1">Phase 1</button>
-      <button role="tab" id="tab-p2" aria-selected="false" aria-controls="panel-p2" tabindex="-1">Phase 2</button>
-    </div>
-
-    <div class="phase-panel active" id="panel-p1" role="tabpanel" aria-labelledby="tab-p1">
-      <div class="phase-top"><h3>Establish the core campus</h3><span class="tag">Conceptual</span></div>
-      <div class="phase-cols">
-        <div class="phase-item"><div class="pi-metric">±120,000 SF</div><div class="pi-lab">Initial manufacturing &amp; R&amp;D program</div></div>
-        <div class="phase-item"><div class="pi-metric">Site prep</div><div class="pi-lab">Grading, access &amp; utility coordination</div></div>
-        <div class="phase-item"><div class="pi-metric">Academy</div><div class="pi-lab">Workforce training launch</div></div>
-      </div>
-      <ul class="phase-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Precision manufacturing and assembly high-bay space.</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Co-located R&amp;D and materials work.</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Utility capacity confirmation with the Town and providers.</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Workforce academy stand-up with regional partners.</li>
-      </ul>
-    </div>
-
-    <div class="phase-panel" id="panel-p2" role="tabpanel" aria-labelledby="tab-p2" hidden>
-      <div class="phase-top"><h3>Expand as demand is verified</h3><span class="tag">Conceptual</span></div>
-      <div class="phase-cols">
-        <div class="phase-item"><div class="pi-metric">Added bays</div><div class="pi-lab">Manufacturing &amp; assembly expansion</div></div>
-        <div class="phase-item"><div class="pi-metric">Lab growth</div><div class="pi-lab">Expanded materials &amp; test capacity</div></div>
-        <div class="phase-item"><div class="pi-metric">Airfield link</div><div class="pi-lab">Through-the-fence eligible (not yet secured)</div></div>
-      </div>
-      <ul class="phase-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Additional production and laboratory capacity.</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Direct airfield access — the parcel is eligible for a through-the-fence agreement (not yet secured).</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Expanded academy cohorts and campus amenities.</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Build-out sequenced to market and infrastructure readiness.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ AIRFIELD ACCESS ============================ -->
-<section class="section airfield" id="airfield">
-  <div class="wrap">
-    <div class="airfield-grid">
-      <div class="reveal">
-        <span class="eyebrow">Airfield access</span>
-        <h2 style="font-size:clamp(28px,4vw,44px);margin-top:18px">Where the campus meets the runway.</h2>
-        <p style="color:var(--muted);margin-top:18px">The parcel's defining advantage is its position against Payson Municipal Airport (KPAN) and its 5,504-foot runway<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Airport facility data — source to be added">i</span>. The concept anticipates a future connection from campus apron to taxiway.</p>
-        <div class="access-note">
-          <strong>The parcel is eligible for a through-the-fence agreement</strong> — a direct campus-to-taxiway connection to Payson Municipal Airport. Not yet secured, but eligible.
-        </div>
-      </div>
-      <div class="runway-vis reveal" data-delay="1" aria-hidden="true">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
-          <!-- static reference runway -->
-          <path class="rw-path" d="M40 250 L360 70"/>
-          <!-- animated taxiway/connection draw -->
-          <path class="rw-draw" id="rwDraw" d="M120 250 C 150 200, 200 180, 230 150 L 300 105" style="--len:360"/>
-          <circle class="rw-node" cx="120" cy="250" r="5"/>
-          <circle class="rw-node" cx="300" cy="105" r="5"/>
-          <text class="rw-label" x="112" y="270">Campus apron (concept)</text>
-          <text class="rw-label" x="250" y="96">Taxiway</text>
-          <text class="rw-label" x="300" y="60" text-anchor="end">RWY · KPAN · 5,504 ft</text>
-          <!-- taxiing marker follows the drawn path -->
-          <path id="planePath" d="M120 250 C 150 200, 200 180, 230 150 L 300 105" fill="none" stroke="none"/>
-          <g class="rw-plane" style="offset-path:path('M120 250 C 150 200, 200 180, 230 150 L 300 105');offset-rotate:auto">
-            <path d="M-6 0 L6 0 M0 -5 L0 5" stroke="var(--bronze)" stroke-width="2" stroke-linecap="round"/>
-            <circle r="2.4"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ INFRASTRUCTURE ============================ -->
-<section class="section" id="infrastructure">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Infrastructure</span>
-      <h2>The utilities are already here.</h2>
-      <p>Gas, power, telecom and water mains already run through the parcel — a rare head start for a site of this kind. Capacity and connection sizing would be confirmed with each provider during design.</p>
+      <span class="eyebrow">The land</span>
+      <h2>Start with the land.</h2>
+      <p>The strongest case for this site is the site itself — how it&rsquo;s zoned, what already runs through it, and where it sits.</p>
     </div>
     <div class="infra-grid">
       <div class="infra reveal">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
-        <h3>Electric power</h3>
-        <p>APS distribution already runs through the parcel. Capacity sizing confirmed at design.</p>
-        <span class="status">Main runs through the lot</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/></svg>
+        <h3>Zoned for the work</h3>
+        <p>The parcel sits in an established industrial and airport-support context, and the intended manufacturing use fits how the surrounding land is already used and zoned<span class="src" tabindex="0" role="note" aria-label="Zoning designation — source to be added" title="Zoning designation — source to be added">i</span> — not a speculative rezoning.</p>
+        <span class="status">Industrial &middot; airport-adjacent</span>
       </div>
       <div class="infra reveal" data-delay="1">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
-        <h3>Water &amp; wastewater</h3>
-        <p>Town of Payson water and sewer mains run through the lot. Connection sizing confirmed at design.</p>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+        <h3>Utilities already run through it</h3>
+        <p>Gas, power, telecom and water mains already run through the parcel &mdash; no speculative extension to fund. Capacity and connection sizing confirm at design.</p>
         <span class="status">Mains run through the lot</span>
       </div>
       <div class="infra reveal" data-delay="2">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.86a10 10 0 0 1 14 0"/><path d="M8.5 16.43a5 5 0 0 1 7 0"/></svg>
-        <h3>Telecom &amp; fiber</h3>
-        <p>Telecom and fiber already run through the parcel for manufacturing and R&amp;D operations.</p>
-        <span class="status">Runs through the lot</span>
-      </div>
-      <div class="infra reveal">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
-        <h3>Road access</h3>
-        <p>Direct frontage on W Airport Road; site access and improvements to be engineered.</p>
-        <span class="status">Direct W Airport Road frontage</span>
-      </div>
-      <div class="infra reveal" data-delay="1">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-        <h3>Natural gas</h3>
-        <p>A natural gas main already runs through the parcel for process or heating loads.</p>
-        <span class="status">Main runs through the lot</span>
-      </div>
-      <div class="infra reveal" data-delay="2">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22a8 8 0 0 1 8-8M18 22a8 8 0 0 0-8-8"/><circle cx="12" cy="8" r="5"/></svg>
-        <h3>Airport services</h3>
-        <p>Proximity to airport operations and fuel; any airfield use requires FAA/Town approval.</p>
-        <span class="status">Subject to Town &amp; FAA coordination</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 4.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2Z"/></svg>
+        <h3>The runway is right there</h3>
+        <p>Immediately adjacent to Payson Municipal Airport (KPAN) and its 5,504-ft runway<span class="src" tabindex="0" role="note" aria-label="Airport facility data — source to be added" title="Airport facility data — source to be added">i</span>. The parcel is eligible for a through-the-fence agreement &mdash; a direct campus-to-taxiway connection. Not yet secured, but possible.</p>
+        <span class="status">Through-the-fence eligible</span>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ============================ WORKFORCE ============================ -->
-<section class="section" id="workforce" style="background:linear-gradient(180deg,var(--bg),var(--bg-1))">
-  <div class="wrap">
-    <div class="wf-grid">
-      <div class="reveal">
-        <span class="eyebrow">Workforce &amp; quality of life</span>
-        <h2 style="font-size:clamp(28px,4vw,44px);margin-top:18px">A place people want to build — and stay.</h2>
-        <p style="color:var(--muted);margin-top:18px">Payson pairs a high-country setting with proximity to metropolitan Phoenix, giving an aerospace employer access to talent, training partners and a quality of life that helps retain it.</p>
-        <p style="color:var(--muted);margin-top:16px">The campus concept includes an on-site training academy to develop technicians and machinists locally, in partnership with regional education providers — reducing reliance on relocation to staff skilled roles.</p>
-      </div>
-      <div class="reveal" data-delay="1">
-        <div class="stat-row">
-          <div class="stat"><div class="s-val">~<span class="count" data-target="5000" data-sep="1">5,000</span> ft</div><div class="s-lab">Elevation — cooler high-country climate<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div></div>
-          <div class="stat"><div class="s-val">~<span class="count" data-target="90">90</span> min</div><div class="s-lab">Drive to metro Phoenix<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div></div>
-          <div class="stat"><div class="s-val">On-site</div><div class="s-lab">Training academy concept</div></div>
-          <div class="stat"><div class="s-val">Year-round</div><div class="s-lab">Outdoor recreation &amp; tourism draw</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ CLOSING ============================ -->
-<section class="section closing" id="contact">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="eyebrow" style="justify-content:center">The opportunity</span>
-      <p class="statement"><span>The land is real.</span><span>The airport is operating.</span><span class="b">The partnership is ready.</span></p>
-      <p class="evaluate">Let's evaluate whether Payson can become the home of Project Atlas.</p>
-    </div>
-    <div class="partners reveal" data-delay="1">
-      <div class="partner"><div class="p-name">George Heiler</div><div class="p-role">Project partner — Payson Airport Campus</div></div>
-      <div class="partner"><div class="p-name">Tristan Gaynor</div><div class="p-role">Principal — North Central Holdings</div></div>
-    </div>
-    <a class="btn btn-primary reveal" data-delay="2" href="mailto:tristan@northcentralholdings.com?subject=Project%20Atlas%20%E2%80%94%20Payson%20Airport%20Campus">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      Start the evaluation
-    </a>
-  </div>
-</section>
-</main>
 
 <!-- ============================ FOOTER / DISCLOSURES ============================ -->
 <footer class="footer">
@@ -865,29 +752,6 @@ body::before{
     }, {threshold:.6});
     counters.forEach(function(el){ co.observe(el); });
   } else { counters.forEach(animateCount); }
-
-  /* ---- Development phase toggle (tabs) ---- */
-  var tabs = [document.getElementById("tab-p1"), document.getElementById("tab-p2")];
-  var panels = [document.getElementById("panel-p1"), document.getElementById("panel-p2")];
-  function selectTab(i){
-    tabs.forEach(function(t,j){
-      var on = i===j;
-      t.setAttribute("aria-selected", on?"true":"false");
-      t.tabIndex = on?0:-1;
-      panels[j].classList.toggle("active", on);
-      panels[j].hidden = !on;
-    });
-  }
-  tabs.forEach(function(t,i){
-    t.addEventListener("click", function(){ selectTab(i); });
-    t.addEventListener("keydown", function(e){
-      if(e.key==="ArrowRight"||e.key==="ArrowLeft"){
-        e.preventDefault();
-        var ni = (i + (e.key==="ArrowRight"?1:-1) + tabs.length) % tabs.length;
-        selectTab(ni); tabs[ni].focus();
-      }
-    });
-  });
 
   /* ---- Concept hotspots (keyboard + touch) ---- */
   var hotspots = Array.prototype.slice.call(document.querySelectorAll(".hotspot"));
