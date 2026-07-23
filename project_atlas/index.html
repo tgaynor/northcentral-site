@@ -366,6 +366,19 @@ body::before{
 .reveal[data-delay="2"]{transition-delay:.16s}
 .reveal[data-delay="3"]{transition-delay:.24s}
 
+/* Site+Workforce split & airport strip */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,60px);align-items:start}
+.split-h{font-size:clamp(23px,2.6vw,32px);margin-top:16px}
+.split .facts li{grid-template-columns:120px 1fr}
+.airport-strip{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,4vw,44px);align-items:center;margin-top:clamp(30px,4vw,50px);padding-top:clamp(28px,4vw,44px);border-top:1px solid var(--line)}
+.a-title{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.specs{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.specs li{display:grid;grid-template-columns:160px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line);font-size:14.5px}
+.specs li:first-child{border-top:0}
+.specs li span{color:var(--muted);font-size:12px;letter-spacing:.02em;text-transform:uppercase;padding-top:2px}
+@media(max-width:860px){.split{grid-template-columns:1fr}.airport-strip{grid-template-columns:1fr}.specs li{grid-template-columns:150px 1fr}}
+@media(max-width:600px){.specs li{grid-template-columns:1fr;gap:2px}.specs li span{padding-top:0}}
+
 /* ---------- Responsive ---------- */
 @media (max-width:1024px){
   .kpi-grid{grid-template-columns:repeat(3,1fr)}
@@ -434,7 +447,6 @@ body::before{
       <ul class="nav-links">
         <li><a href="#site">Site</a></li>
         <li><a href="#land">The Land</a></li>
-        <li><a href="#workforce">Workforce</a></li>
       </ul>
     </nav>
     <a class="nav-cta" href="mailto:tristan@northcentralholdings.com?subject=Project%20Atlas%20%E2%80%94%20Payson%20Airport%20Campus">Contact</a>
@@ -451,7 +463,6 @@ body::before{
   </button>
   <a href="#site">Site</a>
   <a href="#land">The Land</a>
-  <a href="#workforce">Workforce</a>
   <a class="btn btn-primary" href="mailto:tristan@northcentralholdings.com?subject=Project%20Atlas%20%E2%80%94%20Payson%20Airport%20Campus">Contact</a>
 </div>
 
@@ -472,7 +483,7 @@ body::before{
   <div class="hero-inner">
     <div class="hero-copy">
       <span class="eyebrow">Project Atlas · Payson, Arizona</span>
-      <h1>Build aerospace where the runway begins.</h1>
+      <h1>Build where the runway begins.</h1>
       <p class="support">A 14.9-acre airport-adjacent campus concept designed for advanced manufacturing, aircraft development, materials research and workforce training.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#site">
@@ -522,90 +533,41 @@ body::before{
   </div>
 </section>
 
-<!-- ============================ THE SITE ============================ -->
+<!-- ============================ SITE + WORKFORCE (side by side) ============================ -->
 <section class="section" id="site">
   <div class="wrap">
-    <div class="two-col">
-      <figure class="media-frame reveal" style="aspect-ratio:16/12;margin:0">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-        <!-- ASSET: assets/payson-parcel-map.webp — real parcel boundary aerial -->
-        <picture>
-          <source type="image/webp" srcset="assets/payson-parcel-map.webp">
-          <img src="assets/payson-parcel-map.webp"
-               alt="Aerial map showing the parcel boundary immediately south of Payson Municipal Airport and north of West Airport Road"
-               width="1600" height="1200" loading="lazy" decoding="async">
-        </picture>
-        <figcaption>Parcel boundary — APN 302-39-096J. Boundary shown is approximate and subject to survey verification.</figcaption>
-      </figure>
-      <div class="reveal" data-delay="1">
-        <span class="eyebrow">The site</span>
-        <h2 style="font-size:clamp(28px,4vw,44px);margin-top:18px">Where town, industry and airfield meet.</h2>
-        <p style="color:var(--muted);margin-top:18px">The parcel sits immediately south of Payson Municipal Airport and north of W&nbsp;Airport Road — a rare piece of airfield-adjacent land with existing industrial neighbors and direct road frontage.</p>
-        <ul class="facts">
-          <li><span class="f-key">Parcel</span><span>APN 302-39-096J<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="County assessor record — source to be added">i</span></span></li>
-          <li><span class="f-key">Area</span><span>14.9 acres<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></span></li>
-          <li><span class="f-key">Frontage</span><span>W Airport Road frontage to the south</span></li>
-          <li><span class="f-key">West context</span><span>Existing industrial and airport-support uses</span></li>
-          <li><span class="f-key">East / southeast</span><span>Residential neighborhood context</span></li>
-        </ul>
-        <p class="illustrative-note">All development concepts shown throughout this page are illustrative. No site plan has been approved and boundaries, acreage and access are subject to verification.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ WORKFORCE ============================ -->
-<section class="section" id="workforce" style="background:linear-gradient(180deg,var(--bg),var(--bg-1))">
-  <div class="wrap">
-    <div class="wf-grid">
+    <div class="split">
       <div class="reveal">
-        <span class="eyebrow">Workforce &amp; quality of life</span>
-        <h2 style="font-size:clamp(28px,4vw,44px);margin-top:18px">A place people want to build — and stay.</h2>
-        <p style="color:var(--muted);margin-top:18px">Payson pairs a high-country setting with proximity to metropolitan Phoenix, giving an aerospace employer access to talent, training partners and a quality of life that helps retain it.</p>
-        <p style="color:var(--muted);margin-top:16px">The campus concept includes an on-site training academy to develop technicians and machinists locally, in partnership with regional education providers — reducing reliance on relocation to staff skilled roles.</p>
+        <span class="eyebrow">The site</span>
+        <h2 class="split-h">Where town, industry and airfield meet.</h2>
+        <figure class="media-frame" style="aspect-ratio:2000/1103;margin:20px 0 0">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <picture>
+            <source type="image/webp" srcset="assets/payson-parcel-map.webp">
+            <img src="assets/payson-parcel-map.webp" alt="Gila County parcel-viewer aerial with the 14.9-acre parcel APN 302-39-096J outlined in red, immediately south of the Payson Municipal Airport runway and north of West Airport Road, industrial lots to the west and a residential neighborhood to the southeast" width="2000" height="1103" loading="lazy" decoding="async">
+          </picture>
+          <figcaption>APN 302-39-096J &mdash; 14.9 acres. Source: Gila County Public Works parcel viewer.</figcaption>
+        </figure>
+        <ul class="facts">
+          <li><span class="f-key">Parcel</span><span>APN 302-39-096J</span></li>
+          <li><span class="f-key">Area</span><span>14.9 acres</span></li>
+          <li><span class="f-key">Frontage</span><span>W Airport Road</span></li>
+          <li><span class="f-key">West</span><span>Existing industrial context</span></li>
+          <li><span class="f-key">East / SE</span><span>Residential context</span></li>
+        </ul>
       </div>
-      <div class="reveal" data-delay="1">
-        <div class="stat-row">
-          <div class="stat"><div class="s-val">~<span class="count" data-target="5000" data-sep="1">5,000</span> ft</div><div class="s-lab">Elevation — cooler high-country climate<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div></div>
+      <div class="reveal" data-delay="1" id="workforce">
+        <span class="eyebrow">Workforce &amp; quality of life</span>
+        <h2 class="split-h">A place people want to build &mdash; and stay.</h2>
+        <p style="color:var(--muted);margin-top:18px">Payson pairs a high-country setting with proximity to metropolitan Phoenix &mdash; access to talent, training partners, and a quality of life that helps retain them.</p>
+        <p style="color:var(--muted);margin-top:16px">The concept includes an on-site training academy to develop technicians and machinists locally, in partnership with regional education providers &mdash; reducing reliance on relocation to staff skilled roles.</p>
+        <div class="stat-row" style="margin-top:26px">
+          <div class="stat"><div class="s-val">~<span class="count" data-target="5000" data-sep="1">5,000</span> ft</div><div class="s-lab">Elevation &mdash; cooler high-country climate<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div></div>
           <div class="stat"><div class="s-val">~<span class="count" data-target="90">90</span> min</div><div class="s-lab">Drive to metro Phoenix<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div></div>
           <div class="stat"><div class="s-val">On-site</div><div class="s-lab">Training academy concept</div></div>
           <div class="stat"><div class="s-val">Year-round</div><div class="s-lab">Outdoor recreation &amp; tourism draw</div></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ============================ TODAY / CONCEPT SLIDER ============================ -->
-<section class="section" aria-label="Current site and future campus comparison" style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Today &rarr; concept</span>
-      <h2>From current condition to conceptual campus.</h2>
-      <p>Drag to compare the current street-level condition with the golden-hour campus rendering. Use the slider handle or arrow keys.</p>
-    </div>
-    <div class="compare reveal" data-delay="1" id="compare">
-      <span class="cmp-label r">Today</span>
-      <!-- ASSET: assets/payson-street-view.webp — current street-level condition (base layer) -->
-      <picture>
-        <source type="image/webp" srcset="assets/payson-street-view.webp">
-        <img src="assets/payson-street-view.webp" alt="Current street-level view of the site along West Airport Road" width="2400" height="1350" loading="lazy" decoding="async">
-      </picture>
-      <div class="after-wrap" id="afterWrap">
-        <span class="cmp-label l">Concept</span>
-        <!-- ASSET: assets/payson-aerospace-hero.webp — future campus rendering (reveal layer) -->
-        <picture>
-          <source type="image/webp" srcset="assets/payson-aerospace-hero.webp">
-          <img src="assets/payson-aerospace-hero.webp" alt="Golden-hour aerial rendering of the conceptual Payson Airport Campus" width="1672" height="941" loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <div class="cmp-handle" id="cmpHandle" aria-hidden="true">
-        <span class="grip"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 7-5 5 5 5M15 7l5 5-5 5"/></svg></span>
-      </div>
-      <input class="cmp-range" id="cmpRange" type="range" min="0" max="100" value="50"
-             aria-label="Reveal the conceptual campus rendering over the current condition">
     </div>
   </div>
 </section>
@@ -636,6 +598,25 @@ body::before{
         <h3>The runway is right there</h3>
         <p>Immediately adjacent to Payson Municipal Airport (KPAN) and its 5,504-ft runway<span class="src" tabindex="0" role="note" aria-label="Airport facility data — source to be added" title="Airport facility data — source to be added">i</span>. The parcel is eligible for a through-the-fence agreement &mdash; a direct campus-to-taxiway connection. Not yet secured, but possible.</p>
         <span class="status">Through-the-fence eligible</span>
+      </div>
+    </div>
+    <div class="airport-strip reveal">
+      <figure class="media-frame" style="aspect-ratio:650/487;margin:0">
+        <picture>
+          <source type="image/webp" srcset="assets/payson-airport.webp">
+          <img src="assets/payson-airport.webp" alt="Aerial view of Payson Municipal Airport (KPAN): its runway, apron and aircraft tiedowns with the town and pine forest beyond" width="650" height="487" loading="lazy" decoding="async">
+        </picture>
+      </figure>
+      <div>
+        <div class="a-title">Payson Municipal Airport (KPAN) at a glance</div>
+        <ul class="specs">
+          <li><span>Runway</span>5,504 &times; 75 ft asphalt, good condition</li>
+          <li><span>Fuel</span>100LL &amp; Jet-A</li>
+          <li><span>On-field service</span>Major airframe &amp; powerplant</li>
+          <li><span>Weight bearing</span>Up to 100,000 lb (double-tandem)</li>
+          <li><span>Weather &amp; lighting</span>AWOS-3PT &middot; PAPI &middot; REIL &middot; lighted</li>
+          <li><span>Field</span>5,160 ft elevation &middot; public use<span class="src" tabindex="0" role="note" aria-label="FAA airport data effective 9 Jul 2026 — source to be added" title="FAA airport data, effective 9 Jul 2026">i</span></li>
+        </ul>
       </div>
     </div>
   </div>
