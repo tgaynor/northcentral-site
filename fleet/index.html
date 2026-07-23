@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fleet Rationalization — RZR Fleet</title>
+<title>Fleet Rationalization, RZR Fleet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;600;700;800&family=Spline+Sans+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -104,13 +104,13 @@
   <header>
     <div>
       <h1>Fleet Rationalization</h1>
-      <p class="lede">Right-size the fleet on math, not gut. This is what each unit truly costs to own — per vehicle and fleet-wide — so every keep, cut, and buy call rests on real numbers.</p>
+      <p class="lede">Right-size the fleet on math, not gut. This is what each unit truly costs to own, per vehicle and fleet-wide, so every keep, cut, and buy call rests on real numbers.</p>
     </div>
     <div class="yearbox"><div class="k">Model year</div><select id="year"></select></div>
   </header>
 
   <div class="assume">
-    <div class="sec">Cost assumptions — set once, applied to every unit</div>
+    <div class="sec">Cost assumptions, set once, applied to every unit</div>
     <div class="arow">
       <div class="field"><label>Hold period</label>
         <div class="tog" id="hold"><button data-y="1" class="active">1 yr</button><button data-y="2">2 yr</button><button data-y="3">3 yr</button></div>
@@ -131,7 +131,7 @@
   </div>
 
   <div class="tablewrap">
-    <div class="sec">The fleet — set quantity and price per model</div>
+    <div class="sec">The fleet, set quantity and price per model</div>
     <table class="fleet"><thead><tr>
       <th class="l">Model</th><th>Qty</th><th>Wholesale $ ea</th>
       <th>Floor $/mo ea</th><th>Floor $/mo ×qty</th><th></th>
@@ -140,13 +140,13 @@
   </div>
 
   <div class="perveh">
-    <div class="pvhead"><div class="sec" style="margin:0">Per-vehicle breakdown — how one unit's floor is built</div>
+    <div class="pvhead"><div class="sec" style="margin:0">Per-vehicle breakdown, how one unit's floor is built</div>
       <select id="pvModel"></select></div>
     <div class="pvgrid">
       <table class="stack"><thead><tr><th class="l">What the rent must cover (one unit)</th><th>Over the hold</th><th>Per month</th></tr></thead>
         <tbody id="stackBody"></tbody></table>
       <div class="pvright">
-        <div><div class="pvk">Floor rent — this unit</div><div class="pvbig" id="pvFloor">$0<span style="font-size:.38em">/mo</span></div></div>
+        <div><div class="pvk">Floor rent, this unit</div><div class="pvbig" id="pvFloor">$0<span style="font-size:.38em">/mo</span></div></div>
         <div class="pvnote" id="pvNote"></div>
       </div>
     </div>
@@ -164,7 +164,7 @@
   </div>
 
   <div class="opex">
-    <div class="sec">Operating expenses — company-wide, per year</div>
+    <div class="sec">Operating expenses, company-wide, per year</div>
     <div class="opexline"><label>Salaries</label><div class="inp">$ <input type="number" id="oxSal" min="0" step="1000" value="0"> / yr</div></div>
     <div class="opexline"><label>Marketing</label><div class="inp">$ <input type="number" id="oxMkt" min="0" step="500" value="0"> / yr</div></div>
     <div class="opexline"><label>Supplies / materials / fuel</label><div class="inp">$ <input type="number" id="oxSup" min="0" step="500" value="0"> / yr</div></div>
@@ -287,14 +287,14 @@ function renderBreakdown(s){
   const line=(l,t,cls)=>'<tr class="'+(cls||'')+'"><td class="lbl">'+l+'</td><td class="tot">'+money(t)+'</td><td class="mo">'+money(mo?t/mo:0)+'/mo</td></tr>';
   const feeLbl='Intercompany fee ('+s.icmo+'mo × '+money(s.icfee)+(s.icYears>1?' × '+s.icYears+'yr':'')+')';
   $('stackBody').innerHTML=
-    line('Depreciation — value lost',c.depreciation)+
+    line('Depreciation, value lost',c.depreciation)+
     line('Tax &amp; title to sell',c.disposal)+
     line(feeLbl,c.intercompany)+
     line('Maintenance ('+(+$('maint').value)+'% × price × '+years+'yr)',c.maintenance)+
     line('= Floor rent (covers costs)',c.floorTotal,'floor');
   $('pvFloor').innerHTML=money(c.floorMo)+'<span style="font-size:.38em">/mo</span>';
 
-  $('pvNote').textContent='This is breakeven for one '+m.name+' — the rent that covers depreciation, the fee, maintenance and the cost to sell it. Rent it for more than '+money(c.floorMo)+'/mo and the extra is return.';
+  $('pvNote').textContent='This is breakeven for one '+m.name+', the rent that covers depreciation, the fee, maintenance and the cost to sell it. Rent it for more than '+money(c.floorMo)+'/mo and the extra is return.';
 }
 
 renderTable();syncPvOptions();recalc();
