@@ -155,16 +155,25 @@ body::before{
 
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden}
-.hero-media img{width:100%;height:120%;object-fit:cover;object-position:50% 45%;
-  background:linear-gradient(160deg,#0d1620,#080b0f);will-change:transform}
+.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;
+  background:linear-gradient(160deg,#0d1620,#080b0f)}
 .hero::after{ /* sophisticated dark overlay for readability, weighted lower-left */
-  content:"";position:absolute;inset:0;z-index:-1;
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
   background:
     linear-gradient(90deg,rgba(6,9,13,.90) 0%,rgba(6,9,13,.55) 34%,rgba(6,9,13,.10) 62%,rgba(6,9,13,0) 100%),
     linear-gradient(0deg,rgba(6,9,13,.92) 0%,rgba(6,9,13,.30) 34%,rgba(6,9,13,0) 60%);
 }
-.hero-inner{max-width:var(--maxw);margin-inline:auto;width:100%;padding:0 var(--gutter) clamp(64px,10vh,120px)}
+/* Hero before/after compare slider */
+.hero-before{position:absolute;inset:0;width:var(--hpos,50%);overflow:hidden;z-index:1}
+.hero-media .hero-before img{width:100vw;height:100%;object-fit:cover;object-position:50% 50%}
+.hero-divider{position:absolute;top:0;bottom:0;left:var(--hpos,50%);width:2px;background:rgba(255,255,255,.85);z-index:3;transform:translateX(-50%);pointer-events:none;box-shadow:0 0 14px rgba(0,0,0,.55)}
+.hero-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:var(--blue);color:#04090f;border:2px solid rgba(255,255,255,.92);display:grid;place-items:center;cursor:ew-resize;pointer-events:auto;box-shadow:0 6px 22px -6px rgba(0,0,0,.75);touch-action:none}
+.hero-grip:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.hero-cmp-label{position:absolute;top:92px;padding:5px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:rgba(8,11,15,.55);border:1px solid var(--line);border-radius:20px;z-index:3;pointer-events:none;color:var(--text)}
+.hero-cmp-label.l{left:var(--gutter)}
+.hero-cmp-label.r{right:var(--gutter)}
+.hero-inner{position:relative;z-index:4;max-width:var(--maxw);margin-inline:auto;width:100%;padding:0 var(--gutter) clamp(64px,10vh,120px)}
 .hero-copy{max-width:720px}
 .hero h1{font-size:clamp(38px,6.4vw,76px);margin:22px 0 0;letter-spacing:-.035em}
 .hero .support{color:#D9D6CE;font-size:clamp(17px,2.2vw,21px);max-width:56ch;margin-top:24px}
@@ -474,13 +483,27 @@ body::before{
 <!-- ============================ HERO ============================ -->
 <section class="hero" aria-label="Introduction">
   <div class="hero-media">
-    <!-- ASSET: assets/payson-aerospace-hero.webp: cinematic golden-hour aerial rendering (full-screen hero) -->
+    <!-- BASE / AFTER: cinematic golden-hour rendering -->
     <picture>
       <source type="image/webp" srcset="assets/payson-aerospace-hero.webp">
       <img id="heroImg" src="assets/payson-aerospace-hero.webp"
            alt="Golden-hour aerial rendering of the proposed 14.9-acre Payson Airport Campus beside the Payson Municipal Airport runway"
            width="1672" height="941" loading="eager" fetchpriority="high" decoding="async">
     </picture>
+    <!-- BEFORE (revealed by the slider): current parcel aerial -->
+    <div class="hero-before" id="heroBefore" aria-hidden="true">
+      <picture>
+        <source type="image/webp" srcset="assets/payson-parcel-map.webp">
+        <img src="assets/payson-parcel-map.webp" alt="" width="2000" height="1103" loading="eager" decoding="async">
+      </picture>
+    </div>
+    <span class="hero-cmp-label l" aria-hidden="true">Today</span>
+    <span class="hero-cmp-label r" aria-hidden="true">Concept</span>
+    <div class="hero-divider" id="heroDivider">
+      <button class="hero-grip" id="heroGrip" type="button" role="slider" aria-label="Drag to compare the current parcel with the campus rendering" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 7-5 5 5 5M15 7l5 5-5 5"/></svg>
+      </button>
+    </div>
   </div>
   <div class="hero-inner">
     <div class="hero-copy">
@@ -787,18 +810,28 @@ body::before{
     range.addEventListener("input", function(){ setPos(range.value); });
   }
 
-  /* ---- Hero parallax (subtle, rAF-throttled) ---- */
-  var heroImg = document.getElementById("heroImg");
-  if(heroImg && !reduce){
-    var ticking = false;
-    window.addEventListener("scroll", function(){
-      if(ticking) return; ticking = true;
-      requestAnimationFrame(function(){
-        var y = window.scrollY;
-        if(y < window.innerHeight){ heroImg.style.transform = "translateY(" + (y*0.18) + "px) scale(1.04)"; }
-        ticking = false;
-      });
-    }, {passive:true});
+  /* ---- Hero background compare slider ---- */
+  var heroMedia = document.querySelector(".hero-media");
+  var heroGrip = document.getElementById("heroGrip");
+  if(heroMedia && heroGrip){
+    var setHpos = function(v){
+      v = Math.max(0, Math.min(100, v));
+      heroMedia.style.setProperty("--hpos", v + "%");
+      heroGrip.setAttribute("aria-valuenow", Math.round(v));
+    };
+    setHpos(50);
+    var hdrag = false;
+    var moveTo = function(x){ var r = heroMedia.getBoundingClientRect(); setHpos((x - r.left) / r.width * 100); };
+    heroGrip.addEventListener("pointerdown", function(e){ hdrag = true; try{heroGrip.setPointerCapture(e.pointerId);}catch(_){} e.preventDefault(); });
+    heroGrip.addEventListener("pointermove", function(e){ if(hdrag) moveTo(e.clientX); });
+    heroGrip.addEventListener("pointerup", function(e){ hdrag = false; try{heroGrip.releasePointerCapture(e.pointerId);}catch(_){} });
+    heroGrip.addEventListener("keydown", function(e){
+      var cur = parseFloat(heroGrip.getAttribute("aria-valuenow")) || 50;
+      if(e.key==="ArrowLeft"){ setHpos(cur-4); e.preventDefault(); }
+      else if(e.key==="ArrowRight"){ setHpos(cur+4); e.preventDefault(); }
+      else if(e.key==="Home"){ setHpos(0); e.preventDefault(); }
+      else if(e.key==="End"){ setHpos(100); e.preventDefault(); }
+    });
   }
 })();
 </script>
