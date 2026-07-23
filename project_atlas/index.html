@@ -90,14 +90,6 @@ body::before{
 .section-head p{color:var(--muted);margin-top:18px;font-size:clamp(16px,2vw,19px)}
 .lead-serif{font-family:var(--serif);font-style:italic;font-weight:400}
 
-/* Source-note marker beside quantitative claims */
-.src{
-  display:inline-block;width:15px;height:15px;margin-left:5px;vertical-align:super;
-  font-size:9px;font-weight:700;line-height:15px;text-align:center;
-  color:var(--blue);border:1px solid var(--line-2);border-radius:50%;
-  cursor:help;user-select:none;transform:translateY(-2px);
-}
-.src:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
 /* ---------- Skip link ---------- */
 .skip{
@@ -550,7 +542,7 @@ body::before{
   <div class="kpi-grid">
     <div class="kpi-cell">
       <div class="k-val"><span class="count" data-target="14.9" data-decimals="1">14.9</span><span class="u">acres</span></div>
-      <div class="k-lab">Airport-adjacent parcel<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div>
+      <div class="k-lab">Airport-adjacent parcel</div>
     </div>
     <div class="kpi-cell">
       <div class="k-val">Adjacent<span class="u">to KPAN</span></div>
@@ -558,7 +550,7 @@ body::before{
     </div>
     <div class="kpi-cell">
       <div class="k-val"><span class="count" data-target="5504" data-sep="1">5,504</span><span class="u">ft</span></div>
-      <div class="k-lab">Runway length<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div>
+      <div class="k-lab">Runway length</div>
     </div>
     <div class="kpi-cell">
       <div class="k-val">±<span class="count" data-target="120000" data-sep="1">120,000</span><span class="u">SF</span></div>
@@ -607,10 +599,10 @@ body::before{
         <p style="color:var(--muted);margin-top:18px">Payson pairs a high-country setting with proximity to metropolitan Phoenix, with access to talent, training partners and a quality of life that helps retain them.</p>
         <p style="color:var(--muted);margin-top:16px">The concept includes an on-site training academy to develop technicians and machinists locally, in partnership with regional education providers, reducing reliance on relocation to staff skilled roles.</p>
         <div class="stat-row" style="margin-top:26px">
-          <div class="stat"><div class="s-val">~<span class="count" data-target="5000" data-sep="1">5,000</span> ft</div><div class="s-lab">Elevation, cooler high-country climate<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div></div>
-          <div class="stat"><div class="s-val">~<span class="count" data-target="75">75</span> min</div><div class="s-lab">Drive to metro Phoenix<span class="src" tabindex="0" role="note" aria-label="Source to be added" title="Source to be added">i</span></div></div>
-          <div class="stat"><div class="s-val">~<span class="count" data-target="16700" data-sep="1">16,700</span></div><div class="s-lab">Town of Payson population<span class="src" tabindex="0" role="note" aria-label="U.S. Census Bureau, 2023 estimate, source to be added" title="U.S. Census Bureau, 2023 estimate">i</span></div></div>
-          <div class="stat"><div class="s-val">~<span class="count" data-target="72">72</span>&deg;F</div><div class="s-lab">Average daytime high, annual<span class="src" tabindex="0" role="note" aria-label="Thirty-year climate normals, source to be added" title="30-year climate normals">i</span></div></div>
+          <div class="stat"><div class="s-val">~<span class="count" data-target="5000" data-sep="1">5,000</span> ft</div><div class="s-lab">Elevation, cooler high-country climate</div></div>
+          <div class="stat"><div class="s-val">~<span class="count" data-target="75">75</span> min</div><div class="s-lab">Drive to metro Phoenix</div></div>
+          <div class="stat"><div class="s-val">~<span class="count" data-target="16700" data-sep="1">16,700</span></div><div class="s-lab">Town of Payson population</div></div>
+          <div class="stat"><div class="s-val">~<span class="count" data-target="72">72</span>&deg;F</div><div class="s-lab">Average daytime high, annual</div></div>
           <div class="stat stat-wide"><div class="s-val">Year-round</div><div class="s-lab">Outdoor recreation &amp; tourism draw</div></div>
         </div>
       </div>
@@ -638,7 +630,7 @@ body::before{
           <li><span>On-field service</span>Major airframe &amp; powerplant</li>
           <li><span>Weight bearing</span>Up to 100,000 lb (double-tandem)</li>
           <li><span>Weather &amp; lighting</span>AWOS-3PT &middot; PAPI &middot; REIL &middot; lighted</li>
-          <li><span>Field</span>5,160 ft elevation &middot; public use<span class="src" tabindex="0" role="note" aria-label="FAA airport data effective 9 Jul 2026, source to be added" title="FAA airport data, effective 9 Jul 2026">i</span></li>
+          <li><span>Field</span>5,160 ft elevation &middot; public use</li>
         </ul>
       </div>
       <div class="reveal" data-delay="1" id="land">
@@ -649,7 +641,7 @@ body::before{
           <div class="infra reveal">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/></svg>
             <h3>Zoned M-2 for the work</h3>
-            <p>The parcel is zoned <strong>M-2 (General Industrial)</strong> under Payson&rsquo;s Unified Development Code &sect;154<span class="src" tabindex="0" role="note" aria-label="Town of Payson Planning and Zoning preliminary review, June 16 2026" title="Town of Payson Planning &amp; Zoning preliminary review comments, June 16, 2026">i</span>, which permits aircraft hangars, manufacturing and warehousing <strong>outright</strong>.</p>
+            <p>The parcel is zoned <strong>M-2 (General Industrial)</strong> under Payson&rsquo;s Unified Development Code &sect;154, which permits aircraft hangars, manufacturing and warehousing <strong>outright</strong>.</p>
             <span class="status">M-2 &middot; General Industrial</span>
           </div>
           <div class="infra reveal" data-delay="1">
@@ -686,7 +678,7 @@ body::before{
         <h3>Homes in Payson</h3>
         <p>A small market with real depth: hundreds of active single-family listings against a town of roughly 16,700, and better than six months of standing inventory.</p>
         <ul class="specs">
-          <li><span>Inventory</span>518 active single-family listings<span class="src" tabindex="0" role="note" aria-label="Payson Arizona market report, July 2026" title="Payson, AZ market report, July 2026">i</span></li>
+          <li><span>Inventory</span>518 active single-family listings</li>
           <li><span>Supply</span>6.5 months, buyer-favorable</li>
         </ul>
       </div>
@@ -705,7 +697,7 @@ body::before{
           </video>
         </figure>
         <ul class="specs">
-          <li><span>Golf</span>18 holes, par 72 &middot; Graham &amp; Panks<span class="src" tabindex="0" role="note" aria-label="Arcis Golf club listing" title="Arcis Golf, The Golf Club at Chaparral Pines">i</span></li>
+          <li><span>Golf</span>18 holes, par 72 &middot; Graham &amp; Panks</li>
           <li><span>Clubhouse</span>27,000 SF, mountain-lodge character</li>
           <li><span>Amenities</span>Dining, wellness, racquet sports, aquatics</li>
           <li><span>Setting</span>Ponderosa pine, Mogollon Rim country</li>
@@ -726,7 +718,7 @@ body::before{
           </video>
         </figure>
         <ul class="specs">
-          <li><span>Golf</span>18 holes &middot; Weiskopf-Morrish<span class="src" tabindex="0" role="note" aria-label="The Rim Golf Club, Arcis Golf" title="The Rim Golf Club, Arcis Golf">i</span></li>
+          <li><span>Golf</span>18 holes &middot; Weiskopf-Morrish</li>
           <li><span>Community</span>555 acres above 5,000 ft</li>
           <li><span>Clubhouse</span>Renovated dining, bar, fire-pit patio</li>
           <li><span>Wellness</span>Fitness center with saunas</li>
