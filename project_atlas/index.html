@@ -281,6 +281,21 @@ body::before{
 .cap .idx{font-size:12px;color:var(--muted-2);letter-spacing:.1em;font-variant-numeric:tabular-nums}
 .cap h3{font-size:20px;margin:10px 0 12px}
 .cap p{color:var(--muted);font-size:15px}
+/* Residential community cards reuse .cap with a nested spec list */
+.cap .idx{display:block;text-transform:uppercase;letter-spacing:.16em}
+.cap .specs{margin-top:24px}
+.cap .specs li{grid-template-columns:112px 1fr;gap:14px;font-size:14px;padding:11px 0}
+.cap .specs li span{font-size:11.5px}
+/* Residential runs three across: homes market + the two clubs */
+#living .cap-grid{grid-template-columns:repeat(3,1fr)}
+#living .cap{padding:clamp(24px,2.4vw,30px)}
+#living .cap .specs li{grid-template-columns:98px 1fr;gap:12px}
+/* Small looping clip inside the Rim Club tile */
+.tile-video{margin:20px 0 0;border:1px solid var(--line-2);border-radius:var(--radius-sm);
+  overflow:hidden;background:#0a0e13;aspect-ratio:16/9}
+.tile-video video{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:1024px){#living .cap-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.cap .specs li{grid-template-columns:1fr;gap:2px}.cap .specs li span{padding-top:0}}
 
 /* ---------- Development toggle ---------- */
 .dev{background:linear-gradient(180deg,var(--bg),var(--bg-1))}
@@ -379,6 +394,9 @@ body::before{
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,60px);align-items:start}
 .split-h{font-size:clamp(23px,2.6vw,32px);margin-top:16px}
 .split .facts li{grid-template-columns:120px 1fr}
+/* Airfield + Land share a split: the infra cards stack in the narrow column */
+.split .infra-grid{grid-template-columns:1fr;margin-top:22px}
+.split .infra{padding:24px}
 .airport-strip{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,4vw,44px);align-items:center;margin-top:clamp(30px,4vw,50px);padding-top:clamp(28px,4vw,44px);border-top:1px solid var(--line)}
 .a-title{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
 .specs{list-style:none;margin:0;padding:0;display:grid;gap:2px}
@@ -455,8 +473,8 @@ body::before{
     <nav aria-label="Primary">
       <ul class="nav-links">
         <li><a href="#site">Site</a></li>
-        <li><a href="#airport">Airfield</a></li>
-        <li><a href="#land">The Land</a></li>
+        <li><a href="#airport">Airfield &amp; Land</a></li>
+        <li><a href="#living">Living</a></li>
       </ul>
     </nav>
     <a class="nav-cta" href="mailto:tristan@northcentralholdings.com?subject=Project%20Atlas%20%E2%80%94%20Payson%20Airport%20Campus">Contact</a>
@@ -474,6 +492,7 @@ body::before{
   <a href="#site">Site</a>
   <a href="#airport">Airfield</a>
   <a href="#land">The Land</a>
+  <a href="#living">Living</a>
   <a class="btn btn-primary" href="mailto:tristan@northcentralholdings.com?subject=Project%20Atlas%20%E2%80%94%20Payson%20Airport%20Campus">Contact</a>
 </div>
 
@@ -597,23 +616,21 @@ body::before{
   </div>
 </section>
 
-<!-- ============================ AIRPORT ============================ -->
+<!-- ============================ AIRFIELD + THE LAND (side by side) ============================ -->
 <section class="section" id="airport">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">The airfield</span>
-      <h2>Payson Municipal Airport (KPAN) at a glance.</h2>
-      <p>The parcel sits immediately against a public-use field with Jet-A, major on-field service, and a runway that already carries real weight. The parcel is eligible for a through-the-fence agreement for a direct campus-to-taxiway connection.</p>
-    </div>
-    <div class="airport-strip reveal" data-delay="1">
-      <figure class="media-frame" style="aspect-ratio:650/487;margin:0">
-        <picture>
-          <source type="image/webp" srcset="assets/payson-airport.webp">
-          <img src="assets/payson-airport.webp" alt="Aerial view of Payson Municipal Airport (KPAN): its runway, apron and aircraft tiedowns with the town and pine forest beyond" width="650" height="487" loading="lazy" decoding="async">
-        </picture>
-      </figure>
-      <div>
-        <ul class="specs">
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">The airfield</span>
+        <h2 class="split-h">Payson Municipal Airport (KPAN) at a glance.</h2>
+        <p style="color:var(--muted);margin-top:18px">The parcel sits immediately against a public-use field with Jet-A, major on-field service, and a runway that already carries real weight. The parcel is eligible for a through-the-fence agreement for a direct campus-to-taxiway connection.</p>
+        <figure class="media-frame" style="aspect-ratio:650/487;margin:22px 0 0">
+          <picture>
+            <source type="image/webp" srcset="assets/payson-airport.webp">
+            <img src="assets/payson-airport.webp" alt="Aerial view of Payson Municipal Airport (KPAN): its runway, apron and aircraft tiedowns with the town and pine forest beyond" width="650" height="487" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <ul class="specs" style="margin-top:24px">
           <li><span>Runway</span>5,504 &times; 75 ft asphalt, good condition</li>
           <li><span>Fuel</span>100LL &amp; Jet-A</li>
           <li><span>On-field service</span>Major airframe &amp; powerplant</li>
@@ -622,38 +639,100 @@ body::before{
           <li><span>Field</span>5,160 ft elevation &middot; public use<span class="src" tabindex="0" role="note" aria-label="FAA airport data effective 9 Jul 2026, source to be added" title="FAA airport data, effective 9 Jul 2026">i</span></li>
         </ul>
       </div>
+      <div class="reveal" data-delay="1" id="land">
+        <span class="eyebrow">The land</span>
+        <h2 class="split-h">Optimal zoning &amp; proximity.</h2>
+        <p style="color:var(--muted);margin-top:18px">The strongest case for this site is the site itself: how it&rsquo;s zoned, what already runs through it, and where it sits.</p>
+        <div class="infra-grid">
+          <div class="infra reveal">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/></svg>
+            <h3>Zoned M-2 for the work</h3>
+            <p>The parcel is zoned <strong>M-2 (General Industrial)</strong> under Payson&rsquo;s Unified Development Code &sect;154<span class="src" tabindex="0" role="note" aria-label="Town of Payson Planning and Zoning preliminary review, June 16 2026" title="Town of Payson Planning &amp; Zoning preliminary review comments, June 16, 2026">i</span>, which permits aircraft hangars, manufacturing and warehousing <strong>outright</strong>.</p>
+            <span class="status">M-2 &middot; General Industrial</span>
+          </div>
+          <div class="infra reveal" data-delay="1">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+            <h3>Utilities already run through it</h3>
+            <p>Gas, power, telecom and water mains already run through the parcel, with no speculative extension to fund. Capacity and connection sizing confirm at design.</p>
+            <span class="status">Mains run through the lot</span>
+          </div>
+          <div class="infra reveal" data-delay="2">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <h3>Close to everything that matters</h3>
+            <p>Immediately adjacent to Payson Municipal Airport (KPAN), and roughly 75 minutes from metropolitan Phoenix&rsquo;s talent, suppliers and Sky Harbor connections.</p>
+            <span class="status">Airport-adjacent &middot; ~75 min to Phoenix</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ THE LAND ============================ -->
-<section class="section" id="land">
+<!-- ============================ RESIDENTIAL / LIVING ============================ -->
+<section class="section" id="living">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">The land</span>
-      <h2>Optimal zoning &amp; proximity.</h2>
-      <p>The strongest case for this site is the site itself: how it&rsquo;s zoned, what already runs through it, and where it sits.</p>
+      <span class="eyebrow">Residential</span>
+      <p>Relocating senior engineers, program managers and plant leadership is usually the hardest part of siting advanced manufacturing in a small town. Payson answers it with an established single-family market and premier high-end living communities, with real inventory and a supply balance that favors buyers, while sitting 75 minutes from the largest metro in Arizona.</p>
     </div>
-    <div class="infra-grid">
-      <div class="infra reveal">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/></svg>
-        <h3>Zoned M-2 for the work</h3>
-        <p>The parcel is zoned <strong>M-2 (General Industrial)</strong> under Payson&rsquo;s Unified Development Code &sect;154<span class="src" tabindex="0" role="note" aria-label="Town of Payson Planning and Zoning preliminary review, June 16 2026" title="Town of Payson Planning &amp; Zoning preliminary review comments, June 16, 2026">i</span>, which permits aircraft hangars, manufacturing and warehousing <strong>outright</strong>.</p>
-        <span class="status">M-2 &middot; General Industrial</span>
+    <div class="cap-grid">
+      <div class="cap reveal">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </div>
+        <span class="idx">Single-family market</span>
+        <h3>Homes in Payson</h3>
+        <p>A small market with real depth: hundreds of active single-family listings against a town of roughly 16,700, and better than six months of standing inventory. New building is largely custom and infill rather than tract subdivision, with the high end concentrated inside the gated clubs.</p>
+        <ul class="specs">
+          <li><span>Inventory</span>518 active single-family listings<span class="src" tabindex="0" role="note" aria-label="Payson Arizona market report, July 2026" title="Payson, AZ market report, July 2026">i</span></li>
+          <li><span>Supply</span>6.5 months, buyer-favorable</li>
+          <li><span>Club custom</span>$1.2M to $2.5M+ inside the gates</li>
+        </ul>
       </div>
-      <div class="infra reveal" data-delay="1">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
-        <h3>Utilities already run through it</h3>
-        <p>Gas, power, telecom and water mains already run through the parcel, with no speculative extension to fund. Capacity and connection sizing confirm at design.</p>
-        <span class="status">Mains run through the lot</span>
+      <div class="cap reveal" data-delay="1">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7H17Z"/><path d="M12 22v-3"/></svg>
+        </div>
+        <span class="idx">Gated golf community</span>
+        <h3>Chaparral Pines</h3>
+        <p>A private, gated community built around an 18-hole, par-72 course designed by former U.S. Open and PGA champion David Graham with Scottsdale architect Gary Panks. Its 27,000-square-foot clubhouse carries rough-hewn timber beams, stone fireplaces and sweeping patios.</p>
+        <figure class="tile-video">
+          <video class="tile-vid" muted loop playsinline preload="none"
+                 poster="assets/chaparral-pines-poster.jpg"
+                 aria-label="Short looping clip of the course and clubhouse at The Golf Club at Chaparral Pines. Footage courtesy of Arcis Golf.">
+            <source src="assets/chaparral-pines-loop.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <ul class="specs">
+          <li><span>Golf</span>18 holes, par 72 &middot; Graham &amp; Panks<span class="src" tabindex="0" role="note" aria-label="Arcis Golf club listing" title="Arcis Golf, The Golf Club at Chaparral Pines">i</span></li>
+          <li><span>Clubhouse</span>27,000 SF, mountain-lodge character</li>
+          <li><span>Amenities</span>Dining, wellness, racquet sports, aquatics</li>
+          <li><span>Setting</span>Ponderosa pine, Mogollon Rim country</li>
+        </ul>
       </div>
-      <div class="infra reveal" data-delay="2">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-        <h3>Close to everything that matters</h3>
-        <p>Immediately adjacent to Payson Municipal Airport (KPAN), and roughly 75 minutes from metropolitan Phoenix&rsquo;s talent, suppliers and Sky Harbor connections.</p>
-        <span class="status">Airport-adjacent &middot; ~75 min to Phoenix</span>
+      <div class="cap reveal" data-delay="2">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+        </div>
+        <span class="idx">Gated golf community</span>
+        <h3>The Rim Club</h3>
+        <p>555 gated acres just above 5,000 feet, wrapped around a Weiskopf-Morrish course, the pair&rsquo;s final collaboration, that threads ponderosa pine and granite outcroppings with Mogollon Rim views from tees and greens.</p>
+        <figure class="tile-video">
+          <video class="tile-vid" muted loop playsinline preload="none"
+                 poster="assets/rim-club-poster.jpg"
+                 aria-label="Short looping clip of The Rim Golf Club course and clubhouse. Footage courtesy of Arcis Golf.">
+            <source src="assets/rim-club-loop.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <ul class="specs">
+          <li><span>Golf</span>18 holes &middot; Weiskopf-Morrish<span class="src" tabindex="0" role="note" aria-label="The Rim Golf Club, Arcis Golf" title="The Rim Golf Club, Arcis Golf">i</span></li>
+          <li><span>Community</span>555 acres above 5,000 ft</li>
+          <li><span>Clubhouse</span>Renovated dining, bar, fire-pit patio</li>
+          <li><span>Wellness</span>Fitness center with saunas</li>
+        </ul>
       </div>
     </div>
+    <p class="access-note">Both clubs are operated by Arcis Golf, and a dual membership carries access to both properties: two courses, multiple dining venues, fitness centers, tennis and pickleball. For a campus recruiting nationally, that is a housing and lifestyle package a town this size does not normally offer.</p>
   </div>
 </section>
 
@@ -667,6 +746,7 @@ body::before{
       <p>This page presents an <strong>illustrative concept</strong> for a proposed aerospace campus. <strong>No site plan has been approved.</strong> All renderings, layouts, zones, phasing, areas and metrics are conceptual and provided for evaluation only.</p>
       <p>Parcel boundaries and acreage (APN 302-39-096J, 14.9 acres) are approximate and <strong>subject to survey and title verification</strong>. Utility capacity and connection details for power, water, wastewater, natural gas and telecommunications <strong>require verification</strong> with the respective providers.</p>
       <p>The parcel is <strong>eligible</strong> for a through-the-fence agreement with Payson Municipal Airport. Any airfield access requires Town of Payson and FAA coordination and approval.</p>
+      <p>Chaparral Pines and The Rim Club are <strong>independent private communities</strong> with no affiliation to, or involvement in, this project. They are described here solely to illustrate the local residential market. Club details are drawn from publicly available operator materials and are <strong>subject to change</strong>; membership, availability and pricing are matters between a prospective resident and the clubs. The club video clips are excerpts of promotional footage <strong>owned by Arcis Golf</strong>, reproduced here for illustration only. Housing figures are third-party market data as of July 2026 and are <strong>not a forecast</strong>.</p>
       <p>This material is <strong>independently prepared</strong> and does not constitute an endorsement, approval, or commitment by the Town of Payson, the Arizona Commerce Authority, Arizona Public Service (APS), or any utility or airport authority.</p>
     </div>
     <div class="foot-meta">
@@ -808,6 +888,24 @@ body::before{
     }
     setPos(50);
     range.addEventListener("input", function(){ setPos(range.value); });
+  }
+
+  /* ---- Club tile clips: load and play only while on screen ---- */
+  var tileVids = Array.prototype.slice.call(document.querySelectorAll(".tile-vid"));
+  if(tileVids.length && !reduce && "IntersectionObserver" in window){
+    var vo = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var v = en.target;
+        if(en.isIntersecting){
+          if(v.preload === "none"){ v.preload = "auto"; v.load(); }
+          var p = v.play();
+          if(p && p.catch) p.catch(function(){});
+        } else {
+          v.pause();
+        }
+      });
+    }, {threshold:.25});
+    tileVids.forEach(function(v){ vo.observe(v); });
   }
 
   /* ---- Hero background compare slider ---- */
