@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product &mdash; LAB/rinth</title>
+<meta name="description" content="LAB/rinth Studio — silencer concept, product detail.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/labconcept/assets/lab.css">
+</head>
+<body class="lab-page">
+<div class="lab">
+
+<header class="lab-header lab-header--sticky">
+  <nav class="lab-nav" aria-label="Primary">
+    <a href="/labconcept/product" aria-current="page">Product</a>
+    <a href="/labconcept/studio">Studio</a>
+    <a href="#where">Where to Buy</a>
+  </nav>
+  <a class="lab-wordmark" href="/labconcept">LAB/rinth</a>
+  <div class="lab-icons">
+    <!-- TODO: no search page yet — plain anchor. -->
+    <a href="#search" aria-label="Search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16" y1="16" x2="21" y2="21"></line></svg></a>
+    <!-- TODO: no account page yet — plain anchor. -->
+    <a href="#account" aria-label="Account"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></a>
+    <!-- TODO: no bag/cart page yet — plain anchor. -->
+    <a href="#bag" aria-label="Bag, 0 items"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="7" width="14" height="14" rx="1"></rect><path d="M9 7V5a3 3 0 0 1 6 0v2"></path></svg></a>
+  </div>
+</header>
+
+<div class="lab-pdp" id="pdp" data-view="use">
+  <div class="lab-pdp__media">
+
+    <div class="lab-pdp__hero">
+      <!-- IN USE variant. IMAGE SLOT — set one src here:
+           <div class="lab-shot__img"><img src="…" alt=""></div> -->
+      <div class="lab-pdp__use">
+        <div class="lab-shot__img"></div>
+        <span class="lab-pdp__label">PHOTO &mdash; HERO</span>
+        Competitor at a covered firing line, ear pro on, rifle shouldered, silencer in sharp focus.
+      </div>
+
+      <!-- PRODUCT variant. IMAGE SLOT — set one src here to replace the drawing. -->
+      <div class="lab-pdp__product">
+        <div class="lab-shot__img"></div>
+        <svg viewBox="0 0 480 200" width="72%" role="img" aria-label="Silencer, side view">
+          <rect x="40" y="70" width="400" height="60" rx="8" fill="#141413"></rect>
+          <rect x="40" y="70" width="400" height="10" rx="5" fill="#2C2C2A"></rect>
+          <line x1="110" y1="70" x2="110" y2="130" stroke="#3A3A37" stroke-width="2"></line>
+          <line x1="370" y1="70" x2="370" y2="130" stroke="#3A3A37" stroke-width="2"></line>
+          <rect x="22" y="80" width="22" height="40" rx="4" fill="#2A2A28"></rect>
+          <text x="240" y="106" text-anchor="middle" font-size="11" letter-spacing="3" fill="#6A6A64">LAB/RINTH</text>
+        </svg>
+      </div>
+
+      <div class="lab-toggle lab-pdp__toggle" role="group" aria-label="Image view">
+        <button type="button" data-view-set="use" aria-pressed="true">In Use</button>
+        <button type="button" data-view-set="product" aria-pressed="false">Product</button>
+      </div>
+    </div>
+
+    <!-- Field shots (In Use). IMAGE SLOT per tile. -->
+    <div class="lab-pdp__shot lab-pdp__shot--use"><div class="lab-shot__img"></div><span>In use 02</span><span class="lab-pdp__brief">Officer loading a mag at the tailgate, rifle on the hood.</span></div>
+    <div class="lab-pdp__shot lab-pdp__shot--use"><div class="lab-shot__img"></div><span>In use 03</span><span class="lab-pdp__brief">Close crop: gloved hand threading the silencer onto a muzzle device.</span></div>
+    <div class="lab-pdp__shot lab-pdp__shot--use"><div class="lab-shot__img"></div><span>In use 04</span><span class="lab-pdp__brief">Service member at a tree line, carbine at low ready.</span></div>
+    <div class="lab-pdp__shot lab-pdp__shot--use"><div class="lab-shot__img"></div><span>In use 05</span><span class="lab-pdp__brief">Range bag, brass, and the suppressor cooling on a bench.</span></div>
+
+    <!-- Studio shots (Product). IMAGE SLOT per tile. -->
+    <div class="lab-pdp__shot lab-pdp__shot--product"><div class="lab-shot__img"></div><span>Studio &mdash; 3/4</span><span class="lab-pdp__brief"></span></div>
+    <div class="lab-pdp__shot lab-pdp__shot--product"><div class="lab-shot__img"></div><span>Studio &mdash; muzzle end</span><span class="lab-pdp__brief"></span></div>
+    <div class="lab-pdp__shot lab-pdp__shot--product"><div class="lab-shot__img"></div><span>Studio &mdash; mount end</span><span class="lab-pdp__brief"></span></div>
+    <div class="lab-pdp__shot lab-pdp__shot--product"><div class="lab-shot__img"></div><span>Studio &mdash; in hand</span><span class="lab-pdp__brief">Scale reference.</span></div>
+  </div>
+
+  <aside class="lab-pdp__info">
+    <div class="lab-pdp__id">
+      <span class="lab-eyebrow">[CALIBER]</span>
+      <h1 class="lab-pdp__name">[MODEL NAME]</h1>
+      <span class="lab-pdp__price">[YOUR PRICE]</span>
+    </div>
+    <p class="lab-pdp__desc">[Product description in your own words.]</p>
+
+    <div class="lab-finish">
+      <span class="lab-eyebrow">FINISH</span>
+      <div class="lab-finish__row" id="finishes">
+        <button class="lab-finish__sw" type="button" data-finish="Graphite Cerakote" style="background:#141413" aria-pressed="true" aria-label="Graphite Cerakote"></button>
+        <button class="lab-finish__sw" type="button" data-finish="Flat Dark Earth" style="background:#8B7A5E" aria-pressed="false" aria-label="Flat Dark Earth"></button>
+        <button class="lab-finish__sw" type="button" data-finish="Olive Drab" style="background:#4E5340" aria-pressed="false" aria-label="Olive Drab"></button>
+      </div>
+      <span class="lab-finish__name" id="finishName" aria-live="polite">Graphite Cerakote</span>
+    </div>
+
+    <div class="lab-specs">
+      <div class="lab-specs__row"><span class="lab-specs__k">CALIBER</span><span>[SPEC]</span></div>
+      <div class="lab-specs__row"><span class="lab-specs__k">LENGTH</span><span>[SPEC]</span></div>
+      <div class="lab-specs__row"><span class="lab-specs__k">WEIGHT</span><span>[SPEC]</span></div>
+      <div class="lab-specs__row"><span class="lab-specs__k">MOUNT</span><span>[SPEC]</span></div>
+      <div class="lab-specs__row"><span class="lab-specs__k">MATERIAL</span><span>[SPEC]</span></div>
+    </div>
+
+    <a class="lab-btn lab-btn--solid lab-btn--lg" href="#where">Find a Dealer</a>
+    <!-- TODO: no NFA explainer page yet — plain anchor. -->
+    <a class="lab-nfa-link" href="#nfa">How NFA purchase works &rarr;</a>
+  </aside>
+</div>
+
+<footer class="lab-footer" id="where">
+  <div class="lab-footer__cols">
+    <div class="lab-footer__col">
+      <span>Shop</span>
+      <a href="/labconcept/product">Product</a>
+      <a href="#where">Where to Buy</a>
+      <!-- TODO: no NFA explainer page yet — plain anchor. -->
+      <a href="#nfa">How NFA Purchase Works</a>
+    </div>
+    <div class="lab-footer__col">
+      <span>Support</span>
+      <!-- TODO: no warranty page yet — plain anchor. -->
+      <a href="#warranty">Warranty</a>
+      <!-- TODO: no contact page yet — plain anchor. -->
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="lab-footer__col">
+      <span>Trade</span>
+      <a href="/labconcept/dealers">Dealer Portal</a>
+      <!-- TODO: no dealer application page yet — plain anchor. -->
+      <a href="#apply">Become a Dealer</a>
+      <!-- TODO: no agency sales page yet — plain anchor. -->
+      <a href="#le">Agency Sales</a>
+    </div>
+    <!-- TODO: newsletter is UI only — no endpoint wired up. -->
+    <form class="lab-footer__nl" onsubmit="return false">
+      <label for="nl">Newsletter</label>
+      <div class="lab-footer__field">
+        <input id="nl" type="email" placeholder="Email address" autocomplete="email">
+        <button type="submit" aria-label="Subscribe">&rarr;</button>
+      </div>
+    </form>
+  </div>
+  <div class="lab-footer__base">
+    <span class="lab-footer__mark">LAB/rinth</span>
+    <p class="lab-footer__nfa" id="nfa">Suppressors are regulated under the National Firearms Act. Sold only through licensed dealers to eligible buyers where legal. Check state and local law before purchase. &copy; LAB/rinth Studio.</p>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* In Use / Product toggle on the main image — default In Use. */
+  var pdp = document.getElementById('pdp');
+  var viewBtns = pdp.querySelectorAll('[data-view-set]');
+  Array.prototype.forEach.call(viewBtns, function (btn) {
+    btn.addEventListener('click', function () {
+      pdp.setAttribute('data-view', btn.getAttribute('data-view-set'));
+      Array.prototype.forEach.call(viewBtns, function (b) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+    });
+  });
+
+  /* Finish swatches update the finish name. */
+  var swatches = document.getElementById('finishes').querySelectorAll('[data-finish]');
+  var name = document.getElementById('finishName');
+  Array.prototype.forEach.call(swatches, function (sw) {
+    sw.addEventListener('click', function () {
+      name.textContent = sw.getAttribute('data-finish');
+      Array.prototype.forEach.call(swatches, function (s) {
+        s.setAttribute('aria-pressed', String(s === sw));
+      });
+    });
+  });
+}());
+</script>
+</body>
+</html>

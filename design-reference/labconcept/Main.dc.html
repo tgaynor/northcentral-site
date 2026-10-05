@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LAB/rinth Studio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#111111;text-decoration:none}a:hover{color:#555555}
+button{font:inherit;cursor:pointer}
+</style>
+</helmet>
+<div style="font-family: 'Hanken Grotesk', sans-serif; color: #111111; background: #FFFFFF; min-height: 100vh">
+
+<section aria-label="Campaign" style="position: relative; min-height: 760px; height: 92vh; background: #161616; color: #FFFFFF; display: flex; flex-direction: column">
+<header style="display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px; padding: 28px clamp(16px, 4vw, 64px)">
+<nav aria-label="Primary" style="display: flex; flex-wrap: wrap; gap: 8px 32px; font-size: 16px">
+<a href="Product.dc.html" style="color: #FFFFFF">Product</a>
+<a href="Studio.dc.html" style="color: #FFFFFF">Studio</a>
+<a href="#where" style="color: #FFFFFF">Where to Buy</a>
+</nav>
+<a href="Main.dc.html" style="color: #FFFFFF; font-weight: 700; font-size: clamp(24px, 3vw, 40px); letter-spacing: 0.01em">LAB/rinth</a>
+<div style="justify-self: end; display: flex; align-items: center; gap: 24px">
+<a href="#search" aria-label="Search" style="color: #FFFFFF; display: flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"></circle><line x1="16" y1="16" x2="21" y2="21"></line></svg></a>
+<a href="#account" aria-label="Account" style="color: #FFFFFF; display: flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></a>
+<a href="#bag" aria-label="Bag, 0 items" style="color: #FFFFFF; display: flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="7" width="14" height="14" rx="1"></rect><path d="M9 7V5a3 3 0 0 1 6 0v2"></path></svg></a>
+</div>
+</header>
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 28px; padding: 0 16px 48px; text-align: center">
+<p style="margin: 0 0 auto; padding-top: 40px; max-width: 520px; font-size: 13px; line-height: 1.5; color: #9A9A9A">[Campaign film or photo, full-bleed — e.g. close crop of an officer at night, rifle shouldered, the silencer catching light.]</p>
+<div style="font-weight: 600; font-size: clamp(28px, 3vw, 40px); letter-spacing: 0.01em">[MODEL NAME]</div>
+<a href="Product.dc.html" style="color: #FFFFFF; border: 1px solid #FFFFFF; border-radius: 999px; padding: 14px 32px; font-size: 15px">View Silencer</a>
+<div style="display: flex; gap: 10px; width: min(720px, 90%); margin-top: 48px" aria-hidden="true">
+<span style="flex: 1; height: 2px; background: #FFFFFF; opacity: 0.9"></span>
+<span style="flex: 1; height: 2px; background: #FFFFFF; opacity: 0.3"></span>
+<span style="flex: 1; height: 2px; background: #FFFFFF; opacity: 0.3"></span>
+<span style="flex: 1; height: 2px; background: #FFFFFF; opacity: 0.3"></span>
+</div>
+</div>
+</section>
+
+<section id="shop" aria-label="[MODEL NAME] gallery" style="background: #F3F4F6; padding: clamp(56px, 7vw, 96px) clamp(16px, 4vw, 64px)">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 40px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-weight: 400; font-size: 26px; text-transform: uppercase">Latest: [MODEL NAME]</h2>
+<a href="Product.dc.html" style="font-size: 15px; text-transform: uppercase; text-decoration: underline; text-underline-offset: 4px; align-self: flex-start">More</a>
+</div>
+<div role="group" aria-label="Image view" style="display: flex; gap: 6px; background: #FFFFFF; border-radius: 999px; padding: 4px">
+<button type="button" onClick="{{setModel}}" aria-pressed="{{isModel}}" style="min-height: 40px; padding: 0 20px; border: none; border-radius: 999px; font-size: 14px; background: {{modelBg}}; color: {{modelFg}}">In Use</button>
+<button type="button" onClick="{{setProduct}}" aria-pressed="{{isProduct}}" style="min-height: 40px; padding: 0 20px; border: none; border-radius: 999px; font-size: 14px; background: {{productBg}}; color: {{productFg}}">Product</button>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px 16px">
+<sc-for list="{{cards}}" as="item" hint-placeholder-count="8">
+<a href="Product.dc.html" style="display: flex; flex-direction: column; gap: 14px; color: #111111">
+<sc-if value="{{isModel}}" hint-placeholder-val="{{ true }}">
+<div style="aspect-ratio: 4 / 5; background: #222222; display: flex; align-items: flex-end; padding: 20px; box-sizing: border-box">
+<span style="font-size: 13px; line-height: 1.45; color: #B5B5B5">{{item.brief}}</span>
+</div>
+</sc-if>
+<sc-if value="{{isProduct}}" hint-placeholder-val="{{ false }}">
+<div style="aspect-ratio: 4 / 5; background: #E9EAEC; display: flex; align-items: center; justify-content: center">
+<svg viewBox="0 0 240 240" width="72%" aria-hidden="true" style="transform: rotate({{item.rot}}deg)">
+<rect x="30" y="98" width="180" height="44" rx="6" fill="#1A1A1A"></rect>
+<rect x="30" y="98" width="180" height="8" rx="4" fill="#333333"></rect>
+</svg>
+</div>
+</sc-if>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 14px">
+<span>[MODEL NAME]</span>
+<span style="color: #6B6B6B">{{item.tag}}</span>
+</div>
+</a>
+</sc-for>
+</div>
+</section>
+
+<section id="about" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: clamp(80px, 10vw, 140px) 16px">
+<h2 style="margin: 0; font-weight: 400; font-size: 26px; text-transform: uppercase">[Section headline]</h2>
+<p style="margin: 0; max-width: 560px; font-size: 16px; line-height: 1.6; color: #444444">[Two or three sentences about LAB/rinth in your own words.]</p>
+<a href="Studio.dc.html" style="border: 1px solid #111111; border-radius: 999px; padding: 14px 32px; font-size: 15px">Visit the Studio</a>
+</section>
+
+<footer id="where" style="background: #F3F4F6; padding: 64px clamp(16px, 4vw, 64px) 40px; display: flex; flex-direction: column; gap: 56px; font-size: 14px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; line-height: 2">
+<div style="display: flex; flex-direction: column"><span style="font-weight: 600">Shop</span><a href="Product.dc.html">Product</a><a href="#where">Where to Buy</a><a href="#nfa">How NFA Purchase Works</a></div>
+<div style="display: flex; flex-direction: column"><span style="font-weight: 600">Support</span><a href="#warranty">Warranty</a><a href="#contact">Contact</a></div>
+<div style="display: flex; flex-direction: column"><span style="font-weight: 600">Trade</span><a href="DealerLogin.dc.html">Dealer Portal</a><a href="#apply">Become a Dealer</a><a href="#le">Agency Sales</a></div>
+<form style="display: flex; flex-direction: column; gap: 8px">
+<label for="nl" style="font-weight: 600">Newsletter</label>
+<div style="display: flex; border-bottom: 1px solid #111111"><input id="nl" type="email" placeholder="Email address" style="flex: 1; min-width: 0; min-height: 44px; background: none; border: none; font: inherit"><button type="submit" aria-label="Subscribe" style="background: none; border: none; min-height: 44px">→</button></div>
+</form>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; color: #6B6B6B; font-size: 12px; line-height: 1.6">
+<span style="font-weight: 700; font-size: 18px; color: #111111">LAB/rinth</span>
+<p id="nfa" style="margin: 0; max-width: 680px">Suppressors are regulated under the National Firearms Act. Sold only through licensed dealers to eligible buyers where legal. Check state and local law before purchase. © LAB/rinth Studio.</p>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3200}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { view: 'model' }; }
+  renderVals() {
+    const cards = [
+      { tag: 'Duty', rot: 0, brief: 'Patrol officer at dusk beside a cruiser, carbine slung, silencer catching the light bar.' },
+      { tag: 'Competition', rot: -18, brief: 'Competitor in ear pro, prone on a mat, rifle on bipod. Calm, mid-exhale.' },
+      { tag: 'Field', rot: -90, brief: 'Soldier in plain fatigues kneeling at a tree line, short carbine at low ready.' },
+      { tag: 'Training', rot: 0, brief: 'Two officers reloading on a flat range, coffee on the barricade.' },
+      { tag: 'Competition', rot: 12, brief: 'Shooter braced on a barricade, steel targets soft behind, desert light.' },
+      { tag: 'Night', rot: 0, brief: 'Night profile, NVG mount up, silencer silhouette against the sky.' },
+      { tag: 'Range', rot: 18, brief: 'Range officer in cap and sunglasses, rifle on the table, mid-explanation.' },
+      { tag: 'Duty', rot: 180, brief: 'Carbine in a patrol vehicle rack, door open, officer half in frame.' }
+    ];
+    const isModel = this.state.view === 'model';
+    return {
+      cards, isModel, isProduct: !isModel,
+      setModel: () => this.setState({ view: 'model' }),
+      setProduct: () => this.setState({ view: 'product' }),
+      modelBg: isModel ? '#111111' : 'transparent',
+      modelFg: isModel ? '#FFFFFF' : '#111111',
+      productBg: isModel ? 'transparent' : '#111111',
+      productFg: isModel ? '#111111' : '#FFFFFF'
+    };
+  }
+}
+</script>
+</body>
+</html>

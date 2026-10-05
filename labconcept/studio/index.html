@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio &mdash; LAB/rinth</title>
+<meta name="description" content="LAB/rinth Studio — test data and measurement figures.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/labconcept/assets/lab.css">
+</head>
+<body class="lab-page">
+<div class="lab lab-studio">
+
+<header class="lab-header lab-header--sticky">
+  <nav class="lab-nav" aria-label="Primary">
+    <a href="/labconcept/product">Product</a>
+    <a href="/labconcept/studio" aria-current="page">Studio</a>
+    <a href="#where">Where to Buy</a>
+  </nav>
+  <a class="lab-wordmark" href="/labconcept">LAB/rinth</a>
+  <div class="lab-icons">
+    <!-- TODO: no search page yet — plain anchor. -->
+    <a href="#search" aria-label="Search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16" y1="16" x2="21" y2="21"></line></svg></a>
+    <!-- TODO: no account page yet — plain anchor. -->
+    <a href="#account" aria-label="Account"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></a>
+    <!-- TODO: no bag/cart page yet — plain anchor. -->
+    <a href="#bag" aria-label="Bag, 0 items"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="7" width="14" height="14" rx="1"></rect><path d="M9 7V5a3 3 0 0 1 6 0v2"></path></svg></a>
+  </div>
+</header>
+
+<section class="lab-trace" aria-label="Pressure trace">
+  <div class="lab-trace__head">
+    <h1 class="lab-h2">Studio</h1>
+    <span class="lab-note">Plotted values are placeholders until test results are added.</span>
+  </div>
+  <svg viewBox="0 0 1360 380" width="100%" role="img" aria-label="Acoustic pressure over time for one shot, with and without the silencer. The suppressed trace peaks far lower and settles sooner.">
+    <g stroke="#E6E6E6" stroke-width="1"><line x1="70" y1="40" x2="1340" y2="40"></line><line x1="70" y1="120" x2="1340" y2="120"></line><line x1="70" y1="280" x2="1340" y2="280"></line><line x1="70" y1="340" x2="1340" y2="340"></line></g>
+    <line x1="70" y1="200" x2="1340" y2="200" stroke="#111111" stroke-width="0.75"></line>
+    <line x1="70" y1="20" x2="70" y2="360" stroke="#111111" stroke-width="0.75"></line>
+    <g stroke="#111111" stroke-width="0.75"><line x1="64" y1="40" x2="70" y2="40"></line><line x1="64" y1="120" x2="70" y2="120"></line><line x1="64" y1="200" x2="70" y2="200"></line><line x1="64" y1="280" x2="70" y2="280"></line><line x1="64" y1="340" x2="70" y2="340"></line>
+      <line x1="324" y1="360" x2="324" y2="366"></line><line x1="578" y1="360" x2="578" y2="366"></line><line x1="832" y1="360" x2="832" y2="366"></line><line x1="1086" y1="360" x2="1086" y2="366"></line><line x1="1340" y1="360" x2="1340" y2="366"></line></g>
+    <polyline id="traceA" points="" fill="none" stroke="#A3A3A3" stroke-width="1"></polyline>
+    <polyline id="traceB" points="" fill="none" stroke="#111111" stroke-width="1.5"></polyline>
+    <g font-size="12" fill="#6B6B6B">
+      <text x="56" y="44" text-anchor="end">2</text><text x="56" y="124" text-anchor="end">1</text><text x="56" y="204" text-anchor="end">0</text><text x="56" y="284" text-anchor="end">&minus;1</text>
+      <text x="70" y="380">0</text><text x="324" y="380" text-anchor="middle">1</text><text x="578" y="380" text-anchor="middle">2</text><text x="832" y="380" text-anchor="middle">3</text><text x="1086" y="380" text-anchor="middle">4</text><text x="1340" y="380" text-anchor="end">5 ms</text>
+      <text x="80" y="30">Pressure (kPa)</text>
+      <text x="1330" y="60" text-anchor="end" fill="#8C8C8C">Unsuppressed</text>
+      <text x="1330" y="80" text-anchor="end" fill="#111111">[MODEL NAME]</text>
+    </g>
+  </svg>
+  <p class="lab-figcap lab-trace__cap"><strong>Figure 1.</strong> Acoustic pressure at the shooter's ear for a single shot. [Microphone, rifle, barrel length, ammunition.]</p>
+</section>
+
+<section class="lab-summary" aria-label="Summary">
+  <div class="lab-stat"><span class="lab-stat__v">&mdash; <span class="lab-stat__u">dB</span></span><span class="lab-stat__l">Peak level at the shooter's ear</span></div>
+  <div class="lab-stat"><span class="lab-stat__v">&mdash; <span class="lab-stat__u">dB</span></span><span class="lab-stat__l">Peak level, 1 m left of muzzle</span></div>
+  <div class="lab-stat"><span class="lab-stat__v">&mdash; <span class="lab-stat__u">MOA</span></span><span class="lab-stat__l">Mean point-of-impact shift at 100 yd</span></div>
+  <div class="lab-stat"><span class="lab-stat__v">&mdash;</span><span class="lab-stat__l">Rounds logged on the test unit</span></div>
+</section>
+
+<section class="lab-figures" aria-label="Figures">
+
+  <figure class="lab-fig">
+    <svg viewBox="0 0 600 240" width="100%" role="img" aria-label="Dot plot of mean peak level with and without the silencer at three microphone positions, with error bars">
+      <g stroke="#E6E6E6"><line x1="190" y1="20" x2="190" y2="200"></line><line x1="320" y1="20" x2="320" y2="200"></line><line x1="450" y1="20" x2="450" y2="200"></line><line x1="580" y1="20" x2="580" y2="200"></line></g>
+      <g stroke="#E6E6E6" stroke-dasharray="1 3"><line x1="190" y1="60" x2="580" y2="60"></line><line x1="190" y1="110" x2="580" y2="110"></line><line x1="190" y1="160" x2="580" y2="160"></line></g>
+      <line x1="190" y1="200" x2="580" y2="200" stroke="#111111" stroke-width="0.75"></line>
+      <g stroke="#111111" stroke-width="1"><line x1="402" y1="60" x2="550" y2="60"></line><line x1="372" y1="110" x2="528" y2="110"></line><line x1="342" y1="160" x2="502" y2="160"></line></g>
+      <circle cx="550" cy="60" r="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.5"></circle><circle cx="402" cy="60" r="6" fill="#111111"></circle>
+      <circle cx="528" cy="110" r="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.5"></circle><circle cx="372" cy="110" r="6" fill="#111111"></circle>
+      <circle cx="502" cy="160" r="6" fill="#FFFFFF" stroke="#111111" stroke-width="1.5"></circle><circle cx="342" cy="160" r="6" fill="#111111"></circle>
+      <g font-size="13" fill="#111111"><text x="176" y="64" text-anchor="end">1 m left of muzzle</text><text x="176" y="114" text-anchor="end">Shooter's ear</text><text x="176" y="164" text-anchor="end">1 m behind shooter</text></g>
+      <g font-size="12" fill="#6B6B6B"><text x="190" y="220" text-anchor="middle">120</text><text x="320" y="220" text-anchor="middle">130</text><text x="450" y="220" text-anchor="middle">140</text><text x="580" y="220" text-anchor="middle">150</text><text x="385" y="238" text-anchor="middle">Peak SPL (dB)</text></g>
+    </svg>
+    <div class="lab-legend">
+      <span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="#FFFFFF" stroke="#111111" stroke-width="1.5"></circle></svg>Unsuppressed</span>
+      <span><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="#111111"></circle></svg>[MODEL NAME]</span>
+    </div>
+    <figcaption class="lab-figcap"><strong>Figure 2.</strong> Mean peak level by microphone position. [n] shots per condition.</figcaption>
+  </figure>
+
+  <figure class="lab-fig">
+    <svg viewBox="0 0 600 240" width="100%" role="img" aria-label="Line chart of sound level across frequency on a log scale, with and without the silencer">
+      <g stroke="#E6E6E6"><line x1="60" y1="40" x2="580" y2="40"></line><line x1="60" y1="93" x2="580" y2="93"></line><line x1="60" y1="147" x2="580" y2="147"></line></g>
+      <g stroke="#E6E6E6"><line x1="190" y1="20" x2="190" y2="200"></line><line x1="320" y1="20" x2="320" y2="200"></line><line x1="450" y1="20" x2="450" y2="200"></line></g>
+      <line x1="60" y1="200" x2="580" y2="200" stroke="#111111" stroke-width="0.75"></line><line x1="60" y1="20" x2="60" y2="200" stroke="#111111" stroke-width="0.75"></line>
+      <polyline id="specA" points="" fill="none" stroke="#A3A3A3" stroke-width="1.25"></polyline>
+      <polyline id="specB" points="" fill="none" stroke="#111111" stroke-width="1.75"></polyline>
+      <g font-size="12" fill="#6B6B6B"><text x="52" y="44" text-anchor="end">140</text><text x="52" y="97" text-anchor="end">120</text><text x="52" y="151" text-anchor="end">100</text><text x="52" y="204" text-anchor="end">80</text>
+        <text x="60" y="220" text-anchor="middle">31.5</text><text x="190" y="220" text-anchor="middle">125</text><text x="320" y="220" text-anchor="middle">500</text><text x="450" y="220" text-anchor="middle">2k</text><text x="580" y="220" text-anchor="middle">8k</text>
+        <text x="320" y="238" text-anchor="middle">Frequency (Hz)</text><text x="68" y="16">Level (dB)</text></g>
+    </svg>
+    <figcaption class="lab-figcap"><strong>Figure 3.</strong> 1/3-octave spectrum at the shooter's ear. Grey: unsuppressed. Black: [MODEL NAME].</figcaption>
+  </figure>
+
+  <figure class="lab-fig">
+    <svg viewBox="0 0 600 280" width="100%" role="img" aria-label="Group centers for unsuppressed and suppressed shooting at 100 yards, with 95 percent ellipses and the shift between their means">
+      <g stroke="#E6E6E6"><line x1="170" y1="20" x2="170" y2="260"></line><line x1="230" y1="20" x2="230" y2="260"></line><line x1="350" y1="20" x2="350" y2="260"></line><line x1="410" y1="20" x2="410" y2="260"></line><line x1="170" y1="80" x2="410" y2="80"></line><line x1="170" y1="200" x2="410" y2="200"></line></g>
+      <line x1="290" y1="20" x2="290" y2="260" stroke="#111111" stroke-width="0.75"></line><line x1="170" y1="140" x2="410" y2="140" stroke="#111111" stroke-width="0.75"></line>
+      <ellipse cx="290" cy="143" rx="30" ry="22" fill="none" stroke="#A3A3A3" stroke-dasharray="3 3"></ellipse>
+      <ellipse cx="322" cy="112" rx="28" ry="20" fill="none" stroke="#111111" stroke-dasharray="3 3"></ellipse>
+      <g fill="#FFFFFF" stroke="#8C8C8C" stroke-width="1.25"><circle cx="280" cy="138" r="4"></circle><circle cx="296" cy="132" r="4"></circle><circle cx="288" cy="152" r="4"></circle><circle cx="304" cy="146" r="4"></circle><circle cx="276" cy="150" r="4"></circle></g>
+      <g fill="#111111"><circle cx="314" cy="106" r="4"></circle><circle cx="330" cy="100" r="4"></circle><circle cx="322" cy="120" r="4"></circle><circle cx="338" cy="114" r="4"></circle><circle cx="308" cy="118" r="4"></circle></g>
+      <line x1="290" y1="143" x2="322" y2="112" stroke="#111111" stroke-width="1"></line>
+      <g font-size="12" fill="#6B6B6B"><text x="170" y="276" text-anchor="middle">&minus;2</text><text x="230" y="276" text-anchor="middle">&minus;1</text><text x="290" y="276" text-anchor="middle">0</text><text x="350" y="276" text-anchor="middle">1</text><text x="410" y="276" text-anchor="middle">2 MOA</text>
+        <text x="430" y="104" fill="#111111">&Delta; = [&mdash;] MOA</text><text x="430" y="122">Mean shift</text></g>
+    </svg>
+    <figcaption class="lab-figcap"><strong>Figure 4.</strong> Group centers at 100 yd with 95% ellipses. Open: unsuppressed. Filled: [MODEL NAME]. [Optic, rest, conditions.]</figcaption>
+  </figure>
+
+  <figure class="lab-fig">
+    <svg viewBox="0 0 600 240" width="100%" role="img" aria-label="Peak level for ten consecutive shots; the first shot is louder, then levels settle">
+      <g stroke="#E6E6E6"><line x1="60" y1="60" x2="580" y2="60"></line><line x1="60" y1="130" x2="580" y2="130"></line></g>
+      <line x1="60" y1="200" x2="580" y2="200" stroke="#111111" stroke-width="0.75"></line><line x1="60" y1="20" x2="60" y2="200" stroke="#111111" stroke-width="0.75"></line>
+      <line x1="60" y1="128" x2="580" y2="128" stroke="#8C8C8C" stroke-dasharray="4 4"></line>
+      <polyline id="popLine" points="" fill="none" stroke="#111111" stroke-width="1"></polyline>
+      <g fill="#111111"><circle cx="82" cy="48" r="4.5"></circle><circle cx="136" cy="118" r="4.5"></circle><circle cx="190" cy="127" r="4.5"></circle><circle cx="244" cy="124" r="4.5"></circle><circle cx="298" cy="131" r="4.5"></circle><circle cx="352" cy="127" r="4.5"></circle><circle cx="406" cy="134" r="4.5"></circle><circle cx="460" cy="124" r="4.5"></circle><circle cx="514" cy="130" r="4.5"></circle><circle cx="568" cy="127" r="4.5"></circle></g>
+      <g font-size="12" fill="#6B6B6B"><text x="52" y="64" text-anchor="end">140</text><text x="52" y="134" text-anchor="end">135</text><text x="52" y="204" text-anchor="end">130</text>
+        <text x="82" y="220" text-anchor="middle">1</text><text x="298" y="220" text-anchor="middle">5</text><text x="568" y="220" text-anchor="middle">10</text><text x="320" y="238" text-anchor="middle">Shot number</text><text x="68" y="16">Peak SPL (dB)</text><text x="576" y="122" text-anchor="end">Mean, shots 2&ndash;10</text></g>
+    </svg>
+    <figcaption class="lab-figcap"><strong>Figure 5.</strong> Ten-shot string from a cold, clean unit, showing first-round pop. [Interval between shots.]</figcaption>
+  </figure>
+
+  <figure class="lab-fig">
+    <svg viewBox="0 0 600 240" width="100%" role="img" aria-label="Outer surface temperature rising during a sustained string, then falling during cooldown">
+      <rect x="400" y="20" width="180" height="180" fill="#F5F5F5"></rect>
+      <g stroke="#E6E6E6"><line x1="60" y1="65" x2="580" y2="65"></line><line x1="60" y1="110" x2="580" y2="110"></line><line x1="60" y1="155" x2="580" y2="155"></line></g>
+      <line x1="60" y1="200" x2="580" y2="200" stroke="#111111" stroke-width="0.75"></line><line x1="60" y1="20" x2="60" y2="200" stroke="#111111" stroke-width="0.75"></line>
+      <polyline id="heat" points="" fill="none" stroke="#111111" stroke-width="1.75"></polyline>
+      <g font-size="12" fill="#6B6B6B"><text x="52" y="69" text-anchor="end">300</text><text x="52" y="114" text-anchor="end">200</text><text x="52" y="159" text-anchor="end">100</text><text x="52" y="204" text-anchor="end">0</text>
+        <text x="60" y="220" text-anchor="middle">0</text><text x="400" y="220" text-anchor="middle">[n] rounds</text><text x="580" y="220" text-anchor="end">+[t] min</text><text x="68" y="16">Temperature (&deg;C)</text><text x="490" y="40" text-anchor="middle">Cooldown</text></g>
+    </svg>
+    <figcaption class="lab-figcap"><strong>Figure 6.</strong> Outer surface temperature during a sustained string, thermocouple at [location].</figcaption>
+  </figure>
+
+  <figure class="lab-fig">
+    <svg viewBox="0 0 600 240" width="100%" role="img" aria-label="Technical drawing of the silencer's outline with length and diameter dimensions">
+      <rect x="90" y="96" width="420" height="64" rx="6" fill="none" stroke="#111111" stroke-width="1.25"></rect>
+      <rect x="66" y="108" width="26" height="40" rx="3" fill="none" stroke="#111111" stroke-width="1"></rect>
+      <line x1="50" y1="128" x2="540" y2="128" stroke="#A3A3A3" stroke-width="0.75" stroke-dasharray="14 4 2 4"></line>
+      <g stroke="#111111" stroke-width="0.75"><line x1="66" y1="66" x2="510" y2="66"></line><line x1="66" y1="58" x2="66" y2="92"></line><line x1="510" y1="58" x2="510" y2="92"></line><line x1="548" y1="96" x2="548" y2="160"></line><line x1="516" y1="96" x2="556" y2="96"></line><line x1="516" y1="160" x2="556" y2="160"></line></g>
+      <g fill="#111111"><path d="M66 66 l8 -3 v6 z"></path><path d="M510 66 l-8 -3 v6 z"></path><path d="M548 96 l-3 8 h6 z"></path><path d="M548 160 l-3 -8 h6 z"></path></g>
+      <g font-size="13" fill="#111111"><rect x="250" y="56" width="76" height="20" fill="#FFFFFF"></rect><text x="288" y="70" text-anchor="middle">[length]</text><text x="562" y="132">&Oslash; [dia.]</text></g>
+      <g font-size="12" fill="#6B6B6B"><text x="90" y="196">Mount: [type]</text><text x="510" y="196" text-anchor="end">Mass: [g]</text></g>
+    </svg>
+    <figcaption class="lab-figcap"><strong>Figure 7.</strong> Test unit, external dimensions. Not to scale.</figcaption>
+  </figure>
+</section>
+
+<section class="lab-methods" aria-label="Methods">
+  <div class="lab-methods__intro">
+    <h2 class="lab-h2">Methods</h2>
+    <p>[How and where LAB/rinth tests, in your own words.]</p>
+    <!-- TODO: no report file yet — plain anchor. -->
+    <a class="lab-btn lab-btn--outline" href="#download">Download Full Report</a>
+  </div>
+  <dl class="lab-dl">
+    <dt>Standard</dt><dd>[e.g. MIL-STD-1474E]</dd>
+    <dt>Microphone</dt><dd>[Make / model]</dd>
+    <dt>Host rifle</dt><dd>[Platform, barrel length]</dd>
+    <dt>Ammunition</dt><dd>[Load]</dd>
+    <dt>Ambient</dt><dd>[Temperature, humidity, elevation]</dd>
+  </dl>
+</section>
+
+<footer class="lab-footer" id="where">
+  <div class="lab-footer__cols">
+    <div class="lab-footer__col">
+      <span>Shop</span>
+      <a href="/labconcept/product">Product</a>
+      <a href="#where">Where to Buy</a>
+      <!-- TODO: no NFA explainer page yet — plain anchor. -->
+      <a href="#nfa">How NFA Purchase Works</a>
+    </div>
+    <div class="lab-footer__col">
+      <span>Support</span>
+      <!-- TODO: no warranty page yet — plain anchor. -->
+      <a href="#warranty">Warranty</a>
+      <!-- TODO: no contact page yet — plain anchor. -->
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="lab-footer__col">
+      <span>Trade</span>
+      <a href="/labconcept/dealers">Dealer Portal</a>
+      <!-- TODO: no dealer application page yet — plain anchor. -->
+      <a href="#apply">Become a Dealer</a>
+      <!-- TODO: no agency sales page yet — plain anchor. -->
+      <a href="#le">Agency Sales</a>
+    </div>
+    <!-- TODO: newsletter is UI only — no endpoint wired up. -->
+    <form class="lab-footer__nl" onsubmit="return false">
+      <label for="nl">Newsletter</label>
+      <div class="lab-footer__field">
+        <input id="nl" type="email" placeholder="Email address" autocomplete="email">
+        <button type="submit" aria-label="Subscribe">&rarr;</button>
+      </div>
+    </form>
+  </div>
+  <div class="lab-footer__base">
+    <span class="lab-footer__mark">LAB/rinth</span>
+    <p class="lab-footer__nfa" id="nfa">Suppressors are regulated under the National Firearms Act. Sold only through licensed dealers to eligible buyers where legal. Check state and local law before purchase. &copy; LAB/rinth Studio.</p>
+  </div>
+</footer>
+
+</div>
+
+<script src="/labconcept/assets/studio-data.js"></script>
+<script>
+/* Point the computed curves at their polylines. Swap real measurements into
+   LAB_DATA in /labconcept/assets/studio-data.js — nothing here changes. */
+(function () {
+  'use strict';
+  Object.keys(window.LAB_CURVES).forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.setAttribute('points', window.LAB_CURVES[id]); }
+  });
+}());
+</script>
+</body>
+</html>

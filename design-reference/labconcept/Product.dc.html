@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Silencer — LAB/rinth</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#111111;text-decoration:none}a:hover{color:#555555}
+button{font:inherit;cursor:pointer}
+</style>
+</helmet>
+<div style="font-family: 'Hanken Grotesk', sans-serif; color: #111111; background: #FFFFFF; min-height: 100vh">
+
+<header style="position: sticky; top: 0; z-index: 10; background: #FFFFFF; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px; padding: 24px clamp(16px, 4vw, 64px); font-family: 'Hanken Grotesk', sans-serif">
+<nav aria-label="Primary" style="display: flex; flex-wrap: wrap; gap: 8px 32px; font-size: 16px">
+<a href="Product.dc.html">Product</a>
+<a href="Studio.dc.html">Studio</a>
+<a href="Main.dc.html#where">Where to Buy</a>
+</nav>
+<a href="Main.dc.html" style="font-weight: 700; font-size: clamp(24px, 3vw, 40px); letter-spacing: 0.01em">LAB/rinth</a>
+<div style="justify-self: end; display: flex; align-items: center; gap: 24px">
+<a href="#search" aria-label="Search" style="display: flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"></circle><line x1="16" y1="16" x2="21" y2="21"></line></svg></a>
+<a href="#account" aria-label="Account" style="display: flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></a>
+<a href="#bag" aria-label="Bag, 0 items" style="display: flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="7" width="14" height="14" rx="1"></rect><path d="M9 7V5a3 3 0 0 1 6 0v2"></path></svg></a>
+</div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; ">
+<div style="flex: 999 1 640px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 8px">
+<div style="grid-column: 1 / -1; aspect-ratio: 16 / 10; background: #F3F4F6; display: flex; align-items: center; justify-content: center; position: relative">
+<sc-if value="{{isModel}}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; inset: 0; background: #222222; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; color: #E6E6E0; font-size: 18px; line-height: 1.45">
+<span style="font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.1em; color: #BDBDB6; margin-bottom: 12px">PHOTO — HERO</span>
+Competitor at a covered firing line, ear pro on, rifle shouldered, silencer in sharp focus.
+</div>
+</sc-if>
+<sc-if value="{{isProduct}}" hint-placeholder-val="{{ false }}">
+<svg viewBox="0 0 480 200" width="72%" aria-label="Silencer, side view" role="img">
+<rect x="40" y="70" width="400" height="60" rx="8" fill="#141413"></rect>
+<rect x="40" y="70" width="400" height="10" rx="5" fill="#2C2C2A"></rect>
+<line x1="110" y1="70" x2="110" y2="130" stroke="#3A3A37" stroke-width="2"></line>
+<line x1="370" y1="70" x2="370" y2="130" stroke="#3A3A37" stroke-width="2"></line>
+<rect x="22" y="80" width="22" height="40" rx="4" fill="#2A2A28"></rect>
+<text x="240" y="106" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="11" letter-spacing="3" fill="#6A6A64">LAB/RINTH</text>
+</svg>
+</sc-if>
+<div role="group" aria-label="Image view" style="position: absolute; top: 20px; left: 20px; display: flex; gap: 6px; padding: 4px; border-radius: 999px; background: #FFFFFF; font-size: 14px">
+<button type="button" onClick="{{setModel}}" aria-pressed="{{isModel}}" style="min-height: 40px; padding: 0 20px; border: none; border-radius: 999px; background: {{modelBg}}; color: {{modelFg}}">In Use</button>
+<button type="button" onClick="{{setProduct}}" aria-pressed="{{isProduct}}" style="min-height: 40px; padding: 0 20px; border: none; border-radius: 999px; background: {{productBg}}; color: {{productFg}}">Product</button>
+</div>
+</div>
+<sc-for list="{{shots}}" as="s" hint-placeholder-count="4">
+<div style="aspect-ratio: 1 / 1; background: {{s.bg}}; display: flex; flex-direction: column; justify-content: space-between; padding: 18px; box-sizing: border-box; color: {{s.fg}}; font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase">
+<span>{{s.label}}</span>
+<span style="font-family: 'Hanken Grotesk', sans-serif; text-transform: none; letter-spacing: 0; font-size: 14px; line-height: 1.45">{{s.brief}}</span>
+</div>
+</sc-for>
+</div>
+
+<aside style="flex: 1 1 380px; min-width: 0; padding: clamp(32px, 4vw, 56px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: 32px; align-self: flex-start; box-sizing: border-box">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.1em; color: #5A5A55">[CALIBER]</span>
+<h1 style="margin: 0; font-weight: 300; font-size: 64px; line-height: 0.9; letter-spacing: -0.04em">[MODEL NAME]</h1>
+<span style="font-size: 18px">[YOUR PRICE]</span>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3A3A36">[Product description in your own words.]</p>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.1em; color: #5A5A55">FINISH</span>
+<div style="display: flex; gap: 10px">
+<sc-for list="{{finishes}}" as="fin" hint-placeholder-count="3">
+<button type="button" onClick="{{fin.pick}}" aria-pressed="{{fin.on}}" aria-label="{{fin.name}}" style="width: 44px; height: 44px; border-radius: 50%; background: {{fin.hex}}; border: 1px solid #111111; outline: {{fin.ring}}; outline-offset: 3px"></button>
+</sc-for>
+</div>
+<span style="font-size: 13px">{{finishName}}</span>
+</div>
+<div style="display: flex; flex-direction: column; border-top: 1px solid #111111">
+<sc-for list="{{specs}}" as="sp" hint-placeholder-count="5">
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid #D4D4CF; font-size: 13px">
+<span style="font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.08em; color: #5A5A55">{{sp.k}}</span>
+<span>{{sp.v}}</span>
+</div>
+</sc-for>
+</div>
+<a href="#where" style="display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: #111111; color: #FFFFFF; font-size: 15px">Find a Dealer</a>
+<a href="#nfa" style="font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid #111111; padding-bottom: 4px; align-self: flex-start">How NFA purchase works →</a>
+</aside>
+</div>
+
+<footer id="where" style="background: #F3F4F6; color: #111111; padding: 48px clamp(16px, 4vw, 48px) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px">
+<div style="font-weight: 800; font-size: 28px; letter-spacing: -0.02em">LAB/rinth</div>
+<p id="nfa" style="margin: 0; font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; line-height: 1.7; letter-spacing: 0.04em; color: #6B6B6B; max-width: 620px">Suppressors are regulated under the National Firearms Act. Sold only through licensed dealers to eligible buyers where legal. Check state and local law before purchase. © LAB/rinth Studio.</p>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { view: 'model', finish: 0 }; }
+  renderVals() {
+    const isModel = this.state.view === 'model';
+    const fins = [
+      { name: 'Graphite Cerakote', hex: '#141413' },
+      { name: 'Flat Dark Earth', hex: '#8B7A5E' },
+      { name: 'Olive Drab', hex: '#4E5340' }
+    ];
+    const fieldShots = [
+      { label: 'In use 02', brief: 'Officer loading a mag at the tailgate, rifle on the hood.' },
+      { label: 'In use 03', brief: 'Close crop: gloved hand threading the silencer onto a muzzle device.' },
+      { label: 'In use 04', brief: 'Service member at a tree line, carbine at low ready.' },
+      { label: 'In use 05', brief: 'Range bag, brass, and the suppressor cooling on a bench.' }
+    ];
+    const objShots = [
+      { label: 'Studio — 3/4', brief: '' },
+      { label: 'Studio — muzzle end', brief: '' },
+      { label: 'Studio — mount end', brief: '' },
+      { label: 'Studio — in hand', brief: 'Scale reference.' }
+    ];
+    const shots = (isModel ? fieldShots : objShots).map((s) => ({
+      ...s, bg: isModel ? '#222222' : '#F3F4F6', fg: isModel ? '#E6E6E0' : '#5A5A55'
+    }));
+    return {
+      isModel, isProduct: !isModel, shots,
+      setModel: () => this.setState({ view: 'model' }),
+      setProduct: () => this.setState({ view: 'product' }),
+      modelBg: isModel ? '#111111' : 'transparent',
+      modelFg: isModel ? '#FFFFFF' : '#111111',
+      productBg: isModel ? 'transparent' : '#111111',
+      productFg: isModel ? '#111111' : '#FFFFFF',
+      finishName: fins[this.state.finish].name,
+      finishes: fins.map((f, i) => ({
+        ...f, on: this.state.finish === i,
+        ring: this.state.finish === i ? '1px solid #111111' : 'none',
+        pick: () => this.setState({ finish: i })
+      })),
+      specs: [
+        { k: 'CALIBER', v: '[SPEC]' },
+        { k: 'LENGTH', v: '[SPEC]' },
+        { k: 'WEIGHT', v: '[SPEC]' },
+        { k: 'MOUNT', v: '[SPEC]' },
+        { k: 'MATERIAL', v: '[SPEC]' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

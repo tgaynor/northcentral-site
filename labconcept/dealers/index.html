@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dealer Sign In &mdash; LAB/rinth</title>
+<meta name="description" content="LAB/rinth Studio — dealer portal sign-in concept.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#222222">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/labconcept/assets/lab.css">
+</head>
+<body class="lab-page">
+<div class="lab lab-signin">
+
+<div class="lab-signin__aside">
+  <!-- IMAGE SLOT — full-bleed photo. Drop in one src:
+       <div class="lab-hero__img"><img src="…" alt=""></div> -->
+  <a class="lab-wordmark" href="/labconcept">LAB/rinth</a>
+  <p class="lab-signin__brief">[Full-bleed photo &mdash; e.g. a dealer's counter, the silencer in its case under shop lights.]</p>
+</div>
+
+<main class="lab-signin__main">
+  <div class="lab-signin__card">
+    <div class="lab-signin__head">
+      <h1>Dealer Portal</h1>
+      <p>For approved LAB/rinth dealers. Sign in to order stock, track shipments and download marketing assets.</p>
+    </div>
+
+    <!--
+      TODO: REAL AUTHENTICATION GOES HERE.
+      This form is UI only. It does not submit, does not validate and stores
+      nothing. "Sign In" is a plain link to the portal so the concept can be
+      clicked through. Before this is anything but a concept:
+        - POST credentials to an auth endpoint over HTTPS; never handle them
+          client-side.
+        - Issue a session (HttpOnly, Secure, SameSite cookie); do not keep
+          tokens in localStorage.
+        - Gate /labconcept/dealers/portal server-side and redirect
+          unauthenticated requests back here. A static host cannot protect
+          that route — it needs a real backend or an auth-aware edge/CDN rule.
+        - Add CSRF protection and rate limiting on the sign-in endpoint.
+    -->
+    <form class="lab-form" onsubmit="return false">
+      <div class="lab-field">
+        <label for="em">Email</label>
+        <input id="em" type="email" autocomplete="username">
+      </div>
+      <div class="lab-field">
+        <label for="pw">Password</label>
+        <input id="pw" type="password" autocomplete="current-password">
+      </div>
+      <div class="lab-form__row">
+        <label><input type="checkbox">Keep me signed in</label>
+        <!-- TODO: no password-reset flow yet — plain anchor. -->
+        <a class="lab-link-u" href="#reset">Forgot password?</a>
+      </div>
+      <a class="lab-btn lab-btn--solid lab-btn--lg" href="/labconcept/dealers/portal">Sign In</a>
+    </form>
+
+    <div class="lab-signin__foot">
+      <span>Not a dealer yet?</span>
+      <!-- TODO: no dealer application page yet — plain anchor. -->
+      <a class="lab-btn lab-btn--outline" href="#apply">Apply to Become a Dealer</a>
+      <span class="lab-signin__fine">Dealer accounts require an active FFL/SOT. [Agency purchasers: contact sales.]</span>
+    </div>
+  </div>
+</main>
+
+</div>
+</body>
+</html>

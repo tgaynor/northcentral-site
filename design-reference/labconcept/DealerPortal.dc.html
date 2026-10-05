@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dealer Portal — LAB/rinth</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#111111;text-decoration:none}a:hover{color:#555555}
+button{font:inherit;cursor:pointer}
+</style>
+</helmet>
+<div style="font-family: 'Hanken Grotesk', sans-serif; color: #111111; background: #FFFFFF; min-height: 100vh">
+
+<header style="display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px; padding: 22px clamp(16px, 4vw, 48px); border-bottom: 1px solid #E5E5E5">
+<span style="font-size: 14px; color: #555555">Dealer Portal</span>
+<a href="Main.dc.html" style="font-weight: 700; font-size: 30px; letter-spacing: 0.01em">LAB/rinth</a>
+<div style="justify-self: end; display: flex; align-items: center; gap: 20px; font-size: 14px">
+<span>[Dealer Name]</span>
+<a href="DealerLogin.dc.html" style="text-decoration: underline; text-underline-offset: 3px">Sign Out</a>
+</div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap">
+<nav aria-label="Portal" style="flex: 1 1 220px; max-width: 100%; padding: 32px clamp(16px, 3vw, 40px); box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="7">
+<button type="button" onClick="{{t.pick}}" aria-current="{{t.current}}" style="text-align: left; min-height: 44px; padding: 0 16px; border: none; border-radius: 999px; font-size: 15px; background: {{t.bg}}; color: {{t.fg}}">{{t.label}}</button>
+</sc-for>
+</nav>
+
+<main style="flex: 999 1 640px; min-width: 0; padding: 32px clamp(16px, 4vw, 48px) 80px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+
+<sc-if value="{{isOverview}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-weight: 400; font-size: 28px; text-transform: uppercase">Overview</h1>
+<span style="font-size: 14px; color: #6B6B6B">[Dealer Name] · FFL [—] · SOT Class [—]</span>
+</div>
+<span style="font-size: 13px; color: #8C8C8C">Order counts are placeholders.</span>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px">
+<div style="background: #F3F4F6; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B6B6B">Open orders</span><span style="font-size: 36px">2</span></div>
+<div style="background: #F3F4F6; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B6B6B">In transit</span><span style="font-size: 36px">6</span></div>
+<div style="background: #F3F4F6; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B6B6B">Awaiting transfer</span><span style="font-size: 36px">3</span></div>
+<div style="background: #F3F4F6; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; color: #6B6B6B">Pricing tier</span><span style="font-size: 36px">[—]</span></div>
+</div>
+
+<section aria-label="Quick order" style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; border: 1px solid #E5E5E5; border-radius: 16px; padding: 20px">
+<div style="width: 160px; aspect-ratio: 1 / 1; background: #F3F4F6; border-radius: 10px; display: flex; align-items: center; justify-content: center">
+<svg viewBox="0 0 240 240" width="80%" aria-hidden="true"><rect x="30" y="98" width="180" height="44" rx="6" fill="#1A1A1A"></rect><rect x="30" y="98" width="180" height="8" rx="4" fill="#333333"></rect></svg>
+</div>
+<div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 18px">[MODEL NAME]</span>
+<span style="font-size: 14px; color: #6B6B6B">[CALIBER] · Dealer [PRICE] · MAP [PRICE]</span>
+<span style="font-size: 14px; color: #6B6B6B">Allocation available: [—] units</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<div style="display: flex; align-items: center; border: 1px solid #111111; border-radius: 999px">
+<button type="button" onClick="{{dec}}" aria-label="Decrease quantity" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">−</button>
+<span aria-live="polite" style="min-width: 32px; text-align: center; font-size: 16px">{{qty}}</span>
+<button type="button" onClick="{{inc}}" aria-label="Increase quantity" style="width: 44px; height: 44px; border: none; background: none; font-size: 18px">+</button>
+</div>
+<button type="button" style="min-height: 48px; padding: 0 28px; border: none; border-radius: 999px; background: #111111; color: #FFFFFF; font-size: 15px">Add to Order</button>
+</div>
+</section>
+
+<section aria-label="Recent orders" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-weight: 400; font-size: 20px; text-transform: uppercase">Recent Orders</h2><a href="#orders" style="font-size: 14px; text-decoration: underline; text-underline-offset: 3px">View All</a></div>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14px">
+<thead><tr style="text-align: left; color: #6B6B6B"><th style="font-weight: 400; padding: 12px 0; border-bottom: 1px solid #111111">Order</th><th style="font-weight: 400; padding: 12px 0; border-bottom: 1px solid #111111">Placed</th><th style="font-weight: 400; padding: 12px 0; border-bottom: 1px solid #111111">Units</th><th style="font-weight: 400; padding: 12px 0; border-bottom: 1px solid #111111">Status</th><th style="font-weight: 400; padding: 12px 0; border-bottom: 1px solid #111111">Tracking</th></tr></thead>
+<tbody>
+<sc-for list="{{orders}}" as="o" hint-placeholder-count="4">
+<tr><td style="padding: 16px 0; border-bottom: 1px solid #E5E5E5">{{o.id}}</td><td style="padding: 16px 0; border-bottom: 1px solid #E5E5E5">{{o.date}}</td><td style="padding: 16px 0; border-bottom: 1px solid #E5E5E5">{{o.units}}</td><td style="padding: 16px 0; border-bottom: 1px solid #E5E5E5"><span style="display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 13px; background: {{o.bg}}; color: {{o.fg}}">{{o.status}}</span></td><td style="padding: 16px 0; border-bottom: 1px solid #E5E5E5"><a href="#track" style="text-decoration: underline; text-underline-offset: 3px">{{o.track}}</a></td></tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px">
+<section aria-label="Serials awaiting transfer" style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-weight: 400; font-size: 20px; text-transform: uppercase">Serials Awaiting Transfer</h2>
+<div style="display: flex; flex-direction: column; border-top: 1px solid #111111; font-size: 14px">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid #E5E5E5"><span>SN [—]</span><span style="color: #6B6B6B">Received [date] · Form 3 pending</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid #E5E5E5"><span>SN [—]</span><span style="color: #6B6B6B">Received [date] · Form 3 approved</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid #E5E5E5"><span>SN [—]</span><span style="color: #6B6B6B">Received [date] · Form 3 pending</span></div>
+</div>
+</section>
+<section aria-label="Marketing assets" style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-weight: 400; font-size: 20px; text-transform: uppercase">Marketing Assets</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; font-size: 14px">
+<a href="#assets" style="background: #F3F4F6; border-radius: 12px; padding: 16px; min-height: 88px; display: flex; flex-direction: column; justify-content: space-between">In-use photography<span style="color: #6B6B6B; font-size: 12px">ZIP · [size]</span></a>
+<a href="#assets" style="background: #F3F4F6; border-radius: 12px; padding: 16px; min-height: 88px; display: flex; flex-direction: column; justify-content: space-between">Studio product shots<span style="color: #6B6B6B; font-size: 12px">ZIP · [size]</span></a>
+<a href="#assets" style="background: #F3F4F6; border-radius: 12px; padding: 16px; min-height: 88px; display: flex; flex-direction: column; justify-content: space-between">Studio data sheet<span style="color: #6B6B6B; font-size: 12px">PDF · [size]</span></a>
+<a href="#assets" style="background: #F3F4F6; border-radius: 12px; padding: 16px; min-height: 88px; display: flex; flex-direction: column; justify-content: space-between">MAP policy<span style="color: #6B6B6B; font-size: 12px">PDF · [size]</span></a>
+</div>
+</section>
+</div>
+
+<section aria-label="Your rep" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; background: #F3F4F6; border-radius: 16px; padding: 24px">
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #6B6B6B">Your account rep</span><span style="font-size: 16px">[Rep name] · [phone] · [email]</span></div>
+<a href="#contact" style="border: 1px solid #111111; border-radius: 999px; padding: 12px 28px">Contact Rep</a>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{isOther}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<h1 style="margin: 0; font-weight: 400; font-size: 28px; text-transform: uppercase">{{tabLabel}}</h1>
+<p style="margin: 0; font-size: 15px; color: #6B6B6B">This section isn't designed yet.</p>
+</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1800}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { tab: 'Overview', qty: 1 }; }
+  renderVals() {
+    const labels = ['Overview', 'Order Stock', 'Orders & Shipments', 'Serials & Transfers', 'Marketing Assets', 'Warranty Claims', 'Account'];
+    const tab = this.state.tab;
+    const status = {
+      Processing: { bg: '#F3F4F6', fg: '#111111' },
+      Shipped: { bg: '#111111', fg: '#FFFFFF' },
+      Delivered: { bg: '#E7EFE6', fg: '#1F4D1A' }
+    };
+    const orders = [
+      { id: '#[—]', date: '[date]', units: '4', status: 'Processing', track: '—' },
+      { id: '#[—]', date: '[date]', units: '6', status: 'Shipped', track: '[tracking]' },
+      { id: '#[—]', date: '[date]', units: '2', status: 'Delivered', track: '[tracking]' },
+      { id: '#[—]', date: '[date]', units: '5', status: 'Delivered', track: '[tracking]' }
+    ].map((o) => ({ ...o, ...status[o.status] }));
+    return {
+      tabs: labels.map((l) => ({
+        label: l,
+        current: tab === l ? 'page' : 'false',
+        bg: tab === l ? '#111111' : 'transparent',
+        fg: tab === l ? '#FFFFFF' : '#111111',
+        pick: () => this.setState({ tab: l })
+      })),
+      isOverview: tab === 'Overview',
+      isOther: tab !== 'Overview',
+      tabLabel: tab,
+      orders,
+      qty: this.state.qty,
+      inc: () => this.setState({ qty: this.state.qty + 1 }),
+      dec: () => this.setState({ qty: Math.max(1, this.state.qty - 1) })
+    };
+  }
+}
+</script>
+</body>
+</html>

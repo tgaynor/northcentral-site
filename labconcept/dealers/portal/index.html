@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dealer Portal &mdash; LAB/rinth</title>
+<meta name="description" content="LAB/rinth Studio — dealer portal dashboard concept.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/labconcept/assets/lab.css">
+</head>
+<body class="lab-page">
+<!--
+  TODO: ROUTE PROTECTION GOES HERE.
+  This page is reachable by anyone who knows the URL. It shows only
+  placeholder data, so nothing is exposed, but a real portal must verify the
+  session server-side before rendering and redirect to /labconcept/dealers
+  when there isn't one. A static host cannot do that — see the auth TODO in
+  /labconcept/dealers/index.html.
+-->
+<div class="lab">
+
+<!-- The portal uses its own simpler header, as in the design. -->
+<header class="lab-portal__header">
+  <span class="lab-portal__who">Dealer Portal</span>
+  <a class="lab-wordmark" href="/labconcept">LAB/rinth</a>
+  <div class="lab-portal__acct">
+    <span>[Dealer Name]</span>
+    <a class="lab-link-u" href="/labconcept/dealers">Sign Out</a>
+  </div>
+</header>
+
+<div class="lab-portal">
+  <nav class="lab-portal__nav" id="portalNav" aria-label="Portal">
+    <button type="button" data-tab="Overview" aria-current="page">Overview</button>
+    <button type="button" data-tab="Order Stock" aria-current="false">Order Stock</button>
+    <button type="button" data-tab="Orders &amp; Shipments" aria-current="false">Orders &amp; Shipments</button>
+    <button type="button" data-tab="Serials &amp; Transfers" aria-current="false">Serials &amp; Transfers</button>
+    <button type="button" data-tab="Marketing Assets" aria-current="false">Marketing Assets</button>
+    <button type="button" data-tab="Warranty Claims" aria-current="false">Warranty Claims</button>
+    <button type="button" data-tab="Account" aria-current="false">Account</button>
+  </nav>
+
+  <main class="lab-portal__main">
+
+    <!-- Overview: the only section the design covers. -->
+    <div class="lab-panel" id="panelOverview">
+      <div class="lab-portal__head">
+        <div class="lab-portal__id">
+          <h1>Overview</h1>
+          <span class="lab-portal__sub">[Dealer Name] &middot; FFL [&mdash;] &middot; SOT Class [&mdash;]</span>
+        </div>
+        <span class="lab-note">Order counts are placeholders.</span>
+      </div>
+
+      <div class="lab-kpis">
+        <div class="lab-kpi"><span class="lab-kpi__l">Open orders</span><span class="lab-kpi__v">2</span></div>
+        <div class="lab-kpi"><span class="lab-kpi__l">In transit</span><span class="lab-kpi__v">6</span></div>
+        <div class="lab-kpi"><span class="lab-kpi__l">Awaiting transfer</span><span class="lab-kpi__v">3</span></div>
+        <div class="lab-kpi"><span class="lab-kpi__l">Pricing tier</span><span class="lab-kpi__v">[&mdash;]</span></div>
+      </div>
+
+      <section class="lab-quick" aria-label="Quick order">
+        <div class="lab-quick__thumb">
+          <!-- IMAGE SLOT — product thumbnail. Drop in one src:
+               <img src="…" alt=""> (replaces the drawing below) -->
+          <svg viewBox="0 0 240 240" width="80%" aria-hidden="true"><rect x="30" y="98" width="180" height="44" rx="6" fill="#1A1A1A"></rect><rect x="30" y="98" width="180" height="8" rx="4" fill="#333333"></rect></svg>
+        </div>
+        <div class="lab-quick__info">
+          <span class="lab-quick__name">[MODEL NAME]</span>
+          <span class="lab-quick__meta">[CALIBER] &middot; Dealer [PRICE] &middot; MAP [PRICE]</span>
+          <span class="lab-quick__meta">Allocation available: [&mdash;] units</span>
+        </div>
+        <div class="lab-quick__act">
+          <div class="lab-step">
+            <button type="button" id="qtyDec" aria-label="Decrease quantity">&minus;</button>
+            <output id="qty" for="qtyDec qtyInc" aria-live="polite">1</output>
+            <button type="button" id="qtyInc" aria-label="Increase quantity">+</button>
+          </div>
+          <!-- TODO: no cart/order backend — button is inert. -->
+          <button class="lab-btn lab-btn--solid" type="button">Add to Order</button>
+        </div>
+      </section>
+
+      <section class="lab-sec" aria-label="Recent orders">
+        <div class="lab-sec__head">
+          <h2 class="lab-h2--sm">Recent Orders</h2>
+          <!-- TODO: no full orders view yet — plain anchor. -->
+          <a class="lab-link-u" href="#orders" style="font-size:14px">View All</a>
+        </div>
+        <div class="lab-tablewrap">
+          <table class="lab-table">
+            <thead><tr><th>Order</th><th>Placed</th><th>Units</th><th>Status</th><th>Tracking</th></tr></thead>
+            <tbody>
+              <tr><td>#[&mdash;]</td><td>[date]</td><td>4</td><td><span class="lab-badge lab-badge--processing">Processing</span></td><td><a class="lab-link-u" href="#track">&mdash;</a></td></tr>
+              <tr><td>#[&mdash;]</td><td>[date]</td><td>6</td><td><span class="lab-badge lab-badge--shipped">Shipped</span></td><td><a class="lab-link-u" href="#track">[tracking]</a></td></tr>
+              <tr><td>#[&mdash;]</td><td>[date]</td><td>2</td><td><span class="lab-badge lab-badge--delivered">Delivered</span></td><td><a class="lab-link-u" href="#track">[tracking]</a></td></tr>
+              <tr><td>#[&mdash;]</td><td>[date]</td><td>5</td><td><span class="lab-badge lab-badge--delivered">Delivered</span></td><td><a class="lab-link-u" href="#track">[tracking]</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="lab-cols2">
+        <section class="lab-sec" aria-label="Serials awaiting transfer">
+          <h2 class="lab-h2--sm">Serials Awaiting Transfer</h2>
+          <div class="lab-list">
+            <div class="lab-list__row"><span>SN [&mdash;]</span><span>Received [date] &middot; Form 3 pending</span></div>
+            <div class="lab-list__row"><span>SN [&mdash;]</span><span>Received [date] &middot; Form 3 approved</span></div>
+            <div class="lab-list__row"><span>SN [&mdash;]</span><span>Received [date] &middot; Form 3 pending</span></div>
+          </div>
+        </section>
+        <section class="lab-sec" aria-label="Marketing assets">
+          <h2 class="lab-h2--sm">Marketing Assets</h2>
+          <!-- TODO: no asset downloads yet — plain anchors. -->
+          <div class="lab-assets">
+            <a class="lab-asset" href="#assets">In-use photography<span>ZIP &middot; [size]</span></a>
+            <a class="lab-asset" href="#assets">Studio product shots<span>ZIP &middot; [size]</span></a>
+            <a class="lab-asset" href="#assets">Studio data sheet<span>PDF &middot; [size]</span></a>
+            <a class="lab-asset" href="#assets">MAP policy<span>PDF &middot; [size]</span></a>
+          </div>
+        </section>
+      </div>
+
+      <section class="lab-rep" aria-label="Your rep">
+        <div class="lab-rep__id">
+          <span class="lab-rep__l">Your account rep</span>
+          <span class="lab-rep__v">[Rep name] &middot; [phone] &middot; [email]</span>
+        </div>
+        <!-- TODO: no contact page yet — plain anchor. -->
+        <a class="lab-btn lab-btn--outline" href="#contact">Contact Rep</a>
+      </section>
+    </div>
+
+    <!-- Every other section: not designed yet. -->
+    <div class="lab-stub lab-hidden" id="panelOther">
+      <h1 id="stubLabel">&nbsp;</h1>
+      <p>This section isn't designed yet.</p>
+    </div>
+
+  </main>
+</div>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Left menu switches sections. Only Overview is designed. */
+  var nav = document.getElementById('portalNav');
+  var tabs = nav.querySelectorAll('[data-tab]');
+  var overview = document.getElementById('panelOverview');
+  var other = document.getElementById('panelOther');
+  var stubLabel = document.getElementById('stubLabel');
+
+  Array.prototype.forEach.call(tabs, function (btn) {
+    btn.addEventListener('click', function () {
+      var label = btn.getAttribute('data-tab');
+      var isOverview = label === 'Overview';
+
+      overview.classList.toggle('lab-hidden', !isOverview);
+      other.classList.toggle('lab-hidden', isOverview);
+      if (!isOverview) { stubLabel.textContent = label; }
+
+      Array.prototype.forEach.call(tabs, function (b) {
+        b.setAttribute('aria-current', b === btn ? 'page' : 'false');
+      });
+    });
+  });
+
+  /* Quantity stepper, minimum 1. */
+  var qty = document.getElementById('qty');
+  var n = 1;
+  function render() { qty.textContent = String(n); }
+  document.getElementById('qtyInc').addEventListener('click', function () { n += 1; render(); });
+  document.getElementById('qtyDec').addEventListener('click', function () { n = Math.max(1, n - 1); render(); });
+  render();
+}());
+</script>
+</body>
+</html>

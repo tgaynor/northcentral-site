@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAB/rinth</title>
+<meta name="description" content="LAB/rinth Studio — silencer concept.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#161616">
+
+<!-- Fonts: Hanken Grotesk. Loaded only on /labconcept routes. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Scoped to .lab; linked only by /labconcept pages. -->
+<link rel="stylesheet" href="/labconcept/assets/lab.css">
+</head>
+<body class="lab-page">
+<div class="lab">
+
+<section class="lab-hero lab-hero--has-img" aria-label="Campaign">
+  <!-- Campaign photo, full-bleed. Swap the two srcs to change it; keep the
+       --has-img class so the scene-brief placeholder stays hidden. -->
+  <div class="lab-hero__img">
+    <img src="/labconcept/assets/hero.jpg"
+         srcset="/labconcept/assets/hero-1200.jpg 1200w, /labconcept/assets/hero.jpg 2400w"
+         sizes="100vw" alt="" fetchpriority="high">
+  </div>
+
+  <header class="lab-header lab-header--hero">
+    <nav class="lab-nav" aria-label="Primary">
+      <a href="/labconcept/product">Product</a>
+      <a href="/labconcept/studio">Studio</a>
+      <a href="#where">Where to Buy</a>
+    </nav>
+    <a class="lab-wordmark" href="/labconcept">LAB/rinth</a>
+    <div class="lab-icons">
+      <!-- TODO: no search page yet — plain anchor. -->
+      <a href="#search" aria-label="Search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16" y1="16" x2="21" y2="21"></line></svg></a>
+      <!-- TODO: no account page yet — plain anchor. -->
+      <a href="#account" aria-label="Account"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"></path></svg></a>
+      <!-- TODO: no bag/cart page yet — plain anchor. -->
+      <a href="#bag" aria-label="Bag, 0 items"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="7" width="14" height="14" rx="1"></rect><path d="M9 7V5a3 3 0 0 1 6 0v2"></path></svg></a>
+    </div>
+  </header>
+
+  <div class="lab-hero__body">
+    <p class="lab-hero__brief">[Campaign film or photo, full-bleed — e.g. close crop of an officer at night, rifle shouldered, the silencer catching light.]</p>
+    <div class="lab-hero__model">[MODEL NAME]</div>
+    <a class="lab-btn lab-btn--hero" href="/labconcept/product">View Silencer</a>
+    <div class="lab-hero__rule" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  </div>
+</section>
+
+<section class="lab-shop" id="shop" aria-label="[MODEL NAME] gallery" data-view="use">
+  <div class="lab-shop__head">
+    <div class="lab-shop__title">
+      <h2 class="lab-h2">Latest: [MODEL NAME]</h2>
+      <a class="lab-underline" href="/labconcept/product">More</a>
+    </div>
+    <div class="lab-toggle" role="group" aria-label="Image view">
+      <button type="button" data-view-set="use" aria-pressed="true">In Use</button>
+      <button type="button" data-view-set="product" aria-pressed="false">Product</button>
+    </div>
+  </div>
+
+  <div class="lab-grid" id="gallery"><!-- cards injected from LAB_CARDS --></div>
+</section>
+
+<section class="lab-about" id="about">
+  <h2 class="lab-h2">[Section headline]</h2>
+  <p>[Two or three sentences about LAB/rinth in your own words.]</p>
+  <a class="lab-btn lab-btn--outline" href="/labconcept/studio">Visit the Studio</a>
+</section>
+
+<footer class="lab-footer" id="where">
+  <div class="lab-footer__cols">
+    <div class="lab-footer__col">
+      <span>Shop</span>
+      <a href="/labconcept/product">Product</a>
+      <a href="#where">Where to Buy</a>
+      <!-- TODO: no NFA explainer page yet — plain anchor. -->
+      <a href="#nfa">How NFA Purchase Works</a>
+    </div>
+    <div class="lab-footer__col">
+      <span>Support</span>
+      <!-- TODO: no warranty page yet — plain anchor. -->
+      <a href="#warranty">Warranty</a>
+      <!-- TODO: no contact page yet — plain anchor. -->
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="lab-footer__col">
+      <span>Trade</span>
+      <a href="/labconcept/dealers">Dealer Portal</a>
+      <!-- TODO: no dealer application page yet — plain anchor. -->
+      <a href="#apply">Become a Dealer</a>
+      <!-- TODO: no agency sales page yet — plain anchor. -->
+      <a href="#le">Agency Sales</a>
+    </div>
+    <!-- TODO: newsletter is UI only — no endpoint wired up. -->
+    <form class="lab-footer__nl" onsubmit="return false">
+      <label for="nl">Newsletter</label>
+      <div class="lab-footer__field">
+        <input id="nl" type="email" placeholder="Email address" autocomplete="email">
+        <button type="submit" aria-label="Subscribe">&rarr;</button>
+      </div>
+    </form>
+  </div>
+  <div class="lab-footer__base">
+    <span class="lab-footer__mark">LAB/rinth</span>
+    <p class="lab-footer__nfa" id="nfa">Suppressors are regulated under the National Firearms Act. Sold only through licensed dealers to eligible buyers where legal. Check state and local law before purchase. &copy; LAB/rinth Studio.</p>
+  </div>
+</footer>
+
+</div>
+
+<script>
+/* Gallery cards. Scene briefs and rotations from the design's renderVals().
+   To use a real photo, set `use` and/or `product` to an image URL on a card. */
+var LAB_CARDS = [
+  { tag:'Duty',        rot:0,   brief:"Patrol officer at dusk beside a cruiser, carbine slung, silencer catching the light bar.", use:'', product:'' },
+  { tag:'Competition', rot:-18, brief:"Competitor in ear pro, prone on a mat, rifle on bipod. Calm, mid-exhale.", use:'', product:'' },
+  { tag:'Field',       rot:-90, brief:"Soldier in plain fatigues kneeling at a tree line, short carbine at low ready.", use:'', product:'' },
+  { tag:'Training',    rot:0,   brief:"Two officers reloading on a flat range, coffee on the barricade.", use:'', product:'' },
+  { tag:'Competition', rot:12,  brief:"Shooter braced on a barricade, steel targets soft behind, desert light.", use:'', product:'' },
+  { tag:'Night',       rot:0,   brief:"Night profile, NVG mount up, silencer silhouette against the sky.", use:'', product:'' },
+  { tag:'Range',       rot:18,  brief:"Range officer in cap and sunglasses, rifle on the table, mid-explanation.", use:'', product:'' },
+  { tag:'Duty',        rot:180, brief:"Carbine in a patrol vehicle rack, door open, officer half in frame.", use:'', product:'' }
+];
+
+(function () {
+  'use strict';
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
+    });
+  }
+
+  /* Both variants render into every card; the toggle flips data-view on the
+     section and CSS shows one. No reload, no re-render. */
+  document.getElementById('gallery').innerHTML = LAB_CARDS.map(function (c) {
+    var useImg = c.use ? '<img src="' + esc(c.use) + '" alt="">' : '';
+    var prodImg = c.product ? '<img src="' + esc(c.product) + '" alt="">' : '';
+    return '' +
+      '<a class="lab-card" href="/labconcept/product">' +
+        '<div class="lab-shot lab-shot--use">' +
+          '<div class="lab-shot__img">' + useImg + '</div>' +
+          '<span class="lab-shot__brief">' + esc(c.brief) + '</span>' +
+        '</div>' +
+        '<div class="lab-shot lab-shot--product">' +
+          '<div class="lab-shot__img">' + prodImg + '</div>' +
+          '<svg viewBox="0 0 240 240" width="72%" aria-hidden="true" style="transform: rotate(' + c.rot + 'deg)">' +
+            '<rect x="30" y="98" width="180" height="44" rx="6" fill="#1A1A1A"></rect>' +
+            '<rect x="30" y="98" width="180" height="8" rx="4" fill="#333333"></rect>' +
+          '</svg>' +
+        '</div>' +
+        '<div class="lab-card__meta">' +
+          '<span>[MODEL NAME]</span>' +
+          '<span class="lab-card__tag">' + esc(c.tag) + '</span>' +
+        '</div>' +
+      '</a>';
+  }).join('');
+
+  /* In Use / Product toggle — default In Use. */
+  var shop = document.getElementById('shop');
+  var buttons = shop.querySelectorAll('[data-view-set]');
+  Array.prototype.forEach.call(buttons, function (btn) {
+    btn.addEventListener('click', function () {
+      var view = btn.getAttribute('data-view-set');
+      shop.setAttribute('data-view', view);
+      Array.prototype.forEach.call(buttons, function (b) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+    });
+  });
+}());
+</script>
+</body>
+</html>
