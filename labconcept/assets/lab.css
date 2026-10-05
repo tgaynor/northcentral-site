@@ -327,11 +327,25 @@ body.lab-page{margin:0;background:#FFFFFF}
 .lab-dl dt{padding:14px 24px 14px 0;border-bottom:1px solid #DDDDDD;color:var(--ink-3)}
 .lab-dl dd{padding:14px 0;border-bottom:1px solid #DDDDDD}
 
-/* Studio uses the shared footer; this keeps its slim variant available. */
+/* Slim footer — Product and Studio, per their designs. Studio's is
+   transparent with 12px type; Product's sits on the panel grey with a
+   larger wordmark and finer NFA type. */
 .lab-footer--slim{
   background:transparent;padding:48px var(--pad) 40px;
-  flex-direction:row;flex-wrap:wrap;justify-content:space-between;gap:24px;
+  flex-direction:row;flex-wrap:wrap;justify-content:space-between;
+  align-items:flex-start;gap:24px;
   font-size:12px;line-height:1.6;color:var(--ink-3);
+}
+.lab-footer--slim .lab-footer__mark{font-weight:700;font-size:18px;color:var(--ink)}
+.lab-footer--slim .lab-footer__nfa{max-width:680px}
+
+.lab-footer--panel{
+  background:var(--panel);gap:32px;
+  padding:48px clamp(16px,4vw,48px) 40px;
+}
+.lab-footer--panel .lab-footer__mark{font-weight:800;font-size:28px;letter-spacing:-.02em}
+.lab-footer--panel .lab-footer__nfa{
+  font-size:11px;line-height:1.7;letter-spacing:.04em;color:var(--ink-3);max-width:620px;
 }
 
 /* =========================================================================
