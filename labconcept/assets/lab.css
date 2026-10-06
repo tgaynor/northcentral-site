@@ -311,6 +311,14 @@ body.lab-page{margin:0;background:#FFFFFF}
   gap:72px clamp(32px,5vw,80px);padding:var(--pad-section) var(--pad);
 }
 .lab-fig{display:flex;flex-direction:column;gap:14px}
+/* A figure that needs the full content width rather than one grid column. */
+.lab-fig--wide{grid-column:1 / -1}
+/* The four baffle-count panels sit as their own sub-grid. */
+.lab-panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px 24px}
+.lab-panel-chart{min-width:0}
+.lab-panel-chart svg{width:100%;height:auto}
+/* Standalone table sections on the Studio page. */
+.lab-sec--table{padding:0 var(--pad) var(--pad-section);gap:14px}
 .lab-fig svg{width:100%;height:auto}
 .lab-legend{display:flex;gap:20px;font-size:13px;color:var(--ink-2);flex-wrap:wrap}
 .lab-legend span{display:flex;gap:6px;align-items:center;flex:0 0 auto;white-space:nowrap}
