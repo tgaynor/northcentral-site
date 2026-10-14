@@ -1,276 +1,68 @@
 <!DOCTYPE html>
-<!-- operating.html, hidden services page. noindex + not linked anywhere is the gate.
-     To make the URL harder to guess, rename this file to e.g. operating-9f3a2c.html
-     (and update any link you have pointed at it). -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Operating // North Central Holdings</title>
-<meta name="description" content="Hands-on operating help for founder-led companies, go-to-market, enterprise sales, and building real enterprise value.">
-<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="North Central Holdings, a private holding company based in Arizona.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#1b1814;--navy-2:#2b2823;--navy-deep:#110f0c;
-    --oyster:#f1ebdd;--oyster-2:#e8e0cd;--paper:#f7f2e8;--sand:#c8b690;
-    --brass:#bb9a55;--brass-bright:#dcc08a;--rope:#c2a576;
-    --ink:#211d16;--ink-soft:#524a3b;--fog:#8c8169;
-    --line:rgba(27,24,20,0.16);--line-soft:rgba(27,24,20,0.09);
-    --display:'Playfair Display',Georgia,serif;--body:'Inter',system-ui,-apple-system,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
-    --maxw:1180px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
-  ::selection{background:var(--navy);color:var(--oyster)}
-  .chart-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:linear-gradient(rgba(27,24,20,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(27,24,20,0.035) 1px,transparent 1px);background-size:46px 46px;}
-  .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.4;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
-  #compass-rose{position:fixed;right:-160px;top:50%;transform:translateY(-50%);width:520px;height:520px;z-index:0;opacity:0.06;pointer-events:none}
-  .wrap{position:relative;z-index:3;max-width:var(--maxw);margin:0 auto;padding:0 40px;width:100%}
-  main{position:relative;z-index:3;flex:1 0 auto;display:flex;flex-direction:column;justify-content:center;padding:128px 0 80px}
-
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--navy);color:var(--oyster);border-bottom:3px double var(--brass)}
-  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 40px;display:flex;justify-content:space-between;align-items:center}
-  .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--oyster)}
-  .brand .knot{width:34px;height:34px;border:1.5px solid var(--brass);border-radius:50%;display:grid;place-items:center;color:var(--brass-bright);transition:transform .6s cubic-bezier(.2,.9,.3,1)}
-  .brand .knot svg{width:20px;height:20px}
-  .brand:hover .knot{transform:rotate(-30deg)}
-  .brand b{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.22em;text-transform:uppercase;line-height:1.3}
-  .brand b small{display:block;font-weight:500;font-size:9.5px;letter-spacing:.3em;color:var(--sand);margin-top:1px}
-  .navlinks{display:flex;gap:28px;align-items:center}
-  .navlinks a{color:var(--oyster);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.78;position:relative;transition:opacity .3s}
-  .navlinks a:hover{opacity:1}
-  .navlinks a.active{opacity:1;color:var(--brass-bright)}
-  .navlinks a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--brass);transition:width .35s}
-  .navlinks a:hover::after,.navlinks a.active::after{width:100%}
-
-  .pagehead{margin-bottom:52px}
-  .pagehead .crumb{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
-  .pagehead .crumb .div{width:42px;height:1px;background:var(--brass);opacity:.5}
-  .pagehead h1{font-family:var(--display);font-weight:300;font-size:clamp(42px,7.5vw,116px);line-height:.9;letter-spacing:-.02em;color:var(--navy)}
-  .pagehead p.lead{margin-top:24px;max-width:580px;color:var(--ink-soft);font-size:clamp(15px,1.6vw,18px);line-height:1.7;font-weight:300}
-
-  footer{position:relative;z-index:3;border-top:2px solid var(--navy);padding:26px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);max-width:var(--maxw);margin:0 auto;width:100%}
-  footer a{color:var(--fog);text-decoration:none;transition:color .3s}
-  footer a:hover{color:var(--brass)}
-  footer .amdg{color:var(--brass);letter-spacing:.24em}
-
-  .rv{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.2,.7,.3,1),transform .85s cubic-bezier(.2,.7,.3,1)}
-  .rv.in{opacity:1;transform:none}
-
-  /* landing */
-  .home{min-height:calc(100vh - 80px);display:flex;flex-direction:column;justify-content:center}
-  .home .heading-row{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);margin-bottom:30px;flex-wrap:wrap}
-  .home .heading-row .lat{color:var(--fog)}
-  .home .heading-row .div{width:42px;height:1px;background:var(--brass);opacity:.5}
-  .home h1{font-family:var(--display);font-weight:300;font-size:clamp(52px,9vw,150px);line-height:.9;letter-spacing:-.02em;color:var(--navy)}
-  .home h1 .amp{font-style:italic;color:var(--brass)}
-  .home p.sub{margin-top:32px;max-width:540px;color:var(--ink-soft);font-size:clamp(16px,1.7vw,19px);line-height:1.7;font-weight:300}
-  .home .enter{margin-top:48px;display:flex;gap:0;border:1px solid var(--line);width:fit-content;max-width:100%;flex-wrap:wrap;background:var(--oyster)}
-  .home .enter a{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:16px 26px;border-right:1px solid var(--line);transition:color .3s,background .3s;display:flex;align-items:center;gap:10px}
-  .home .enter a:last-child{border-right:0}
-  .home .enter a:hover{color:var(--oyster);background:var(--navy)}
-  .home .enter a .ar{color:var(--brass);transition:color .3s}
-  .home .enter a:hover .ar{color:var(--brass-bright)}
-
-  /* holdings cards */
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--navy)}
-  @media(max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:640px){.cards{grid-template-columns:1fr}}
-  .card{background:var(--oyster);padding:30px 28px;min-height:286px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--ink);position:relative;overflow:hidden;transition:background .4s}
-  .card::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.9,.3,1)}
-  .card:hover{background:#fff}
-  .card:hover::after{transform:scaleX(1)}
-  .card .top{display:flex;align-items:flex-start;justify-content:space-between}
-  .card .logo{width:56px;height:56px;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;background:var(--paper);overflow:hidden;position:relative}
-  .card .logo img{width:100%;height:100%;object-fit:contain;padding:9px;display:none}
-  .card .logo img.ok{display:block}
-  .card .logo .mn{font-family:var(--display);font-size:24px;color:var(--navy);font-weight:400}
-  .card .logo img.ok ~ .mn{display:none}
-  .card .desig{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--fog)}
-  .card:hover .desig{color:var(--brass)}
-  .card .body{margin-top:24px;flex:1}
-  .card h3{font-family:var(--display);font-weight:400;font-size:25px;letter-spacing:-.01em;line-height:1.08;color:var(--navy);transition:color .3s}
-  .card:hover h3{color:var(--brass)}
-  .card .cls{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--fog);margin-top:8px}
-  .card p{margin-top:14px;color:var(--ink-soft);font-size:13.5px;line-height:1.55;font-weight:300}
-  .card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:22px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fog)}
-  .card .ar{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--brass);font-size:13px;transition:all .4s}
-  .card:hover .ar{background:var(--navy);color:var(--oyster);border-color:var(--navy);transform:rotate(45deg)}
-  .card.classified h3{font-style:italic}
-  .card.classified .rd{display:inline-block;background:var(--ink-soft);color:transparent;border-radius:2px;user-select:none;letter-spacing:-1px;opacity:.5;font-size:13px}
-
-  /* about */
-  .about{display:grid;grid-template-columns:1fr 400px;gap:0;border:1px solid var(--navy);background:var(--navy)}
-  @media(max-width:880px){.about{grid-template-columns:1fr}}
-  .about .info{padding:44px 42px;background:var(--navy);color:var(--oyster)}
-  .about .lede{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.34;color:var(--oyster)}
-  .about .lede b{font-style:normal;font-weight:400;color:var(--brass-bright)}
-  .specs{margin-top:34px;border-top:1px solid rgba(241,235,221,0.18)}
-  .specs a,.specs .row{display:grid;grid-template-columns:30px 1fr 28px;align-items:center;gap:16px;padding:17px 2px;border-bottom:1px solid rgba(241,235,221,0.14);text-decoration:none;color:var(--oyster);transition:padding .35s,background .35s}
-  .specs a:hover{padding-left:14px;background:rgba(241,235,221,0.05)}
-  .specs .k{font-family:var(--mono);font-size:11px;color:var(--brass-bright)}
-  .specs .v{font-size:15px;line-height:1.35;font-weight:300}
-  .specs .v span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fog);margin-top:5px}
-  .specs .x{color:var(--fog);font-size:13px;transition:color .3s,transform .3s}
-  .specs a:hover .x{color:var(--brass-bright);transform:translate(2px,-2px)}
-  .about .pcol{background:var(--navy-deep);padding:24px;display:flex;flex-direction:column;justify-content:space-between;border-left:1px solid rgba(241,235,221,0.14)}
-  @media(max-width:880px){.about .pcol{border-left:0;border-top:1px solid rgba(241,235,221,0.14)}}
-  .pframe{position:relative;border:1px solid rgba(241,235,221,0.22);padding:11px;background:rgba(255,255,255,0.03)}
-  .pframe::before{content:'\2693';position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--navy-deep);padding:0 10px;color:var(--brass-bright);font-size:15px}
-  .pframe .ph{aspect-ratio:1/1;width:100%;overflow:hidden;background:#000}
-  .pframe .ph img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:filter .5s}
-  .pcap{margin-top:16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fog)}
-  .pcap b{display:block;color:var(--oyster);font-size:13px;font-weight:600;letter-spacing:.06em;margin-bottom:9px}
-  .pcap a{color:var(--brass-bright);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color .3s}
-  .pcap a:hover{color:var(--oyster)}
-
-  /* contact */
-  .contactblock{border:1px solid var(--navy)}
-  .contactblock .row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:26px 36px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-  .contactblock .row:last-of-type{border-bottom:0}
-  .contactblock .row .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--fog);min-width:120px}
-  .contactblock .row .val{font-family:var(--display);font-weight:400;font-size:clamp(20px,3vw,34px);letter-spacing:-.01em;color:var(--navy)}
-  .contactblock .row .val a{color:var(--navy);text-decoration:none;background-image:linear-gradient(var(--brass),var(--brass));background-size:0% 1.5px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .5s,color .35s}
-  .contactblock .row .val a:hover{color:var(--brass);background-size:100% 1.5px}
-  .contactblock .note{padding:26px 36px;color:var(--ink-soft);font-size:14.5px;line-height:1.65;font-weight:300;background:var(--oyster);border-top:1px solid var(--line)}
-
-  /* operating (No. 04), page-scoped, built on the shared tokens */
-  main{padding-top:92px}
-  .hero-head{margin-bottom:34px}
-  .hero-head h1{font-size:clamp(32px,4.8vw,68px);max-width:20ch}
-  .block{margin-bottom:32px}
-  .block:last-child{margin-bottom:0}
-  .label{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
-  .label .div{width:42px;height:1px;background:var(--brass);opacity:.5}
-  .prose{max-width:680px;color:var(--ink-soft);font-size:clamp(15px,1.55vw,18px);line-height:1.75;font-weight:300}
-  .prose b{color:var(--ink);font-weight:400}
-  /* what-I-do list, paper-bg variant of the .specs number/title/arrow grammar */
-  .dolist{border-top:1px solid var(--line)}
-  .dolist .item{display:grid;grid-template-columns:42px 1fr 26px;gap:24px;align-items:start;padding:18px 2px;border-bottom:1px solid var(--line)}
-  .dolist .n{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--brass);padding-top:6px}
-  .dolist .t{font-family:var(--display);font-weight:400;font-size:clamp(20px,2.3vw,26px);line-height:1.14;letter-spacing:-.01em;color:var(--navy)}
-  .dolist .d{margin-top:11px;color:var(--ink-soft);font-size:14.5px;line-height:1.65;font-weight:300;max-width:66ch}
-  .dolist .x{font-family:var(--mono);color:var(--brass);font-size:14px;padding-top:7px;text-align:right;opacity:.55}
-  @media(max-width:640px){.dolist .item{grid-template-columns:30px 1fr;gap:16px}.dolist .x{display:none}}
-  /* navy panel, reuses the .info look for proof + cta */
-  .panel{background:var(--navy);color:var(--oyster);border:1px solid var(--navy);padding:34px 40px}
-  @media(max-width:640px){.panel{padding:32px 24px}}
-  .panel .label{color:var(--brass-bright)}
-  .panel .label .div{background:var(--brass-bright)}
-  .panel .lede{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(22px,2.6vw,32px);line-height:1.34;color:var(--oyster)}
-  .panel .pnote{margin-top:14px;color:var(--sand);font-size:15.5px;line-height:1.6;font-weight:300}
-  .cta-btn{margin-top:30px;display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--oyster);text-decoration:none;padding:15px 24px;border:1px solid rgba(241,235,221,0.25);transition:color .3s,background .3s,border-color .3s}
-  .cta-btn .ar{color:var(--brass-bright);transition:color .3s}
-  .cta-btn:hover{background:var(--oyster);color:var(--navy);border-color:var(--oyster)}
-  .cta-btn:hover .ar{color:var(--brass)}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Inter:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="grain"></div>
-<svg id="compass-rose" viewBox="0 0 200 200" fill="none" stroke="#1b1814" stroke-width="0.6">
-  <circle cx="100" cy="100" r="92"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="20"/>
-  <g id="rose-spin" style="transform-origin:100px 100px">
-    <path d="M100 8 L112 100 L100 192 L88 100 Z" fill="#1b1814" fill-opacity="0.5" stroke="none"/>
-    <path d="M8 100 L100 112 L192 100 L100 88 Z" fill="#1b1814" fill-opacity="0.3" stroke="none"/>
-    <path d="M35 35 L100 95 L165 35 L105 100 L165 165 L100 105 L35 165 L95 100 Z" fill="#bb9a55" fill-opacity="0.4" stroke="none"/>
-  </g>
-  <text x="100" y="24" text-anchor="middle" font-size="11" fill="#1b1814" font-family="serif">N</text>
-</svg>
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="brand">
-      <span class="knot"><svg viewBox="0 0 24 24" fill="none" stroke="#dcc08a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L12 22 M12 2 L8.5 6 M12 2 L15.5 6"/><circle cx="12" cy="15" r="5.5"/></svg></span>
-      <b>North&nbsp;Central&nbsp;Holdings<small>Est. AZ</small></b>
-    </a>
-    <div class="navlinks">
-      <a href="holdings.html">Holdings</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
-</nav>
+<a href="index.html" aria-label="North Central Holdings, home" class="home-link">
+  <svg class="mark" viewBox="0 0 54 136" fill="none" stroke="#1c1a17" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <defs>
+      <filter id="brush" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+        <feDisplacementMap in="SourceGraphic" scale="2.6"/>
+      </filter>
+    </defs>
+    <g filter="url(#brush)">
+      <path d="M27.5 128 C26.8 104 27.9 72 26.6 40 C26.2 28 27.4 18 27 6" stroke-width="5.4"/>
+      <path d="M27 6 C23 11 19.5 15.5 14.5 20.5" stroke-width="4.6"/>
+      <path d="M27.2 6.5 C31 11.5 34.5 15 39.5 19" stroke-width="4"/>
+      <path d="M26.8 66 C40.5 64.5 47.5 75.5 46 88.5 C44.6 100.5 34 106.5 25.5 105.8 C14.5 104.8 7.8 95.5 8.6 85 C9.4 73.5 17.5 66.8 28.5 66.4" stroke-width="4.4"/>
+    </g>
+  </svg>
+</a>
 
 <main>
-  <div class="wrap">
+  <p class="lead">Built one worth buying. Now I help a few founders do the same.</p>
 
-    <div class="pagehead hero-head rv">
-      <div class="crumb"><span class="div"></span>No. 04, Pilotage</div>
-      <h1>Built one worth buying. Now I help a few founders do the same.</h1>
-      <p class="lead">I bootstrapped Anavate from a garage to an eight-figure exit, no investors, no investment bank, and sold it to a PE-backed strategic. These days I work hands-on with a small number of growing businesses, doing the unglamorous work that moves revenue and builds real enterprise value.</p>
-    </div>
+  <p>I bootstrapped Anavate from a garage to an eight-figure exit, no investors, no investment bank, and sold it to a PE-backed strategic. These days I work hands-on with a small number of growing businesses, doing the unglamorous work that moves revenue and builds real enterprise value.</p>
 
-    <div class="block rv">
-      <div class="label"><span class="div"></span>How it works</div>
-      <p class="prose">A monthly retainer. We work directly, regular working sessions on your real deals, hires, and decisions, plus access between sessions when something can't wait. No decks for the sake of decks. I take on a limited number of companies at a time so each one gets real attention.</p>
-    </div>
+  <h2>How it works</h2>
+  <p>A monthly retainer. We work directly, regular working sessions on your real deals, hires, and decisions, plus access between sessions when something can't wait. No decks for the sake of decks. I take on a limited number of companies at a time so each one gets real attention.</p>
 
-    <div class="block rv">
-      <div class="label"><span class="div"></span>Who this is for</div>
-      <p class="prose">Founder-led businesses doing real revenue and ready to grow, home services, hospitality, SaaS, and professional or IT services. You're past product-market fit and the constraint is now go-to-market: you're the bottleneck, the deals are getting bigger or messier, and you want the business to be worth something beyond your own hustle.</p>
-    </div>
+  <h2>Who this is for</h2>
+  <p>Founder-led businesses doing real revenue and ready to grow, home services, hospitality, SaaS, and professional or IT services. You're past product-market fit and the constraint is now go-to-market: you're the bottleneck, the deals are getting bigger or messier, and you want the business to be worth something beyond your own hustle.</p>
 
-    <div class="block rv">
-      <div class="label"><span class="div"></span>What I do</div>
-      <div class="dolist">
-        <div class="item"><span class="n">01</span><div class="v"><div class="t">Get you out of selling.</div><div class="d">I closed eight figures myself, then built the team that took it off my plate. I'll find what's actually working in your sales, write it down so someone else can run it, make the first sales hires (and help you avoid the expensive wrong ones), and set up comp so revenue doesn't live and die on you being in the room.</div></div><span class="x">&#8599;</span></div>
-        <div class="item"><span class="n">02</span><div class="v"><div class="t">Spend like it's your own money.</div><div class="d">I bootstrapped without a round to fall back on, so I got good at telling the difference between spending that grows the business and spending that just feels like progress. I'll help you look hard at burn, stretch runway, and put money behind the few things that move the needle.</div></div><span class="x">&#8599;</span></div>
-        <div class="item"><span class="n">03</span><div class="v"><div class="t">Keep big customers for years.</div><div class="d">Roku, Coinbase, Thomson Reuters, Kimberly-Clark, Amazon, kept three-plus years each. That means working across sales, finance, and marketing inside one account, landing in one team and growing into the others, and becoming hard to rip out. Keeping a logo like that happy is usually worth more than chasing the next new one.</div></div><span class="x">&#8599;</span></div>
-        <div class="item"><span class="n">04</span><div class="v"><div class="t">Build a company someone wants to buy.</div><div class="d">I ran my own sale end to end with my cofounder, no banker. I know which early decisions (your metrics, how you write contracts, how you set up the org) make a company clean and valuable later, and which ones come back to bite you. I'll tell you straight what an exit really takes, then be your copilot through it.</div></div><span class="x">&#8599;</span></div>
-        <div class="item"><span class="n">05</span><div class="v"><div class="t">Close the messy enterprise deals.</div><div class="d">Procurement, security review, five people who can each say no. If you're moving up from small customers to real accounts, I'll help you handle the longer cycles and the multi-threaded work that actually gets a big contract over the line.</div></div><span class="x">&#8599;</span></div>
-        <div class="item"><span class="n">06</span><div class="v"><div class="t">Win the technical bake-offs.</div><div class="d">With complex products, the demo is everything. I built the solutions-consulting function that walked into competitive evaluations and won them. I'll help you build demos that hit real buyer pain instead of showing off features, and qualify hard so you stop chasing deals that were never going to close.</div></div><span class="x">&#8599;</span></div>
-        <div class="item"><span class="n">07</span><div class="v"><div class="t">Make partnerships a real channel.</div><div class="d">A big chunk of our pipeline came through partners. Most founders put a partner logo on a slide and call it a strategy. I'll show you how to get inside a platform partner's world, become the partner they want to hand deals to, and turn that into steady sourced pipeline.</div></div><span class="x">&#8599;</span></div>
-        <div class="item"><span class="n">08</span><div class="v"><div class="t">Run delivery that makes money.</div><div class="d">Our delivery engine ran around 40% margin using offshore teams in places most firms don't think to look. If you have implementation, services, or heavy onboarding, I'll set up delivery and staffing so growth doesn't quietly wreck your margins.</div></div><span class="x">&#8599;</span></div>
-      </div>
-    </div>
+  <h2>What I do</h2>
+  <p><b>Get you out of selling.</b> I closed eight figures myself, then built the team that took it off my plate. I'll find what's actually working in your sales, write it down so someone else can run it, make the first sales hires (and help you avoid the expensive wrong ones), and set up comp so revenue doesn't live and die on you being in the room.</p>
+  <p><b>Spend like it's your own money.</b> I bootstrapped without a round to fall back on, so I got good at telling the difference between spending that grows the business and spending that just feels like progress. I'll help you look hard at burn, stretch runway, and put money behind the few things that move the needle.</p>
+  <p><b>Keep big customers for years.</b> Roku, Coinbase, Thomson Reuters, Kimberly-Clark, Amazon, kept three-plus years each. That means working across sales, finance, and marketing inside one account, landing in one team and growing into the others, and becoming hard to rip out. Keeping a logo like that happy is usually worth more than chasing the next new one.</p>
+  <p><b>Build a company someone wants to buy.</b> I ran my own sale end to end with my cofounder, no banker. I know which early decisions (your metrics, how you write contracts, how you set up the org) make a company clean and valuable later, and which ones come back to bite you. I'll tell you straight what an exit really takes, then be your copilot through it.</p>
+  <p><b>Close the messy enterprise deals.</b> Procurement, security review, five people who can each say no. If you're moving up from small customers to real accounts, I'll help you handle the longer cycles and the multi-threaded work that actually gets a big contract over the line.</p>
+  <p><b>Win the technical bake-offs.</b> With complex products, the demo is everything. I built the solutions-consulting function that walked into competitive evaluations and won them. I'll help you build demos that hit real buyer pain instead of showing off features, and qualify hard so you stop chasing deals that were never going to close.</p>
+  <p><b>Make partnerships a real channel.</b> A big chunk of our pipeline came through partners. Most founders put a partner logo on a slide and call it a strategy. I'll show you how to get inside a platform partner's world, become the partner they want to hand deals to, and turn that into steady sourced pipeline.</p>
+  <p><b>Run delivery that makes money.</b> Our delivery engine ran around 40% margin using offshore teams in places most firms don't think to look. If you have implementation, services, or heavy onboarding, I'll set up delivery and staffing so growth doesn't quietly wreck your margins.</p>
 
-    <div class="block rv">
-      <div class="panel">
-        <div class="label"><span class="div"></span>Track record</div>
-        <div class="specs">
-          <a href="https://www.businesswire.com/news/home/20250520967572/en/Argano-Acquires-Anavate-Partners-Continues-Advancement-of-2025-Growth-Strategy" target="_blank" rel="noopener">
-            <span class="k">01</span><span class="v">Founder of Anavate Partners<span>Acquired by Argano &middot; 2025</span></span><span class="x">&#8599;</span></a>
-          <a href="https://www.inc.com/profile/anavate-partners" target="_blank" rel="noopener">
-            <span class="k">02</span><span class="v">Two-time Inc. 5000 honoree, #10 in IT Services<span>Inc. 5000</span></span><span class="x">&#8599;</span></a>
-          <a href="https://www.forbes.com/sites/forbesunder30team/2026/02/18/meet-the-30-under-30-local-phoenix-class-of-2026/" target="_blank" rel="noopener">
-            <span class="k">03</span><span class="v">Forbes 30 Under 30 honoree<span>Class of 2026</span></span><span class="x">&#8599;</span></a>
-          <a href="https://news.asu.edu/20190122-sun-devil-life-asu-triple-majors" target="_blank" rel="noopener">
-            <span class="k">04</span><span class="v">Arizona State University<span>W. P. Carey School of Business</span></span><span class="x">&#8599;</span></a>
-        </div>
-      </div>
-    </div>
+  <h2>Track record</h2>
+  <p>Founder of Anavate Partners, <a href="https://www.businesswire.com/news/home/20250520967572/en/Argano-Acquires-Anavate-Partners-Continues-Advancement-of-2025-Growth-Strategy" target="_blank" rel="noopener">acquired by Argano in 2025</a>. Two-time <a href="https://www.inc.com/profile/anavate-partners" target="_blank" rel="noopener">Inc. 5000 honoree, #10 in IT Services</a>. <a href="https://www.forbes.com/sites/forbesunder30team/2026/02/18/meet-the-30-under-30-local-phoenix-class-of-2026/" target="_blank" rel="noopener">Forbes 30 Under 30</a>, class of 2026. <a href="https://news.asu.edu/20190122-sun-devil-life-asu-triple-majors" target="_blank" rel="noopener">Arizona State University</a>, W. P. Carey School of Business.</p>
 
-    <div class="block rv">
-      <div class="panel">
-        <p class="lede">I work with a limited number of companies.</p>
-        <p class="pnote">If that's you, tell me where you're stuck.</p>
-        <!-- CTA: points to contact.html for now. Swap href to a Calendly/booking URL when ready. -->
-        <a class="cta-btn" href="contact.html">Tell me where you're stuck<span class="ar">&#8599;</span></a>
-      </div>
-    </div>
+  <p>I work with a limited number of companies. If that's you, tell me where you're stuck.</p>
 
-  </div>
+  <a class="cta" href="contact.html"><span>Tell me where you're stuck</span><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 1.5 L6.5 5 L3 8.5"/></svg></a>
 </main>
+
 <footer>
-  <span>&copy; 2026 North Central Holdings, LLC</span>
-  <span class="amdg" title="Ad Majorem Dei Gloriam, for the greater glory of God">A.M.D.G.</span>
-  <span>Arizona</span>
+  <span>Copyright &copy; 2026 North Central Holdings, LLC</span>
+  <a href="index.html">Home</a>
+  <a href="holdings.html">Holdings</a>
+  <a href="contact.html">Contact</a>
+  <span title="Ad Majorem Dei Gloriam, for the greater glory of God">A.M.D.G.</span>
 </footer>
-<script>
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
-  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i,6)*0.04)+'s';io.observe(el);});
-  document.querySelectorAll('.logo img[data-domain]').forEach(function(img){
-    var d=img.getAttribute('data-domain');
-    img.src='https://www.google.com/s2/favicons?sz=128&domain='+d;
-    img.onload=function(){if(img.naturalWidth>16)img.classList.add('ok');};
-  });
-  var rose=document.getElementById('rose-spin');
-  if(rose) addEventListener('scroll',function(){rose.style.transform='rotate('+(scrollY*0.05)+'deg)';});
-</script>
 </body>
 </html>
