@@ -1,6 +1,6 @@
 :root{
   --bg:#fff;--ink:#1c1a17;--soft:#6b655b;--rule:rgba(28,26,23,0.22);--mark:#e6ddd0;
-  --serif:'Newsreader',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;
+  --serif:'Montserrat',system-ui,-apple-system,sans-serif;--sans:'Montserrat',system-ui,-apple-system,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;padding:56px 56px 48px}
